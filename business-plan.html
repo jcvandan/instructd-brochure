@@ -9,9 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
 <style>
 
-/* ─────────────────────────────────────────────
-   TOKENS
-───────────────────────────────────────────── */
 :root {
   --ink:        #111318;
   --ink-2:      #1c1f28;
@@ -42,9 +39,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─────────────────────────────────────────────
-   NAV
-───────────────────────────────────────────── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -55,9 +49,6 @@ nav {
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
-  padding: 0 32px;
-  gap: 0;
-  justify-content: space-between;
   transition: box-shadow 0.2s;
 }
 nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
@@ -65,55 +56,20 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
 .nav-logo {
   font-family: var(--sans);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 24px;
   color: var(--ink);
   text-decoration: none;
   letter-spacing: -0.3px;
 }
 .nav-logo span { color: var(--blue); }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: color 0.15s, background 0.15s;
-}
-.nav-links a:hover { color: var(--ink); background: var(--off); }
-
-.nav-print-btn {
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--blue);
-  background: var(--blue-pale);
-  border: none;
-  border-radius: 6px;
-  padding: 7px 16px;
-  cursor: pointer;
-  letter-spacing: 0.1px;
-  transition: all 0.15s;
-}
-.nav-print-btn:hover { background: var(--blue); color: var(--white); }
-
-/* ─────────────────────────────────────────────
-   SHARED LAYOUT
-───────────────────────────────────────────── */
 .container {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 32px;
 }
 
-section { padding: 96px 0; }
+section { padding: 72px 0; }
 
 .section-label {
   display: inline-flex;
@@ -136,33 +92,57 @@ section { padding: 96px 0; }
 
 h2 {
   font-family: var(--serif);
-  font-size: clamp(30px, 4vw, 42px);
+  font-size: clamp(26px, 4vw, 34px);
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.5px;
   color: var(--ink);
-}
-h2 em {
-  font-style: italic;
-  color: var(--blue);
+  margin-bottom: 28px;
 }
 
-.section-intro {
-  max-width: 560px;
-  margin-bottom: 56px;
+.sb p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 16px;
 }
-.section-intro p {
-  margin-top: 14px;
+.sb h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 40px 0 16px;
+}
+.sb h4 {
+  font-family: var(--sans);
   font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 28px 0 12px;
+}
+.sb ul {
+  margin: 12px 0 20px;
+  padding-left: 0;
+  list-style: none;
+}
+.sb li {
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  position: relative;
 }
+.sb li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--label);
+}
+.sb strong { color: var(--ink); font-weight: 600; }
 
-/* ─────────────────────────────────────────────
-   COVER
-───────────────────────────────────────────── */
 .cover {
-  min-height: 100vh;
+  min-height: 70vh;
   background: var(--ink);
   display: flex;
   flex-direction: column;
@@ -172,7 +152,6 @@ h2 em {
   position: relative;
   overflow: hidden;
 }
-
 .cover-grid {
   position: absolute;
   inset: 0;
@@ -186,7 +165,6 @@ h2 em {
   from { background-position: 0 0; }
   to   { background-position: 56px 56px; }
 }
-
 .cover-glow {
   position: absolute;
   width: 700px; height: 700px;
@@ -195,24 +173,9 @@ h2 em {
   right: -180px; top: -140px;
   pointer-events: none;
 }
-
-.cover-accent {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--blue) 0%, rgba(61,90,241,0.3) 70%, transparent 100%);
-}
-
 .cover-body {
   position: relative;
   z-index: 2;
-}
-
-.cover-meta-line {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
 }
 .cover-pill {
   font-size: 11px;
@@ -224,80 +187,31 @@ h2 em {
   border: 1px solid rgba(61,90,241,0.3);
   padding: 5px 12px;
   border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 28px;
 }
-.cover-divider {
-  width: 1px; height: 16px;
-  background: rgba(255,255,255,0.15);
-}
-.cover-date {
-  font-size: 12px;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.5px;
-}
-
 .cover-headline {
   font-family: var(--serif);
-  font-size: clamp(44px, 7vw, 76px);
+  font-size: clamp(44px, 7vw, 72px);
   font-weight: 300;
-  line-height: 1.05;
+  line-height: 1.08;
   color: var(--white);
   letter-spacing: -1.5px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.cover-headline em {
-  font-style: italic;
-  color: #a8b8ff;
-}
-
 .cover-sub {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 300;
-  color: rgba(255,255,255,0.5);
-  max-width: 500px;
+  color: rgba(255,255,255,0.45);
+  max-width: 520px;
   line-height: 1.65;
-  margin-bottom: 48px;
 }
 
-.cover-stats {
-  display: flex;
-  gap: 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 40px;
-  margin-top: 8px;
-}
-.cover-stat {
-  flex: 1;
-  padding-right: 32px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  margin-right: 32px;
-}
-.cover-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-
-.cover-stat-val {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-.cover-stat-val em { font-style: normal; color: #a8b8ff; }
-.cover-stat-label {
-  font-size: 12px;
-  color: rgba(255,255,255,0.35);
-  line-height: 1.4;
-}
-
-/* ─────────────────────────────────────────────
-   TOC
-───────────────────────────────────────────── */
 .toc-section {
   background: var(--off);
   border-bottom: 1px solid var(--border);
 }
 .toc-section .container { padding-top: 64px; padding-bottom: 64px; }
-
 .toc-title {
   font-size: 11px;
   font-weight: 600;
@@ -306,13 +220,11 @@ h2 em {
   color: var(--label);
   margin-bottom: 28px;
 }
-
 .toc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
 }
-
 .toc-item {
   display: flex;
   align-items: baseline;
@@ -324,8 +236,6 @@ h2 em {
   transition: color 0.15s;
 }
 .toc-item:hover { color: var(--blue); }
-.toc-item:hover .toc-num { color: var(--blue); }
-
 .toc-num {
   font-family: var(--sans);
   font-size: 11px;
@@ -333,127 +243,32 @@ h2 em {
   color: var(--label);
   min-width: 28px;
   letter-spacing: 0.5px;
-  transition: color 0.15s;
 }
 .toc-name {
   font-size: 14px;
   font-weight: 500;
 }
 
-/* ─────────────────────────────────────────────
-   SECTION WRAPPERS
-───────────────────────────────────────────── */
-.dark-section {
-  background: var(--ink);
-  color: var(--white);
-}
+.dark-section { background: var(--ink); color: var(--white); }
 .dark-section h2 { color: var(--white); }
-.dark-section h2 em { color: #a8b8ff; }
-.dark-section .section-intro p { color: rgba(255,255,255,0.5); }
 .dark-section .section-label { color: #a8b8ff; }
 .dark-section .section-label::before { background: #a8b8ff; }
+.dark-section .sb p { color: rgba(255,255,255,0.6); }
+.dark-section .sb h3 { color: var(--white); }
+.dark-section .sb h4 { color: rgba(255,255,255,0.85); }
+.dark-section .sb li { color: rgba(255,255,255,0.6); }
+.dark-section .sb strong { color: var(--white); }
+.dark-section .sb li::before { color: rgba(255,255,255,0.3); }
 
 .off-section { background: var(--off); }
 
-/* ─────────────────────────────────────────────
-   STAT CALLOUTS
-───────────────────────────────────────────── */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 40px 0;
-}
-.stat-card {
-  background: var(--ink-2);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: var(--r);
-  padding: 24px;
-}
-.stat-card.light {
-  background: var(--white);
-  border: 1px solid var(--border);
-}
-.stat-val {
-  font-family: var(--serif);
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-.stat-val em { font-style: normal; color: #a8b8ff; }
-.stat-card.light .stat-val { color: var(--blue); }
-.stat-caption {
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.45;
-}
-.stat-card.light .stat-caption { color: var(--muted); }
-
-/* ─────────────────────────────────────────────
-   PROBLEM SECTION
-───────────────────────────────────────────── */
-.pain-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.pain-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 28px;
-  border-top: 3px solid var(--blue);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.pain-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); transform: translateY(-2px); }
-.pain-card h3 {
-  font-family: var(--sans);
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-.pain-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
-.problem-callout {
-  background: var(--ink);
-  border-radius: var(--r);
-  padding: 36px 40px;
-  margin-top: 40px;
-  position: relative;
-  overflow: hidden;
-}
-.problem-callout::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--blue);
-}
-.problem-callout p {
-  font-size: 18px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.65;
-}
-.problem-callout strong { color: var(--white); font-weight: 600; }
-
-/* ─────────────────────────────────────────────
-   TABLES (inadequate solutions, comparison etc)
-───────────────────────────────────────────── */
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 32px 0;
+  margin: 24px 0;
   font-size: 14px;
 }
-.data-table thead tr {
-  background: var(--ink);
-  color: var(--white);
-}
+.data-table thead tr { background: var(--ink); color: var(--white); }
 .data-table thead th {
   font-family: var(--sans);
   font-size: 12px;
@@ -479,280 +294,41 @@ h2 em {
 .data-table.dark tbody td { color: rgba(255,255,255,0.55); }
 .data-table.dark tbody td:first-child { color: rgba(255,255,255,0.85); }
 
-.yes  { color: #3dbe7a !important; font-weight: 600 !important; }
-.warn { color: #e8984a !important; }
-.no   { color: #e05555 !important; }
+.yes { color: #3dbe7a !important; font-weight: 600 !important; }
 
-/* ─────────────────────────────────────────────
-   SOLUTION / FEATURES
-───────────────────────────────────────────── */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.feature-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: var(--r);
-  padding: 28px;
-  transition: background 0.2s, border-color 0.2s;
-}
-.feature-card:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(61,90,241,0.4);
-}
-.feature-icon {
-  width: 36px; height: 36px;
-  background: rgba(61,90,241,0.18);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  color: #a8b8ff;
-  font-size: 16px;
-}
-.feature-card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-.feature-card p { font-size: 13.5px; color: rgba(255,255,255,0.45); line-height: 1.6; }
-
-/* ─────────────────────────────────────────────
-   CUSTOMER SEGMENTS
-───────────────────────────────────────────── */
-.persona-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 40px;
-}
-.persona-card {
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 24px;
-  background: var(--white);
-}
-.persona-role {
+.fin-table {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
+  margin: 24px 0;
 }
-.persona-row { margin-bottom: 10px; }
-.persona-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--label);
-  margin-bottom: 3px;
-}
-.persona-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-.case-types {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 32px;
-}
-.case-pill {
-  background: var(--blue-pale);
-  color: var(--blue-dark);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 20px;
-}
-
-/* ─────────────────────────────────────────────
-   FOUNDERS
-───────────────────────────────────────────── */
-.founder-card {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 24px;
-  align-items: start;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 32px;
-  margin-bottom: 20px;
-}
-.founder-avatar {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue) 0%, var(--ink) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--white);
-  flex-shrink: 0;
-  font-style: italic;
-}
-.founder-name {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 2px;
-}
-.founder-title {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 14px;
-}
-.founder-bio { font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-/* ─────────────────────────────────────────────
-   GTM / CHANNELS
-───────────────────────────────────────────── */
-.channel-list { margin-top: 40px; }
-.channel-item {
-  display: grid;
-  grid-template-columns: 80px 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-}
-.channel-badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 20px;
-  background: var(--blue);
-  color: var(--white);
-  text-align: center;
-}
-.channel-badge.upcoming {
-  background: var(--blue-pale);
-  color: var(--blue-dark);
-}
-.channel-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.channel-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-/* ─────────────────────────────────────────────
-   PRICING
-───────────────────────────────────────────── */
-.pricing-highlight {
-  background: var(--ink);
-  border-radius: var(--r);
-  padding: 40px;
-  margin: 32px 0;
-  position: relative;
-  overflow: hidden;
-}
-.pricing-highlight::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--blue);
-}
-.pricing-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 12px;
-}
-.pricing-amount {
-  font-family: var(--serif);
-  font-size: 64px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -2px;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-.pricing-amount sub {
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0;
-  vertical-align: middle;
-  color: rgba(255,255,255,0.5);
-}
-.pricing-desc {
-  font-size: 15px;
-  color: rgba(255,255,255,0.55);
-  max-width: 480px;
-  line-height: 1.6;
-}
-
-.pricing-comparison { margin: 32px 0; }
-.price-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 3fr;
-  gap: 16px;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
-.price-row.featured {
-  background: var(--blue-pale);
-  padding: 14px 16px;
-  margin: 0 -16px;
-  border-radius: var(--r);
-  border: 1.5px solid rgba(61,90,241,0.3);
-  border-bottom: 1.5px solid rgba(61,90,241,0.3);
-}
-.price-row.featured .price-name { color: var(--blue-dark); font-weight: 700; font-size: 15px; }
-.price-row.featured .price-cost { color: var(--blue-dark); font-weight: 700; }
-.price-name { font-size: 14px; font-weight: 500; color: var(--ink); }
-.price-cost {
+.fin-table thead th {
   font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
-}
-.price-note { font-size: 13px; color: var(--muted); }
-
-.volume-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin: 32px 0;
-}
-.volume-card {
-  background: var(--off);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 20px;
-  text-align: center;
-  transition: all 0.15s;
-}
-.volume-card:hover { border-color: var(--blue); background: var(--blue-pale); }
-.volume-tier { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--label); margin-bottom: 8px; }
-.volume-price {
-  font-family: var(--serif);
-  font-size: 28px;
+  font-size: 12px;
   font-weight: 700;
-  color: var(--blue);
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-  margin-bottom: 6px;
+  color: var(--ink);
+  text-align: right;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--ink);
 }
-.volume-range { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.fin-table thead th:first-child { text-align: left; }
+.fin-table tbody td {
+  padding: 10px 14px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.fin-table tbody td:first-child { text-align: left; color: var(--ink); font-weight: 400; }
+.fin-table tbody tr.subtotal td {
+  font-weight: 700;
+  color: var(--ink);
+  border-top: 2px solid var(--ink);
+  border-bottom: none;
+}
+.fin-table .pos { color: #2da870 !important; font-weight: 600 !important; }
+.fin-table .neg { color: #e05555 !important; }
 
-/* ─────────────────────────────────────────────
-   ROADMAP
-───────────────────────────────────────────── */
 .roadmap-phases {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -830,20 +406,15 @@ h2 em {
   color: var(--label);
 }
 
-/* ─────────────────────────────────────────────
-   MARKET SIZING
-───────────────────────────────────────────── */
 .market-trio {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin: 40px 0;
+  margin: 32px 0;
 }
 .market-card {
   border-radius: var(--r);
   padding: 28px;
-  position: relative;
-  overflow: hidden;
 }
 .market-card.tam { background: var(--ink); }
 .market-card.sam { background: var(--ink-2); }
@@ -867,78 +438,11 @@ h2 em {
 }
 .market-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
 
-/* ─────────────────────────────────────────────
-   FINANCIALS
-───────────────────────────────────────────── */
-.fin-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  margin: 24px 0;
-}
-.fin-table thead th {
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink);
-  text-align: right;
-  padding: 10px 14px;
-  border-bottom: 2px solid var(--ink);
-}
-.fin-table thead th:first-child { text-align: left; }
-.fin-table tbody td {
-  padding: 10px 14px;
-  text-align: right;
-  border-bottom: 1px solid var(--border);
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-.fin-table tbody td:first-child { text-align: left; color: var(--ink); font-weight: 400; }
-.fin-table tbody tr.subtotal td {
-  font-weight: 700;
-  color: var(--ink);
-  border-top: 2px solid var(--ink);
-  border-bottom: none;
-}
-.fin-table .pos { color: #2da870 !important; font-weight: 600 !important; }
-.fin-table .neg { color: #e05555 !important; }
-
-.rev-scenario-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin: 32px 0;
-}
-.rev-scenario {
-  background: var(--off);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 20px;
-}
-.rev-scenario.highlight { background: var(--ink); border-color: transparent; }
-.rev-tier { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--label); margin-bottom: 8px; }
-.rev-scenario.highlight .rev-tier { color: rgba(255,255,255,0.4); }
-.rev-amount {
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--blue);
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-.rev-scenario.highlight .rev-amount { color: #a8b8ff; }
-.rev-detail { font-size: 12px; color: var(--muted); line-height: 1.45; }
-.rev-scenario.highlight .rev-detail { color: rgba(255,255,255,0.4); }
-
-/* ─────────────────────────────────────────────
-   VISION
-───────────────────────────────────────────── */
 .vision-blocks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  margin: 48px 0;
+  margin: 32px 0;
 }
 .vision-block {
   padding: 28px 28px 28px 0;
@@ -958,9 +462,6 @@ h2 em {
 }
 .vision-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
-/* ─────────────────────────────────────────────
-   NOTES
-───────────────────────────────────────────── */
 .note-list { margin-top: 32px; }
 .note-item {
   display: grid;
@@ -980,16 +481,10 @@ h2 em {
 .note-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
 .note-text strong { color: var(--ink); font-weight: 600; }
 
-/* ─────────────────────────────────────────────
-   RISKS
-───────────────────────────────────────────── */
 .risk-high  { color: #e05555; font-weight: 600; font-size: 12px; }
 .risk-med   { color: #e8984a; font-weight: 600; font-size: 12px; }
 .risk-low   { color: #2da870; font-weight: 600; font-size: 12px; }
 
-/* ─────────────────────────────────────────────
-   CONFIDENTIAL FOOTER
-───────────────────────────────────────────── */
 .doc-footer {
   background: var(--ink);
   padding: 40px 0;
@@ -1009,9 +504,6 @@ h2 em {
   letter-spacing: 0.5px;
 }
 
-/* ─────────────────────────────────────────────
-   SCROLL ANIMATIONS
-───────────────────────────────────────────── */
 .fade-up {
   opacity: 0;
   transform: translateY(24px);
@@ -1019,55 +511,137 @@ h2 em {
 }
 .fade-up.visible { opacity: 1; transform: none; }
 
+.founder-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 24px;
+  align-items: start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px;
+  margin-bottom: 20px;
+}
+.founder-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--ink) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  flex-shrink: 0;
+  font-style: italic;
+}
+.founder-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.founder-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+.founder-bio { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
 /* ─────────────────────────────────────────────
-   PRINT STYLES — optimised for Chrome print-to-PDF
+   MOBILE
 ───────────────────────────────────────────── */
-@media print {
-  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  section { padding: 48px 0; }
 
-  nav, .nav-print-btn { display: none !important; }
+  .cover { min-height: 60vh; padding-bottom: 48px; }
+  .cover-glow { width: 400px; height: 400px; right: -100px; top: -80px; }
+  .cover-headline { letter-spacing: -1px; }
+  .cover-sub { font-size: 15px; }
 
-  body { font-size: 11pt; }
+  .toc-section .container { padding-top: 40px; padding-bottom: 40px; }
+  .toc-grid { grid-template-columns: 1fr; }
 
-  .cover {
-    min-height: auto;
-    height: 297mm;
-    page-break-after: always;
-    padding: 40mm 20mm 20mm;
-    animation: none;
+  .sb h3 { font-size: 19px; margin: 32px 0 12px; }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 24px 0; }
+  .table-scroll .data-table,
+  .table-scroll .fin-table { margin: 0; min-width: 520px; }
+  .data-table thead th,
+  .data-table tbody td { padding: 10px 12px; }
+  .fin-table thead th,
+  .fin-table tbody td { padding: 8px 10px; }
+
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px;
   }
-  .cover-grid { animation: none; }
-  .cover-glow { display: none; }
+  .founder-avatar { width: 56px; height: 56px; font-size: 18px; }
 
-  .toc-section { page-break-after: always; }
-
-  section {
-    padding: 20mm 0;
-    page-break-inside: avoid;
+  .roadmap-phases {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
-
-  .container { padding: 0 20mm; }
-
-  .pain-grid,
-  .feature-grid,
-  .persona-grid { gap: 8px; }
-
-  .fade-up { opacity: 1 !important; transform: none !important; }
-
-  h2 { font-size: 22pt; }
-
-  .pain-card:hover,
-  .feature-card:hover,
-  .volume-card:hover { transform: none; box-shadow: none; }
-
-  .roadmap-phases { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .roadmap-phases::before { display: none; }
   .phase { padding-top: 16px; }
   .phase-dot { display: none; }
 
-  .rev-scenario-grid { grid-template-columns: repeat(2, 1fr); }
-  .volume-grid { grid-template-columns: repeat(2, 1fr); }
+  .market-trio { grid-template-columns: 1fr; }
+  .market-value { font-size: 32px; }
 
+  .vision-blocks { grid-template-columns: 1fr; }
+  .vision-block { padding: 20px 0; }
+
+  .doc-footer-conf { font-size: 11px; padding: 0 20px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  section { padding: 40px 0; }
+
+  h2 { font-size: 24px; margin-bottom: 20px; }
+  .sb h3 { font-size: 18px; }
+  .sb p, .sb li { font-size: 14px; }
+
+  .cover { min-height: 50vh; padding-bottom: 36px; }
+  .cover-headline { font-size: 36px; }
+  .cover-sub { font-size: 14px; }
+  .cover-pill { font-size: 10px; }
+
+  .nav-logo { font-size: 20px; }
+
+  .roadmap-phases { grid-template-columns: 1fr; }
+
+  .founder-name { font-size: 18px; }
+  .founder-bio { font-size: 13px; }
+
+  .note-item { grid-template-columns: 24px 1fr; gap: 12px; }
+  .note-text { font-size: 13px; }
+}
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  nav { display: none !important; }
+  body { font-size: 11pt; }
+  .cover { min-height: auto; height: 297mm; page-break-after: always; padding: 40mm 20mm 20mm; animation: none; }
+  .cover-grid { animation: none; }
+  .cover-glow { display: none; }
+  .toc-section { page-break-after: always; }
+  section { padding: 20mm 0; page-break-inside: avoid; }
+  .container { padding: 0 20mm; }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+  h2 { font-size: 22pt; }
+  .roadmap-phases { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .roadmap-phases::before { display: none; }
+  .phase { padding-top: 16px; }
+  .phase-dot { display: none; }
   a { color: inherit; text-decoration: none; }
 }
 
@@ -1075,65 +649,24 @@ h2 em {
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     NAV
-════════════════════════════════════════ -->
 <nav id="site-nav">
-  <a href="#" class="nav-logo">instructd<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#problem">Problem</a></li>
-    <li><a href="#solution">Solution</a></li>
-    <li><a href="#segments">Segments</a></li>
-    <li><a href="#gtm">Go-To-Market</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#financials">Financials</a></li>
-  </ul>
-  <button class="nav-print-btn" onclick="window.print()">↓ Save as PDF</button>
+  <div class="container">
+    <a href="#" class="nav-logo">instructd<span>.</span></a>
+  </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     COVER
-════════════════════════════════════════ -->
+<!-- COVER -->
 <section class="cover">
   <div class="cover-grid"></div>
   <div class="cover-glow"></div>
-  <div class="cover-accent"></div>
   <div class="container cover-body">
-    <div class="cover-meta-line">
-      <span class="cover-pill">Confidential</span>
-      <div class="cover-divider"></div>
-      <span class="cover-date">Business Plan · March 2026</span>
-    </div>
-    <h1 class="cover-headline">
-      Low-code client<br>onboarding for<br><em>UK law firms.</em>
-    </h1>
-    <p class="cover-sub">
-      Replacing expensive contact centres with a modern, self-service digital intake platform — purpose-built for the complexity of regulated legal workflows.
-    </p>
-    <div class="cover-stats">
-      <div class="cover-stat">
-        <div class="cover-stat-val">£<em>825k</em></div>
-        <div class="cover-stat-label">Annual contact centre cost for a mid-size firm (30 FTE)</div>
-      </div>
-      <div class="cover-stat">
-        <div class="cover-stat-val"><em>83</em>%</div>
-        <div class="cover-stat-label">Potential headcount reduction with digital intake</div>
-      </div>
-      <div class="cover-stat">
-        <div class="cover-stat-val">£<em>3</em></div>
-        <div class="cover-stat-label">Per successful journey completion — cheaper than any alternative</div>
-      </div>
-      <div class="cover-stat">
-        <div class="cover-stat-val">£<em>450k</em></div>
-        <div class="cover-stat-label">Non-dilutive grant funding sought for Years 1–2</div>
-      </div>
-    </div>
+    <span class="cover-pill">Confidential · March 2026</span>
+    <h1 class="cover-headline">Instructd<br>Business Plan</h1>
+    <p class="cover-sub">A low-code platform that gives law firms total control over their client onboarding and data capture journeys — without expensive development teams or consultants.</p>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     TABLE OF CONTENTS
-════════════════════════════════════════ -->
+<!-- TOC -->
 <div class="toc-section">
   <div class="container">
     <div class="toc-title">Contents</div>
@@ -1142,8 +675,8 @@ h2 em {
       <a href="#solution" class="toc-item"><span class="toc-num">02</span><span class="toc-name">Solution</span></a>
       <a href="#segments" class="toc-item"><span class="toc-num">03</span><span class="toc-name">Customer Segments</span></a>
       <a href="#founders" class="toc-item"><span class="toc-num">04</span><span class="toc-name">Founders</span></a>
-      <a href="#gtm" class="toc-item"><span class="toc-num">05</span><span class="toc-name">Channels &amp; Go-To-Market</span></a>
-      <a href="#pricing" class="toc-item"><span class="toc-num">06</span><span class="toc-name">Revenue Model &amp; Pricing</span></a>
+      <a href="#gtm" class="toc-item"><span class="toc-num">05</span><span class="toc-name">Channels &amp; Go-To-Market Strategy</span></a>
+      <a href="#pricing" class="toc-item"><span class="toc-num">06</span><span class="toc-name">Revenue Model &amp; Pricing Strategy</span></a>
       <a href="#competitive" class="toc-item"><span class="toc-num">07</span><span class="toc-name">Competitive Landscape</span></a>
       <a href="#market" class="toc-item"><span class="toc-num">08</span><span class="toc-name">Market Sizing</span></a>
       <a href="#advantages" class="toc-item"><span class="toc-num">09</span><span class="toc-name">Strategic Advantages</span></a>
@@ -1155,758 +688,758 @@ h2 em {
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     01 · PROBLEM
-════════════════════════════════════════ -->
+<!-- 01 · PROBLEM -->
 <section id="problem">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">01 · Problem</div>
-      <h2>Legal intake is<br><em>stuck in the past.</em></h2>
-      <p>Applying for car insurance takes minutes online. Onboarding a new legal client still means a phone queue, a call handler, and a form typed into a legacy system. The legal industry is decades behind adjacent sectors — and it's costing firms millions.</p>
-    </div>
+    <div class="section-label">01 · Problem</div>
+    <h2>Problem</h2>
+    <div class="sb">
+      <p>Applying for car insurance or a personal loan takes minutes online. The process is slick, guided, and entirely self-service. Yet in the UK legal sector, onboarding a new client for a road traffic accident claim or an employment dispute still typically involves a phone call to a contact centre, a manual script, and a handler typing data into a legacy system. The legal industry is decades behind adjacent sectors like finance and insurance when it comes to client intake — and it's costing firms millions.</p>
+      <p>Most UK law firms still rely on Contact Centres for B2C case intake — call handlers who manually capture client data using scripts over the phone and raise cases in their Case Management System (CMS). These legacy CMS platforms were designed decades ago for basic case tracking, not for complex, multi-step client onboarding workflows, making the intake process inherently inefficient and error-prone. The result is a poor experience for both the firm and the client.</p>
 
-    <div class="stat-row fade-up">
-      <div class="stat-card">
-        <div class="stat-val">£<em>825k</em></div>
-        <div class="stat-caption">Annual staffing cost for a mid-size firm's contact centre — 30 FTE at avg. £27.5k, before overheads</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val"><em>83</em>%</div>
-        <div class="stat-caption">Potential headcount reduction: from 30 contact centre staff down to 5 with digital intake</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val">£<em>245</em></div>
-        <div class="stat-caption">Cost per correction error in fee earner time — at £490/hr senior solicitor rates, 30 mins per error</div>
-      </div>
-    </div>
+      <h3>The Hidden Cost of Manual Client Intake</h3>
 
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;margin:48px 0 24px;color:var(--ink);">Four critical pain points</h3>
+      <h4>Direct staffing costs</h4>
+      <p>Call handlers earn £25k–£35k annually, with an average of £27.5k across junior and senior staff. Mid-size firms like Thompsons Scotland operate with around 30 FTE contact centre staff, representing £825k in annual staffing costs before overheads, training, and management time. Digital intake systems can reduce contact centre headcount from 30 to 5 staff (83% reduction), potentially saving £687.5k annually in staffing costs alone.</p>
 
-    <div class="pain-grid fade-up">
-      <div class="pain-card">
-        <h3>High staffing costs</h3>
-        <p>Call handlers earn £25–35k annually. Mid-size firms operate with around 30 FTE contact centre staff representing £825k in annual costs before overheads, training, and management time.</p>
-      </div>
-      <div class="pain-card">
-        <h3>Error-prone data capture</h3>
-        <p>Clunky, outdated CMS interfaces make it easy for call handlers to enter data incorrectly during calls. Fee earners at £190–490/hr then spend billable time correcting avoidable mistakes.</p>
-      </div>
-      <div class="pain-card">
-        <h3>Capacity bottleneck</h3>
-        <p>Contact centres create a linear cost scaling problem. Growth means hiring more staff. Intake only functions during staffed hours — missing out-of-hours enquiries entirely.</p>
-      </div>
-      <div class="pain-card">
-        <h3>Poor client experience</h3>
-        <p>Clients expect the same self-service experience they get from insurance or banking. Instead they get phone queues, repeated data requests, and zero visibility after the call ends.</p>
-      </div>
-    </div>
+      <h4>Error amplification costs</h4>
+      <p>Legacy CMS systems force call handlers into inefficient data capture workflows, creating a cascade of expensive problems:</p>
+      <ul>
+        <li>Clunky, outdated CMS interfaces make it easy for call handlers to enter data incorrectly during calls</li>
+        <li>Incorrect client details require fee earners to spend billable time correcting information</li>
+        <li>With solicitor hourly rates ranging from £190–£490+ depending on experience and location, even 30 minutes of correction time per error costs £95–£245 in lost billable time</li>
+        <li>Incomplete initial capture forces multiple lawyer follow-up calls, increasing time investment and cost</li>
+      </ul>
 
-    <div class="problem-callout fade-up" style="margin-top:40px;">
-      <p>The legal sector needs a solution that <strong>eliminates the call handler bottleneck entirely</strong> — allowing clients to provide complete, validated information directly into case management systems without human intervention. This is already standard in financial services and insurance. The model is validated. It simply hasn't been purpose-built for legal — <strong>until now.</strong></p>
-    </div>
+      <h4>Capacity bottleneck</h4>
+      <p>Contact centres become a constraint on growth, as firms must hire and train additional staff to handle increased enquiry volumes, creating a linear cost scaling problem.</p>
 
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;margin:48px 0 24px;color:var(--ink);">Why now — converging market forces</h3>
+      <h3>Current Inadequate Solutions</h3>
+      <table class="data-table">
+        <thead><tr><th>Solution Type</th><th>Why It Fails</th><th>Business Impact</th></tr></thead>
+        <tbody>
+          <tr><td>Manual phone intake (current standard)</td><td>Legacy CMS systems make data capture inefficient and error-prone, expensive staffing model, poor client experience, capacity constraints</td><td>£825k annual contact centre costs for large firms, plus correction time waste</td></tr>
+          <tr><td>Basic online forms (e.g. Sharepoint Forms)</td><td>Generic tools can't handle complex legal workflows, poor completion rates, no integration with case management systems</td><td>High abandonment, data silos</td></tr>
+          <tr><td>Email-based intake</td><td>Unstructured data, manual processing required, no validation, compliance gaps</td><td>Still requires manual processing, creates audit trail issues</td></tr>
+          <tr><td>Custom development</td><td>6–18 month build cycles, £250k–£500k initial build costs, difficult to modify</td><td>Prohibitively expensive and slow for most firms plus ongoing cost of changes</td></tr>
+        </tbody>
+      </table>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="fade-up">
-      <div style="padding:24px;border:1px solid var(--border);border-radius:var(--r);">
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;">Increased Competition</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Firms adopting digital intake are winning enquiries that competitors miss. Digital-first intake is becoming a differentiator in contested practice areas.</div>
-      </div>
-      <div style="padding:24px;border:1px solid var(--border);border-radius:var(--r);">
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;">Regulatory Pressure</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Fee caps in personal injury and other areas mean efficiency gains are no longer optional — they are essential to maintaining margin.</div>
-      </div>
-      <div style="padding:24px;border:1px solid var(--border);border-radius:var(--r);">
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;">Talent Shortage</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;">High turnover in £25–35k contact centre roles creates continuous recruitment costs. Firms cannot reliably scale headcount to match enquiry volume.</div>
-      </div>
-      <div style="padding:24px;border:1px solid var(--border);border-radius:var(--r);">
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;">Rising Client Expectations</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Clients increasingly expect 24/7 digital self-service. Firms that deliver it see better conversion and stronger first impressions from day one.</div>
-      </div>
+      <h3>Four Critical Pain Points</h3>
+      <table class="data-table">
+        <thead><tr><th>Pain Point</th><th>Operational Impact</th><th>Financial Impact</th><th>Client Impact</th></tr></thead>
+        <tbody>
+          <tr><td>High staffing costs</td><td>Need dedicated call handler staff for all intake</td><td>£825k annual costs for large firm contact centre teams</td><td>Limited availability, office hours only</td></tr>
+          <tr><td>Error-prone data capture</td><td>Legacy CMS systems make systematic data capture difficult during calls, leading to mistakes and incomplete information</td><td>£95–£245+ in fee earner time per correction</td><td>Poor first impression, delayed case start</td></tr>
+          <tr><td>High staff turnover</td><td>Low pay (£25k–£35k) leads to constant churn and poorly trained staff</td><td>Continuous recruitment and training costs, inconsistent service quality</td><td>Inexperienced staff handling sensitive client matters</td></tr>
+          <tr><td>Capacity bottleneck</td><td>Can only handle enquiries during staffed hours</td><td>Must hire more staff to scale, linear cost increase</td><td>Long wait times, missed opportunities</td></tr>
+          <tr><td>Inefficient fee earner time</td><td>Qualified solicitors waste billable time on data corrections</td><td>Direct impact on profitability and utilization rates</td><td>Delays in case progression</td></tr>
+        </tbody>
+      </table>
+
+      <h3>The Client Experience Gap</h3>
+      <p>The cost and efficiency problems above are compounded by a poor experience for the end-user — the person making a claim or enquiring about legal services. Today's clients expect the same seamless, digital-first experience they get when applying for insurance or opening a bank account. Instead, they get phone queues during office hours, repeated requests for the same information, and no visibility into what happens after the call ends. This gap between expectation and reality leads to lost enquiries, poor first impressions, and lower client satisfaction from day one.</p>
+      <p>Instructd closes this gap by giving end-users a modern, self-service onboarding experience they can complete at any time, on any device, with instant confirmation and — through the client portal — ongoing visibility into their case progress, real-time notifications, and easy asynchronous communication with their firm.</p>
+
+      <h3>Market Timing: Why This Matters Now</h3>
+      <ul>
+        <li><strong>Increased competition:</strong> Getting left behind as other firms adopt modern technology</li>
+        <li><strong>Regulatory changes:</strong> That cap fees — this means efficiency gains are paramount</li>
+        <li><strong>Talent shortage:</strong> Admin staff are easy to hire, but hard to train and retain</li>
+        <li><strong>Client expectations:</strong> Clients increasingly expect 24/7 self-service options like other industries</li>
+      </ul>
+      <p>The legal sector needs a solution that eliminates the call handler bottleneck entirely, allowing clients to provide complete, validated information directly into case management systems without human intervention — turning a cost centre into a competitive advantage. This is a standard approach in other sectors e.g. financial services &amp; insurance so the idea is validated in adjacent sectors. While adjacent solutions exist in the legal tech market (see Competitive Landscape), no competitor offers a purpose-built, low-code platform specifically designed for complex legal intake workflows with the depth of customisation, white-labelling, and consumption-based pricing that Instructd provides.</p>
+      <p>This urgent need is validated by our first customer — a UK law firm going live on the Instructd platform in March 2026, demonstrating real market demand for this solution.</p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     02 · SOLUTION
-════════════════════════════════════════ -->
+<!-- 02 · SOLUTION -->
 <section id="solution" class="dark-section">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">02 · Solution</div>
-      <h2>Total control over<br><em>client onboarding.</em></h2>
-      <p>Instructd is a low-code platform that gives law firms total control over their client onboarding and data capture journeys — without expensive development teams or consultants. It replaces slow, expensive build cycles with a fast visual interface built specifically for regulated, high-complexity workflows.</p>
-    </div>
-
-    <div class="feature-grid fade-up">
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Rapid Time to Market</h3>
-        <p>Build and adapt onboarding journeys in a fraction of the time of custom development, using a visual logic-based interface.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏷</div>
-        <h3>Full White-Labelling</h3>
-        <p>Custom domains, your branding, your look and feel. No Instructd branding visible to your clients at any point.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3>Secure by Design</h3>
-        <p>Multi-tenant with strict data isolation, encryption in transit and at rest. Pursuing ISO 27001. Clients authenticate via their own Entra tenant.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔌</div>
-        <h3>Integrate Anything</h3>
-        <p>Built-in plugins for KYC/AML, document signatures, address lookup, CMS sync. Build custom TypeScript plugins for unsupported stacks.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3>Deploy Safely</h3>
-        <p>Full dev/test/live environment workflow with version history, rollback, and IT governance controls built in from day one.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Optimise Relentlessly</h3>
-        <p>Journey analytics and native A/B testing to continuously improve completion and conversion rates across every workflow.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:56px;" class="fade-up">
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r);padding:36px;">
-        <div style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px;">Market Validation</div>
-        <p style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);line-height:1.45;margin-bottom:14px;">Our first customer goes live in <em style="color:#a8b8ff;">March 2026</em> — a UK law firm deploying Instructd for their Road Traffic Accident intake workflow.</p>
-        <p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.65;">This validates real market demand, produces a live production case study, and demonstrates the platform can handle complex legal intake at scale from day one. It will generate the first measurable ROI data for future sales conversations and creates a foundation for referrals within their network.</p>
-      </div>
+    <div class="section-label">02 · Solution</div>
+    <h2>Solution</h2>
+    <div class="sb">
+      <p>Instructd is a low-code platform that gives law firms total control over their client onboarding &amp; data capture journeys without needing expensive development teams or consultants.</p>
+      <p>It replaces slow, expensive build cycles with a fast visual interface built specifically for regulated, high-complexity workflows.</p>
+      <p>What it delivers:</p>
+      <table class="data-table dark">
+        <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Rapid time to market</td><td>Empower internal teams to build and adapt onboarding journeys in a fraction of the time of custom development, using a visual logic-based interface</td></tr>
+          <tr><td>Own the domain &amp; experience</td><td>Fully white-labelled deployments with custom domains, no third-party branding, and firm-specific look and feel</td></tr>
+          <tr><td>Secure by design</td><td>Multi-tenant architecture with strict data isolation, encryption at rest and in transit, and enterprise-grade access controls. Working towards ISO 27001.</td></tr>
+          <tr><td>Integrate anything</td><td>Use built-in plugins (e.g. Document Signatures, KYC/AML, Address Lookup) or build your own to plug into internal tools or unsupported legal tech stacks.</td></tr>
+          <tr><td>Deploy safely</td><td>Full multi-environment workflow (dev/test/live), version history, and rollback support for robust IT governance.</td></tr>
+          <tr><td>Optimise relentlessly</td><td>Journey analytics and A/B testing capabilities to continuously improve conversion and completion rates.</td></tr>
+        </tbody>
+      </table>
+      <p>Instructd integrates directly with existing legal technology stacks, including case management systems like Sharedo (the UK's fastest-growing legal tech platform), ensuring that journey data flows seamlessly into the firm's existing workflows without manual intervention.</p>
+      <p>Security is built into the platform from the ground up, not bolted on. Instructd is pursuing Cyber Essentials Plus certification and working towards ISO 27001, with a comprehensive security white paper available for client due diligence. Clients authenticate using their own Entra (Azure AD) tenant, meaning they retain full control of their identity security including MFA and conditional access policies.</p>
+      <p>For law firms, Instructd reduces costs, eliminates errors, and removes the contact centre bottleneck. For their clients, it delivers the kind of seamless, self-service onboarding experience they already expect from every other industry — available 24/7, on any device, with instant confirmation and ongoing case visibility through the client portal.</p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     03 · CUSTOMER SEGMENTS
-════════════════════════════════════════ -->
+<!-- 03 · CUSTOMER SEGMENTS -->
 <section id="segments">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">03 · Customer Segments</div>
-      <h2>Who we serve.</h2>
-      <p>Medium to large UK law firms with complex, high-volume, or regulated client intake needs — and a desire to modernise without increasing development headcount or employing an external consultancy.</p>
-    </div>
+    <div class="section-label">03 · Customer Segments</div>
+    <h2>Customer Segments</h2>
+    <div class="sb">
+      <h3>Ideal Customer Profile (ICP)</h3>
+      <p>Medium to large UK law firms with complex, high-volume, or regulated client intake needs, and a desire to modernise client-facing workflows without increasing development headcount or employing an external consultancy or agency.</p>
+      <p>These firms typically:</p>
+      <ul>
+        <li>Employ 100–1000+ staff</li>
+        <li>Run multiple concurrent onboarding workflows</li>
+        <li>Have innovation, transformation, IT, or legal ops functions in-house</li>
+        <li>Need to expand client revenue within specific departments without increasing costs linearly through additional staff headcount</li>
+        <li>Are either currently paying for external development, or frustrated by current limitations in their processes</li>
+      </ul>
 
-    <div style="display:flex;gap:16px;margin-bottom:40px;" class="fade-up">
-      <div style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:var(--r);padding:24px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--label);margin-bottom:10px;">Firm Size</div>
-        <div style="font-family:var(--serif);font-size:40px;font-weight:700;color:var(--ink);letter-spacing:-1px;line-height:1;">100–1,000+</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px;">staff</div>
-      </div>
-      <div style="flex:2;background:var(--off);border:1px solid var(--border);border-radius:var(--r);padding:24px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--label);margin-bottom:12px;">Target Profile</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div style="font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue);">→</span>Run multiple concurrent onboarding workflows</div>
-          <div style="font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue);">→</span>Have Innovation, IT or Legal Ops functions in-house</div>
-          <div style="font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue);">→</span>Need to expand revenue without linear headcount growth</div>
-          <div style="font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue);">→</span>Frustrated by current process limitations or external dev costs</div>
-        </div>
-      </div>
-    </div>
+      <h3>Buyer Personas</h3>
+      <table class="data-table">
+        <thead><tr><th>Role</th><th>Pain</th><th>Desire</th></tr></thead>
+        <tbody>
+          <tr><td>Head of Innovation / Legal Ops Lead</td><td>Frustrated by how long it takes to launch new workflows</td><td>Tools that can be owned by business teams without losing control or compliance</td></tr>
+          <tr><td>Managing Partner / Department Head</td><td>High cost of custom tech projects with unclear ROI</td><td>Predictable, secure platforms that cut overhead and improve client experience</td></tr>
+          <tr><td>IT Director / CIO</td><td>Internal dev backlog, change control concerns, security/compliance mandates</td><td>Systems that slot easily into existing security frameworks with minimal IT effort</td></tr>
+          <tr><td>Ops Directors / Contact Centre Managers</td><td>Often have squeezed budgets due to economic pressures within firms</td><td>Any way to reduce volume without affecting lead conversions</td></tr>
+        </tbody>
+      </table>
 
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:24px;color:var(--ink);">Buyer Personas</h3>
-    <div class="persona-grid fade-up">
-      <div class="persona-card">
-        <div class="persona-role">Head of Innovation / Legal Ops Lead</div>
-        <div class="persona-row"><div class="persona-label">Pain</div><div class="persona-text">Frustrated by how long it takes to launch new workflows and the dependency on external developers.</div></div>
-        <div class="persona-row"><div class="persona-label">Desire</div><div class="persona-text">Tools that can be owned by business teams without losing control or compliance.</div></div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-role">Managing Partner / Department Head</div>
-        <div class="persona-row"><div class="persona-label">Pain</div><div class="persona-text">High cost of custom tech projects with unclear ROI and slow delivery cycles.</div></div>
-        <div class="persona-row"><div class="persona-label">Desire</div><div class="persona-text">Predictable, secure platforms that cut overhead and improve client experience.</div></div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-role">IT Director / CIO</div>
-        <div class="persona-row"><div class="persona-label">Pain</div><div class="persona-text">Internal dev backlog, change control concerns, security and compliance mandates.</div></div>
-        <div class="persona-row"><div class="persona-label">Desire</div><div class="persona-text">Systems that slot easily into existing security frameworks with minimal IT effort.</div></div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-role">Ops Director / Contact Centre Manager</div>
-        <div class="persona-row"><div class="persona-label">Pain</div><div class="persona-text">Squeezed budgets, high staff turnover, capacity constraints during busy periods.</div></div>
-        <div class="persona-row"><div class="persona-label">Desire</div><div class="persona-text">Any way to reduce volume without affecting lead conversion rates.</div></div>
-      </div>
-    </div>
+      <h3>Vertical Segmentation</h3>
+      <p>Instructd is focused on B2C legal services — high-volume consumer-facing case types where intake is front-loaded, process-driven, and currently handled by contact centres. These are the case types where digital intake delivers the greatest ROI and where clients expect a modern self-service experience comparable to other consumer industries.</p>
+      <p>Likely high-fit use cases:</p>
+      <table class="data-table">
+        <thead><tr><th>Case Type Characteristics</th><th>Why It's a Good Fit</th></tr></thead>
+        <tbody>
+          <tr><td>High volume / low touch</td><td>Automation handles routine intake, reducing manual processing overhead</td></tr>
+          <tr><td>Time-sensitive matter intake</td><td>Speed of onboarding directly impacts case outcomes and client satisfaction</td></tr>
+          <tr><td>Campaign-driven intake</td><td>Marketing-driven case generation requiring rapid deployment and standardized data capture</td></tr>
+          <tr><td>Group litigation / multi-party actions</td><td>Efficiently capture standardized information from multiple claimants with similar circumstances</td></tr>
+        </tbody>
+      </table>
 
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;margin:48px 0 16px;color:var(--ink);">High-fit case types</h3>
-    <p style="font-size:15px;color:var(--muted);margin-bottom:20px;">Instructd focuses on B2C legal services — high-volume, consumer-facing case types where intake is front-loaded, process-driven, and currently handled by contact centres.</p>
-    <div class="case-types fade-up">
-      <span class="case-pill">Road Traffic Accidents</span>
-      <span class="case-pill">Employment Law</span>
-      <span class="case-pill">Personal Injury</span>
-      <span class="case-pill">Group Litigation</span>
-      <span class="case-pill">Clinical Negligence</span>
-      <span class="case-pill">Housing Disrepair</span>
+      <h3>Product Expansion</h3>
+
+      <h4>Self-service client portals</h4>
+      <p>Client portals represent a natural and high-value expansion of the Instructd platform, extending its reach beyond initial intake into ongoing client management. The concept is familiar to anyone who has applied for a mortgage: after completing the application, you log into a portal to track progress, upload documents, receive updates, and message your advisor. Legal clients expect this same experience but rarely get it.</p>
+      <p>At the end of a completed onboarding journey, end-users are prompted to create an account and access a white-labelled client portal for their ongoing case. This creates a seamless transition from intake to case management.</p>
+      <p><strong>Core Portal Features:</strong></p>
+      <ul>
+        <li><strong>Case status tracking and notifications</strong> — Real-time updates on case progress, key milestones, and next steps, delivered via email, SMS, or in-app notifications, eliminating the "Where's my case?" phone calls that consume admin time</li>
+        <li><strong>Two-way secure messaging</strong> — Structured, compliant communication channels between client and firm, replacing email and phone tag with an auditable, organised messaging system</li>
+        <li><strong>Document uploads and requests</strong> — Clients can securely submit required documents and the firm can request specific documents with deadlines, removing the back-and-forth of chasing paperwork</li>
+        <li><strong>Fee transparency and payment processing</strong> — Clients can view invoices, understand billing, and make payments directly through the portal</li>
+      </ul>
+      <p><strong>Strategic Value:</strong></p>
+      <p>The client portal transforms Instructd from a point-of-intake tool into an ongoing client engagement platform. This significantly increases the value per customer, creates additional consumption-based revenue opportunities (e.g. per-notification or per-message pricing), and makes Instructd deeply embedded in the firm's client-facing operations — dramatically reducing churn risk.</p>
+      <p>Multiple prospective clients have already expressed interest in this capability during early sales conversations, validating the demand.</p>
+
+      <h4>Industry and sector expansion</h4>
+      <p>Once traction is established in UK legal, the same platform can be offered to global legal markets and adjacent regulated industries. Early international interest is already materialising: Igor Jericevich, CEO of Alterspective (a legal consultancy in Australia), is actively demoing the Instructd platform to his clients and has received positive feedback with requests for further conversations. This validates the platform's relevance beyond the UK market.</p>
+      <p>Expansion targets include:</p>
+      <ul>
+        <li><strong>Global legal markets</strong> (Australia, US, Canada, EU) — with Alterspective providing an early entry point into the Australian market</li>
+        <li><strong>Adjacent regulated industries</strong> (insurance, financial services, healthcare) — similar intake complexity and compliance requirements</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     04 · FOUNDERS
-════════════════════════════════════════ -->
+<!-- 04 · FOUNDERS -->
 <section id="founders" class="off-section">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">04 · Founders</div>
-      <h2>Built by people who<br><em>know the sector.</em></h2>
-      <p>Two founders combining deep technical expertise with trusted legal sector relationships — the exact combination needed to win in enterprise B2B legal tech.</p>
-    </div>
-
-    <div class="fade-up">
-      <div class="founder-card">
+    <div class="section-label">04 · Founders</div>
+    <h2>Founders</h2>
+    <div class="sb">
+      <div class="founder-card" style="margin-top:24px;">
         <div class="founder-avatar">D</div>
         <div>
           <div class="founder-name">Dan Ormisher</div>
-          <div class="founder-title">Technical Founder · 80% Equity</div>
-          <div class="founder-bio">Dan is the original founder and sole builder of the Instructd platform. With 15 years of engineering leadership across SaaS companies, he has built and scaled software products from startup to enterprise — including founding and exiting withoomph.com. Dan has constructed the entire Instructd platform including the journey schema DSL, plugin architecture, multi-tenant infrastructure, and CMS integrations. Currently working as a Technical Architect on Sharedo — the UK's fastest-growing legal tech platform — giving him ongoing ecosystem access and direct credibility with technical decision-makers at target firms.</div>
+          <div class="founder-title">Technical Founder</div>
+          <div class="founder-bio">Dan is the original founder and product developer of Instructd. With 15 years of experience as an engineering leader in SaaS companies, he has successfully built and scaled software solutions throughout his career, including founding his previous startup withoomph.com. Dan has built the entire Instructd platform, bringing deep technical expertise in creating secure, scalable systems specifically designed for regulated industries. His hands-on engineering background combined with startup experience positions him to drive both the technical vision and execution of Instructd.</div>
         </div>
       </div>
-
       <div class="founder-card">
         <div class="founder-avatar" style="background:linear-gradient(135deg,var(--ink-3) 0%,var(--blue) 100%);">B</div>
         <div>
           <div class="founder-name">Ben Sears</div>
-          <div class="founder-title">Commercial Co-Founder · 20% Equity · Fractional</div>
-          <div class="founder-bio">Ben brings extensive experience as a fractional CTO within the UK legal sector, with a trusted network across UK law firms. He serves as a technical advisor to numerous legal organisations, giving him unique insight into the operational challenges Instructd addresses. Ben works on a fractional basis focusing on commercial strategy, customer relationships, and market development — keeping his network active and his sector knowledge current, both of which directly benefit Instructd's go-to-market execution. His deep understanding of legal sector buying processes and decision-makers is invaluable for accelerating customer acquisition.</div>
+          <div class="founder-title">Commercial Co-Founder (Fractional)</div>
+          <div class="founder-bio">Ben brings extensive experience as a fractional CTO within the UK legal sector, with a vast and trusted network of relationships across UK law firms. He serves as a technical advisor to numerous legal organisations, giving him unique insight into the operational challenges and technology needs that Instructd addresses. Ben works with Instructd on a fractional basis, focusing on commercial strategy, customer relationships, and market development while continuing his advisory work across the legal sector. This arrangement keeps his network active and his sector knowledge current — both of which directly benefit Instructd's go-to-market execution. His deep understanding of the legal sector's buying processes and decision-makers is invaluable for accelerating customer acquisition.</div>
         </div>
       </div>
-    </div>
-
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-top:8px;" class="fade-up">
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--label);margin-bottom:10px;">Company Structure</div>
-      <p style="font-size:14px;color:var(--muted);line-height:1.65;">Instructd Ltd is a UK registered company. All intellectual property — including the platform codebase, journey schema DSL, and plugin architecture — is owned by Instructd Ltd. Equity is structured to support future investment rounds while retaining founder control through the critical early growth phase.</p>
+      <h4>Company Structure</h4>
+      <p>Instructd Ltd is a UK registered company. Equity is split 80% Dan Ormisher / 20% Ben Sears. All intellectual property, including the platform codebase, journey schema DSL, and plugin architecture, is owned by Instructd Ltd.</p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     05 · GO-TO-MARKET
-════════════════════════════════════════ -->
+<!-- 05 · GO-TO-MARKET -->
 <section id="gtm">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">05 · Channels &amp; Go-To-Market</div>
-      <h2>Relationship-driven,<br><em>high-touch enterprise sales.</em></h2>
-      <p>No broad advertising. No self-service acquisition. Consumption pricing makes adoption low-risk for firms and revenue scales naturally as they expand usage across more case types.</p>
-    </div>
+    <div class="section-label">05 · Channels &amp; Go-To-Market Strategy</div>
+    <h2>Channels &amp; Go-To-Market Strategy</h2>
+    <div class="sb">
+      <p>Instructd's go-to-market strategy leverages the founders' complementary networks and expertise in legal tech to drive enterprise adoption. Rather than broad advertising or self-service models, we focus on relationship-driven, high-touch B2B sales where the consumption pricing model makes initial adoption low-risk for firms and revenue scales naturally as they expand usage.</p>
 
-    <div class="channel-list fade-up">
-      <div class="channel-item">
-        <div><span class="channel-badge">Live</span></div>
-        <div><div class="channel-name">First Live Customer — March 2026</div><div class="channel-desc">A UK law firm goes live on Instructd for their RTA intake workflow. Provides real market validation, a live production case study, and the first measurable ROI data for future sales conversations.</div></div>
-        <div style="font-size:13px;color:var(--label);">Immediate proof point, referral foundation, production validation</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 1–6</span></div>
-        <div><div class="channel-name">Ben's Legal Sector Network</div><div class="channel-desc">Established relationships as a fractional CTO provide direct connections to innovation leads, CIOs, and managing partners. Trusted advisor status eliminates cold outreach and dramatically shortens sales cycles.</div></div>
-        <div style="font-size:13px;color:var(--label);">Warm introductions, no cold outreach, immediate access</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 1–6</span></div>
-        <div><div class="channel-name">Morae / Consultancy Partners</div><div class="channel-desc">Dan is currently engaged as a technical consultant with Morae, a global legal services company. Discussions underway about Morae selling Instructd on a revenue-share basis. Alterspective (Australia) is already demoing to clients.</div></div>
-        <div style="font-size:13px;color:var(--label);">Decision-maker access via existing consulting trust</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 3–9</span></div>
-        <div><div class="channel-name">Proof-of-Concept Demonstrations</div><div class="channel-desc">Leverage first customer's live deployment to demonstrate real-world value using actual journey data. Offer free digital intake assessments using firm-specific workflows.</div></div>
-        <div style="font-size:13px;color:var(--label);">Convert interest to contracts using live proof</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 4–6</span></div>
-        <div><div class="channel-name">Dedicated Sales Hire</div><div class="channel-desc">Full-time sales person for systematic outbound prospecting and pipeline building. Complements founder-led sales with dedicated capacity.</div></div>
-        <div style="font-size:13px;color:var(--label);">Full-time sales capacity from Month 4–6</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 6–12</span></div>
-        <div><div class="channel-name">Sharedo Partnership</div><div class="channel-desc">Ben Nicholson, CPO at Sharedo, has confirmed Sharedo will announce Instructd as a partner and direct sales leads once the pilot customer has proven the platform.</div></div>
-        <div style="font-size:13px;color:var(--label);">Ecosystem credibility, warm referral leads</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 6–12</span></div>
-        <div><div class="channel-name">Thought Leadership &amp; Content</div><div class="channel-desc">Convert first customer and early adopters into detailed success stories. Publish anonymous case studies demonstrating ROI and operational improvements.</div></div>
-        <div style="font-size:13px;color:var(--label);">Build brand and inbound interest</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 6–18</span></div>
-        <div><div class="channel-name">Legal Tech Events</div><div class="channel-desc">Brand awareness and pipeline at sector conferences and events. Speaking opportunities and direct networking with target firms.</div></div>
-        <div style="font-size:13px;color:var(--label);">Deeper pipeline building at scale</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 6–18</span></div>
-        <div><div class="channel-name">Alterspective (Australia)</div><div class="channel-desc">Igor Jericevich, CEO of Alterspective, is already demoing Instructd to Australian law firms and receiving positive feedback with requests for further conversations.</div></div>
-        <div style="font-size:13px;color:var(--label);">International market entry via existing demo activity</div>
-      </div>
-      <div class="channel-item">
-        <div><span class="channel-badge upcoming">Mo 12–24</span></div>
-        <div><div class="channel-name">Inbound Marketing &amp; SEO</div><div class="channel-desc">Scalable lead generation through content marketing, SEO, and digital presence. Reduces dependency on network-driven sales over time.</div></div>
-        <div style="font-size:13px;color:var(--label);">Reduces dependency on network sales</div>
-      </div>
+      <h3>Immediate Leverage</h3>
+
+      <h4>1. First Live Customer</h4>
+      <p>Our first customer — a UK law firm — goes live on the Instructd platform in March 2026, beginning a 3-month pilot for their Road Traffic Accident intake workflow before transitioning to an annual contract:</p>
+      <ul>
+        <li>Demonstrates real market demand and urgency for the solution</li>
+        <li>Provides live production environment validating core platform capabilities</li>
+        <li>Will generate the first case study, testimonial, and measurable ROI data for future sales</li>
+        <li>Creates foundation for referrals within their network and practice area</li>
+        <li>Validates the platform's ability to handle real-world legal intake at scale</li>
+      </ul>
+
+      <h4>2. Ben's Legal Sector Network &amp; Outreach</h4>
+      <p>Ben's established relationships as a fractional CTO across UK law firms provide immediate market access and systematic outreach capability:</p>
+      <ul>
+        <li>Direct connections to innovation leads, CIOs, and managing partners at target firms</li>
+        <li>Trusted advisor status eliminates cold outreach and accelerates sales cycles</li>
+        <li>Systematic outreach through existing client and advisory relationships</li>
+        <li>Strategic warm introductions leveraging his credibility and understanding of each firm's pain points</li>
+        <li>Focus on operational challenge discussions rather than product pitches</li>
+        <li>Ability to facilitate referrals through legal tech ecosystem partners</li>
+      </ul>
+
+      <h4>3. Dan's Technical Credibility &amp; Sharedo Consultancy Work</h4>
+      <ul>
+        <li>Dan currently working as a technical consultant on the Sharedo platform, the UK's fastest-growing legal tech solution</li>
+        <li>Ongoing work with Sharedo provides legal tech ecosystem access and validation</li>
+        <li>15 years of SaaS engineering leadership demonstrates technical capability</li>
+        <li>Ability to speak directly to CTOs and technical decision-makers about implementation</li>
+      </ul>
+
+      <h3>Early-Stage Tactics</h3>
+
+      <h4>4. Proof-of-Concept Demonstrations</h4>
+      <ul>
+        <li>Leverage first customer's live deployment to demonstrate real-world value and measurable outcomes</li>
+        <li>Offer free "digital intake assessment" sessions using actual firm workflows</li>
+        <li>Show before/after comparisons using live customer journey data (with permission)</li>
+        <li>Provide technical deep-dives for IT teams with Dan leading implementation discussions</li>
+      </ul>
+
+      <h4>5. Consultancy &amp; Procurement Partnerships</h4>
+      <p>Three strategic partnerships are already in development:</p>
+      <ul>
+        <li><strong>Morae Global</strong> — Dan is currently engaged as a technical consultant with Morae, a global legal services and technology company. Discussions are underway about Morae selling Instructd to their law firm clients on a revenue-share basis, leveraging their existing client relationships and credibility in the legal sector.</li>
+        <li><strong>Alterspective (Australia)</strong> — Igor Jericevich, CEO of Alterspective, is already demoing Instructd to Australian law firms and receiving positive feedback. This partnership provides an early route into the international legal market.</li>
+        <li><strong>Sharedo</strong> — Ben Nicholson, CPO at Sharedo (the UK's fastest-growing legal tech platform), has confirmed that Sharedo will announce Instructd as a partner and direct sales leads once the pilot customer has proven the platform. Dan has a strong relationship with Ben built over several years of consultancy work on the Sharedo platform.</li>
+      </ul>
+
+      <h4>6. Strategic Technology Partnerships</h4>
+      <ul>
+        <li>Joint go-to-market with CMS vendors (Sharedo partnership already in progress)</li>
+        <li>Referral relationships with legal tech system integrators</li>
+        <li>Legal innovation consultancies who identify transformation opportunities for their clients</li>
+      </ul>
+
+      <h3>Mid-Term Growth Strategies</h3>
+
+      <h4>7. Case Studies &amp; Thought Leadership</h4>
+      <ul>
+        <li>Convert first customer and early adopters into detailed success stories</li>
+        <li>Publish anonymous case studies demonstrating ROI and operational improvements</li>
+        <li>Position Dan &amp; Ben as thought leaders through speaking engagements and industry articles</li>
+        <li>Create content that showcases specific use cases: group litigation, time-sensitive intake, high-volume processing</li>
+      </ul>
+
+      <h3>Channel Summary Table</h3>
+      <table class="data-table">
+        <thead><tr><th>Channel</th><th>Timeline</th><th>Purpose</th><th>Cost</th><th>Key Advantage</th></tr></thead>
+        <tbody>
+          <tr><td>First live customer</td><td>Now (live)</td><td>Validation, case study, referrals</td><td>Low</td><td>Immediate market proof</td></tr>
+          <tr><td>Ben's legal network</td><td>Months 1–6</td><td>Direct access to decision makers</td><td>Low</td><td>Trusted advisor relationships</td></tr>
+          <tr><td>Morae / consultancy partners</td><td>Months 1–6</td><td>Decision-maker access via trusted advisors</td><td>Medium</td><td>Leverages existing consulting trust</td></tr>
+          <tr><td>Proof-of-concept demos</td><td>Months 3–9</td><td>Convert interest to contracts</td><td>Medium</td><td>Real customer success stories</td></tr>
+          <tr><td>Sharedo partnership</td><td>Months 6–12</td><td>Referral leads from Sharedo sales team</td><td>Low</td><td>Ecosystem credibility, warm leads</td></tr>
+          <tr><td>Thought leadership &amp; content</td><td>Months 6–12</td><td>Build brand and inbound interest</td><td>Medium</td><td>Established industry presence</td></tr>
+          <tr><td>Legal tech events</td><td>Months 6–18</td><td>Brand awareness, deeper pipeline building</td><td>High</td><td>Speaking opportunities, visibility</td></tr>
+          <tr><td>Alterspective (Australia)</td><td>Months 6–18</td><td>International market entry</td><td>Low</td><td>Existing demo activity and interest</td></tr>
+          <tr><td>Dedicated sales hire</td><td>Months 4–6</td><td>Systematic outbound and pipeline building</td><td>High</td><td>Full-time sales capacity</td></tr>
+          <tr><td>Inbound marketing &amp; SEO</td><td>Months 12–24</td><td>Scalable lead generation</td><td>Medium</td><td>Reduces dependency on network sales</td></tr>
+        </tbody>
+      </table>
+      <p>This strategy leverages Ben's established legal sector relationships and the validation from our first live customer to drive high-value enterprise sales through a consumption-based model that aligns our revenue directly with the value we deliver.</p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     06 · PRICING
-════════════════════════════════════════ -->
+<!-- 06 · PRICING -->
 <section id="pricing" class="dark-section">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">06 · Revenue Model &amp; Pricing</div>
-      <h2>Pay only when a<br><em>client completes.</em></h2>
-      <p>Consumption-based pricing aligned entirely with the value we deliver. Firms pay nothing until the platform works. Revenue scales naturally as firms add more case types and drive more volume.</p>
-    </div>
+    <div class="section-label">06 · Revenue Model &amp; Pricing Strategy</div>
+    <h2>Revenue Model &amp; Pricing Strategy</h2>
+    <div class="sb">
+      <p>Instructd uses a consumption-based pricing model — charging per successful journey completion. This directly aligns our revenue with the value we deliver: firms only pay when a client successfully completes an onboarding journey, replacing what would otherwise be a costly manual intake call.</p>
 
-    <div class="pricing-highlight fade-up">
-      <div class="pricing-label">Price per successful journey completion</div>
-      <div class="pricing-amount">£3–5 <sub>per completion</sub></div>
-      <div class="pricing-desc">Charged only when a client successfully completes an onboarding journey. Platform hosting, white-labelling, and professional services included. No setup fee, no minimum commitment.</div>
-    </div>
+      <h3>Strategic Pricing Philosophy</h3>
+      <p>Consumption pricing, justified by:</p>
+      <ul>
+        <li><strong>Zero-risk adoption:</strong> Firms pay nothing until the platform delivers value through completed journeys</li>
+        <li><strong>Aligned incentives:</strong> Instructd is financially motivated to maximise journey completion rates, directly benefiting the client</li>
+        <li><strong>Scalable revenue:</strong> Revenue grows naturally as firms expand to more case types and drive more volume through the platform</li>
+        <li><strong>Simple ROI calculation:</strong> "If we process 10,000 completions at £X, our cost is £Y vs £Z for contact centre staff"</li>
+      </ul>
+      <p>This model is already familiar to legal firms through existing per-transaction services, and Instructd's £3 per completion is compelling against every comparable cost a firm already incurs:</p>
+      <table class="data-table dark">
+        <thead><tr><th>Comparison</th><th>Cost Per Case/Transaction</th><th>What You Get</th></tr></thead>
+        <tbody>
+          <tr><td>Internal contact centre</td><td>£3.08+ per case</td><td>Manual data capture, office hours only, error-prone, doesn't scale</td></tr>
+          <tr><td>Outsourced call handling</td><td>£5–10+ per call</td><td>Third-party handling, limited legal expertise, no data validation</td></tr>
+          <tr><td>KYC/AML check (CreditSafe)</td><td>£3.85 per check</td><td>Single identity verification step only</td></tr>
+          <tr><td>KYC/AML check (Legl)</td><td>£5.50 per check</td><td>Single compliance check only</td></tr>
+          <tr><td>Cost per lead (PPC)</td><td>£200–500+ per lead</td><td>A qualified lead that still needs to be manually processed</td></tr>
+          <tr><td>Instructd</td><td>£3 per completion</td><td>Complete validated intake, 24/7, integrated with CMS, scales infinitely</td></tr>
+        </tbody>
+      </table>
+      <p>At £3, Instructd is cheaper than a contact centre handler, a fraction of the cost of outsourced call handling, comparable to a single KYC check (while delivering an entire intake workflow), and protects the £200–500 investment firms make to acquire each lead in the first place. A lead that isn't properly captured and processed is a wasted lead.</p>
 
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;color:var(--white);margin:48px 0 20px;">Why this pricing wins — competitive comparison</h3>
+      <h3>Pricing Structure</h3>
+      <table class="data-table dark">
+        <thead><tr><th>Component</th><th>Price</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Platform &amp; Hosting</td><td>Included</td><td>Secure hosting, custom domains, white-labelling, all platform features</td></tr>
+          <tr><td>Per Journey Completion</td><td>£3–5 per completion</td><td>Charged only on successful journey completion. Price varies by volume commitment</td></tr>
+          <tr><td>Professional Services</td><td>Included</td><td>Journey setup, training, and optimisation consulting included during customer acquisition phase</td></tr>
+          <tr><td>Enterprise Support</td><td>Included</td><td>Premium support, SLAs, and dedicated success included during customer acquisition phase</td></tr>
+        </tbody>
+      </table>
 
-    <div class="pricing-comparison fade-up">
-      <div class="price-row">
-        <span class="price-name">Internal contact centre handler</span>
-        <span class="price-cost" style="color:rgba(255,255,255,0.5);">£3.08+ / case</span>
-        <span class="price-note" style="color:rgba(255,255,255,0.35);">Manual capture, office hours only, error-prone, doesn't scale</span>
-      </div>
-      <div class="price-row" style="border-bottom-color:rgba(255,255,255,0.08);">
-        <span class="price-name" style="color:rgba(255,255,255,0.7);">Outsourced call handling</span>
-        <span class="price-cost" style="color:rgba(255,255,255,0.5);">£5–10+ / call</span>
-        <span class="price-note" style="color:rgba(255,255,255,0.35);">Third-party, limited legal expertise, no data validation</span>
-      </div>
-      <div class="price-row" style="border-bottom-color:rgba(255,255,255,0.08);">
-        <span class="price-name" style="color:rgba(255,255,255,0.7);">KYC/AML check (CreditSafe)</span>
-        <span class="price-cost" style="color:rgba(255,255,255,0.5);">£3.85 / check</span>
-        <span class="price-note" style="color:rgba(255,255,255,0.35);">Single identity verification step only</span>
-      </div>
-      <div class="price-row" style="border-bottom-color:rgba(255,255,255,0.08);">
-        <span class="price-name" style="color:rgba(255,255,255,0.7);">KYC/AML check (Legl)</span>
-        <span class="price-cost" style="color:rgba(255,255,255,0.5);">£5.50 / check</span>
-        <span class="price-note" style="color:rgba(255,255,255,0.35);">Single compliance check only</span>
-      </div>
-      <div class="price-row" style="border-bottom-color:rgba(255,255,255,0.08);">
-        <span class="price-name" style="color:rgba(255,255,255,0.7);">PPC cost per lead</span>
-        <span class="price-cost" style="color:rgba(255,255,255,0.5);">£200–500+</span>
-        <span class="price-note" style="color:rgba(255,255,255,0.35);">A qualified lead that still needs to be manually processed</span>
-      </div>
-      <div class="price-row featured" style="border-bottom-color:rgba(61,90,241,0.3);">
-        <span class="price-name">Instructd per completion</span>
-        <span class="price-cost">£3–5</span>
-        <span class="price-note" style="color:var(--blue-dark);">Complete validated intake, 24/7, CMS-integrated, scales infinitely</span>
-      </div>
-    </div>
+      <p><strong>Volume-Based Pricing Tiers:</strong></p>
+      <table class="data-table dark">
+        <thead><tr><th>Annual Completions</th><th>Price Per Completion</th><th>Typical Customer Profile</th></tr></thead>
+        <tbody>
+          <tr><td>Up to 5,000</td><td>£5</td><td>Small/medium firm, 1–2 case types</td></tr>
+          <tr><td>5,001–25,000</td><td>£4</td><td>Mid-size firm, 3–5 case types</td></tr>
+          <tr><td>25,001–100,000</td><td>£3</td><td>Large firm, multiple departments</td></tr>
+          <tr><td>100,000+</td><td>Custom</td><td>Enterprise, high-volume operations</td></tr>
+        </tbody>
+      </table>
 
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;color:var(--white);margin:48px 0 20px;">Volume tiers</h3>
-    <div class="volume-grid fade-up">
-      <div class="volume-card">
-        <div class="volume-tier">Starter</div>
-        <div class="volume-price">£5.00</div>
-        <div class="volume-range">Up to 5,000 completions/yr<br>Small firm, 1–2 case types</div>
-      </div>
-      <div class="volume-card">
-        <div class="volume-tier">Growth</div>
-        <div class="volume-price">£4.00</div>
-        <div class="volume-range">5,001–25,000 completions/yr<br>Mid-size firm, 3–5 case types</div>
-      </div>
-      <div class="volume-card">
-        <div class="volume-tier">Scale</div>
-        <div class="volume-price">£3.00</div>
-        <div class="volume-range">25,001–100,000 completions/yr<br>Large firm, multiple departments</div>
-      </div>
-      <div class="volume-card">
-        <div class="volume-tier">Enterprise</div>
-        <div class="volume-price">Custom</div>
-        <div class="volume-range">100,000+ completions/yr<br>High-volume enterprise operations</div>
-      </div>
+      <p><strong>Revenue Per Customer Scenarios:</strong></p>
+      <ul>
+        <li><strong>Small Firm:</strong> 1 case type, 2,000 completions/year = £10k annually</li>
+        <li><strong>Medium Firm:</strong> 3 case types, 10,000 completions/year = £40k annually</li>
+        <li><strong>Large Firm:</strong> 8 case types, 50,000 completions/year = £150k annually</li>
+        <li><strong>Enterprise Firm:</strong> 15+ case types, 150,000 completions/year = £450k+ annually</li>
+      </ul>
+
+      <p><strong>The Scalability Story:</strong></p>
+      <p>The consumption model creates a compelling growth narrative: reaching 1 million journey completions across the customer base at an average of £3.50 per completion generates £3.5M in annual recurring revenue. This scales with customer acquisition and organic growth within existing accounts as firms add more case types and drive more volume through the platform.</p>
+
+      <h3>Value Anchors to Justify Pricing</h3>
+      <p><strong>Per Completion ROI Calculation:</strong></p>
+      <p>A contact centre handler on a £30k salary working a 37.5-hour week costs approximately £3.08 per case in direct staff cost alone — and that assumes 5 cases per hour, which is optimistic for complex case types. At £3 per completion, Instructd is already cheaper than the direct staffing cost before accounting for any of the additional savings:</p>
+      <ul>
+        <li><strong>Elimination of errors:</strong> Fee earner correction time at £95–£245+ per error (solicitor hourly rates of £190–£490+)</li>
+        <li><strong>Capacity scaling:</strong> Contact centres are a bottleneck; digital intake removes the linear relationship between staff and volume, allowing firms to handle significantly more cases without proportional headcount increases</li>
+        <li><strong>Data quality improvement:</strong> Better data at intake means fee earners spend less time chasing incomplete information, directly improving utilisation rates and profitability</li>
+        <li><strong>24/7 availability:</strong> Digital intake captures enquiries outside office hours that would otherwise be missed entirely</li>
+        <li><strong>Staff cost reduction:</strong> Training, recruitment, and retention costs for high-turnover contact centre roles are eliminated</li>
+        <li><strong>Automated downstream processing:</strong> Higher quality structured data opens the route for automated case acceptance and valuation</li>
+      </ul>
+      <p>At £3 per completion, Instructd is not just cheaper than the alternative — it fundamentally changes the economics of client intake by removing the bottleneck that limits how many cases a firm can process.</p>
+
+      <h3>Payment Structure &amp; Contract Terms</h3>
+      <ul>
+        <li>Monthly billing based on actual completions (invoiced in arrears)</li>
+        <li>Optional annual volume commitments for discounted per-completion rates</li>
+        <li>Early adopter pricing for founding customers during the platform's first year</li>
+        <li>No long-term lock-in required — the value speaks for itself</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     07 · COMPETITIVE LANDSCAPE
-════════════════════════════════════════ -->
+<!-- 07 · COMPETITIVE LANDSCAPE -->
 <section id="competitive">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">07 · Competitive Landscape</div>
-      <h2>No one does<br><em>exactly this.</em></h2>
-      <p>Adjacent tools exist, but no competitor offers a purpose-built, low-code journey platform with Instructd's depth of workflow customisation, white-labelling, and consumption pricing.</p>
-    </div>
-
-    <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:16px;color:var(--ink);">Adjacent legal tech</h3>
-    <table class="data-table fade-up">
-      <thead>
-        <tr>
-          <th style="width:20%;">Competitor</th>
-          <th style="width:35%;">What They Do</th>
-          <th>Why Instructd Is Different</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Clio Grow</td><td>CRM and intake forms (150k+ global users)</td><td>Generic intake forms, not complex multi-step journeys. No white-labelling or custom domains.</td></tr>
-        <tr><td>inCase Express</td><td>Digital onboarding with e-signatures and AML (UK)</td><td>Per-case pricing at £20–30 vs Instructd's £3. Simple forms, not complex workflow logic.</td></tr>
-        <tr><td>ClientBridge</td><td>Prospect-to-client conversion automation (UK, 50+ firms)</td><td>Focused on data transfer between tools, not building custom intake workflows.</td></tr>
-        <tr><td>Osprey Approach</td><td>Practice management with enquiry management (UK SME)</td><td>Intake is a feature of their CMS, not a dedicated platform. Limited to their ecosystem.</td></tr>
-        <tr><td>Minerva</td><td>Quote management and onboarding for conveyancers (UK)</td><td>Niche focus on conveyancing. Not suitable for complex, multi-step regulated intake.</td></tr>
-        <tr><td>Intapp Intake</td><td>Enterprise conflict checking and intake (global, large firms)</td><td>Focused on conflicts and risk, not client-facing data capture journeys.</td></tr>
-      </tbody>
-    </table>
-
-    <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;margin:40px 0 16px;color:var(--ink);">Why Instructd is different</h3>
-    <div class="problem-callout fade-up" style="margin-top:0;margin-bottom:32px;background:var(--off);border-left:3px solid var(--blue);">
-      <p style="color:var(--ink-3);">The primary differentiator is <strong>perspective.</strong> Most legal tech tools are built for the law firm — they focus on internal workflows, case management, and operational efficiency. Instructd is built for the <strong>client experience first.</strong> The end-user gets a modern, consumer-grade onboarding experience comparable to applying for car insurance or a personal loan. The law firm benefits as a consequence: better data, lower costs, fewer errors.</p>
-    </div>
-    <table class="data-table fade-up">
-      <thead>
-        <tr>
-          <th style="width:28%;">Differentiator</th>
-          <th>Instructd</th>
-          <th>Adjacent Competitors</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Primary focus</td><td class="yes">End-user client experience</td><td>Internal firm workflows</td></tr>
-        <tr><td>Journey complexity</td><td class="yes">Complex multi-step workflows with branching logic</td><td>Simple forms or rigid templates</td></tr>
-        <tr><td>White-labelling</td><td class="yes">Fully branded, custom domains, no third-party branding</td><td>Limited or no white-labelling</td></tr>
-        <tr><td>Pricing model</td><td class="yes">Pay-per-completion (£3), aligned to value</td><td>Per-seat, per-case (£20–30), or annual license</td></tr>
-        <tr><td>Time to market</td><td class="yes">Weeks, not months</td><td>Months for custom dev, weeks for limited SaaS</td></tr>
-        <tr><td>CMS integration depth</td><td class="yes">Deep webhook-based integration with any CMS</td><td>Typically locked to their own ecosystem</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
-     08 · MARKET SIZING
-════════════════════════════════════════ -->
-<section id="market" class="dark-section">
-  <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">08 · Market Sizing</div>
-      <h2>A £52bn sector<br><em>ripe for change.</em></h2>
-      <p>The UK legal services market employs ~370,000 people across 9,000 firms. Instructd targets the segment where digital intake delivers the greatest ROI — and the 3-year SOM requires less than 2% penetration of that segment.</p>
-    </div>
-
-    <div class="market-trio fade-up">
-      <div class="market-card tam">
-        <div class="market-acronym">TAM</div>
-        <div class="market-value">£35M</div>
-        <div class="market-desc">Total UK legal sector digital-eligible intake journeys. Est. 10M+ completions/yr at avg. £3.50 per completion.</div>
-      </div>
-      <div class="market-card sam">
-        <div class="market-acronym">SAM</div>
-        <div class="market-value">£63M</div>
-        <div class="market-desc">1,200 mid-to-large firms × 15,000 avg. eligible completions × £3.50 per completion annually.</div>
-      </div>
-      <div class="market-card som">
-        <div class="market-acronym">SOM · Year 3</div>
-        <div class="market-value">£756k</div>
-        <div class="market-desc">18 customers × avg. 12,000 completions — less than 2% SAM penetration. Conservative and achievable.</div>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;" class="fade-up">
-      <div style="padding:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Global Legal Markets</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.6;">US, Canada, EU — significantly larger addressable markets with similar intake complexity and compliance requirements. Not included in current projections.</div>
-      </div>
-      <div style="padding:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Adjacent Regulated Industries</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.6;">Insurance, financial services, healthcare — same intake complexity, similar compliance, proven digital transformation appetite.</div>
-      </div>
-      <div style="padding:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Client Portal Revenue</div>
-        <div style="font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.6;">An entirely separate revenue stream layered on top of the intake business — per-notification, per-message, and portal subscription pricing.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
-     09 · STRATEGIC ADVANTAGES
-════════════════════════════════════════ -->
-<section id="advantages">
-  <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">09 · Strategic Advantages</div>
-      <h2>Moats that compound<br><em>over time.</em></h2>
-      <p>Proprietary IP, accumulating data assets, and deeply embedded customer relationships create compounding competitive barriers that grow stronger with every new customer and every completed journey.</p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;" class="fade-up">
-      <div style="background:var(--ink);border-radius:var(--r);padding:28px;color:white;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">IP Asset 01</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;">Journey Schema DSL</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">A domain-specific language purpose-built for defining complex multi-step onboarding workflows with branching logic, validation rules, and integration points. A genuine technical innovation for regulated intake.</div>
-      </div>
-      <div style="background:var(--ink-2);border-radius:var(--r);padding:28px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">IP Asset 02</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;">Plugin Architecture</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">An extensible framework for custom TypeScript-based integrations, creating an ecosystem around the platform. No new entrant can replicate this without years of building.</div>
-      </div>
-      <div style="background:var(--blue-pale);border:1px solid rgba(61,90,241,0.2);border-radius:var(--r);padding:28px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;">IP Asset 03</div>
-        <div style="font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:10px;">Data Assets</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Every journey completion generates structured, validated data. As the platform scales, this will flow into a dedicated data lake (see Roadmap, Phase 4) to power ML optimisation — a competitive barrier no new entrant can replicate.</div>
-      </div>
-    </div>
-
-    <h3 style="font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:16px;color:var(--ink);">Risk register</h3>
-    <table class="data-table fade-up">
-      <thead>
-        <tr>
-          <th style="width:28%;">Risk</th>
-          <th style="width:10%;">Impact</th>
-          <th style="width:12%;">Likelihood</th>
-          <th>Mitigation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Single-sector dependency</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>Platform is sector-agnostic by design; legal is the beachhead market, not the only market.</td></tr>
-        <tr><td>Long enterprise sales cycles</td><td><span class="risk-med">Medium</span></td><td><span class="risk-high">High</span></td><td>Ben's relationships shorten cycles. Consumption pricing reduces adoption risk for buyers.</td></tr>
-        <tr><td>Key person risk (Dan — technical)</td><td><span class="risk-high">High</span></td><td><span class="risk-low">Low</span></td><td>Senior developer hired Year 1. Clean, well-documented, tested codebase from day one.</td></tr>
-        <tr><td>Competitor entry</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>First-mover advantage, data moat, deep legal sector expertise, existing customer relationships.</td></tr>
-        <tr><td>Low initial journey volumes</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>Volume commitments in contracts; multiple case types per customer to increase volume per account.</td></tr>
-        <tr><td>AI disruption to form-based intake</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>AI strategy positions Instructd as the platform for AI-powered intake, not competing with it — see Phase 4 roadmap.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
-     10 · VISION
-════════════════════════════════════════ -->
-<section id="vision" class="off-section">
-  <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">10 · Long-Term Vision</div>
-      <h2>The platform for<br><em>regulated onboarding.</em></h2>
-      <p>Beyond legal intake — the data-driven infrastructure layer for structured client capture across any regulated industry where compliance is critical and client experience matters.</p>
-    </div>
-
-    <div class="vision-blocks fade-up">
-      <div class="vision-block">
-        <div class="vision-period">Years 1–3</div>
-        <div class="vision-heading">Establish</div>
-        <div class="vision-text">Become the standard digital intake platform for UK law firms. Build a proven consumption model with strong customer retention and measurable ROI case studies. Reach profitability by Year 3.</div>
-      </div>
-      <div class="vision-block">
-        <div class="vision-period">Years 3–5</div>
-        <div class="vision-heading">Expand</div>
-        <div class="vision-text">Move into adjacent regulated sectors and international legal markets. Launch the client portal as a standalone product. Build AI and ML capabilities into a genuine, data-backed differentiator.</div>
-      </div>
-      <div class="vision-block">
-        <div class="vision-period">Years 5+</div>
-        <div class="vision-heading">Platform</div>
-        <div class="vision-text">Instructd becomes the data-driven infrastructure for regulated onboarding at scale. The data lake and ML capabilities provide insights no competitor can replicate without years of accumulated data.</div>
-      </div>
-    </div>
-
-    <div style="background:var(--ink);border-radius:var(--r);padding:40px;margin-top:16px;" class="fade-up">
-      <div style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;">Founder Intent</div>
-      <p style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);line-height:1.45;margin-bottom:14px;">To build a <em style="color:#a8b8ff;">high-growth, venture-scale business</em> — with non-dilutive grant funding in early stages preserving equity for future institutional rounds at a higher valuation.</p>
-      <p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.65;">The preference for non-dilutive funding is strategic, not a lack of ambition. Retaining equity through the proof phase maximises optionality for future investment once the consumption model is validated at scale.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
-     11 · ROADMAP
-════════════════════════════════════════ -->
-<section id="roadmap">
-  <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">11 · Product Roadmap</div>
-      <h2>Production-ready<br><em>from day one.</em></h2>
-      <p>The core platform is complete and in production. Roadmap priorities are driven by real customer needs and validated through our first live customer engagement.</p>
-    </div>
-
-    <div class="roadmap-phases fade-up">
-      <div class="phase done">
-        <div class="phase-dot"></div>
-        <div class="phase-label">Phase 1 — Complete ✓</div>
-        <div class="phase-name">Core Platform</div>
-        <ul class="phase-items">
-          <li>Visual flow editor with complex branching logic</li>
-          <li>Multi-environment support with version history and rollback</li>
-          <li>Secure multi-tenant hosting with custom domains</li>
-          <li>Full white-labelling — no Instructd branding visible</li>
-          <li>Webhook system with OAuth, Basic Auth, shared keys</li>
-          <li>Built-in plugins: address lookup, Sharedo CMS</li>
-          <li>Admin dashboard with full operational control</li>
-          <li>User roles and access management</li>
-        </ul>
-      </div>
-      <div class="phase active">
-        <div class="phase-dot"></div>
-        <div class="phase-label">Phase 2 — Months 1–9</div>
-        <div class="phase-name">Growth &amp; Optimisation</div>
-        <ul class="phase-items">
-          <li>Analytics dashboard and completion rate reporting</li>
-          <li>A/B split testing for journey variants</li>
-          <li>Consumption billing integration and automation</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-dot"></div>
-        <div class="phase-label">Phase 3 — Months 9–18</div>
-        <div class="phase-name">Client Portal</div>
-        <ul class="phase-items">
-          <li>Seamless journey-to-portal account creation</li>
-          <li>Case status tracking and multi-channel notifications</li>
-          <li>Two-way secure messaging</li>
-          <li>Document upload and request management</li>
-          <li>White-labelled portal with custom domains</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-dot"></div>
-        <div class="phase-label">Phase 4 — Months 15–24</div>
-        <div class="phase-name">AI, ML &amp; Ecosystem</div>
-        <ul class="phase-items">
-          <li>AI chatbot on journey schema for conversational intake</li>
-          <li>Generative AI for journey content creation</li>
-          <li>ML journey optimisation from cross-firm data patterns</li>
-          <li>AI agent integration hub — quality gate and validation layer</li>
-          <li>Plugin marketplace for partner-built integrations</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════
-     12 · FINANCIALS
-════════════════════════════════════════ -->
-<section id="financials" class="off-section">
-  <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">12 · Financial Projections</div>
-      <h2>Profitable in Year 3.<br><em>Self-sustaining from there.</em></h2>
-      <p>Conservative assumptions. Grant funding bridges the gap. The consumption model scales with customer growth organically — revenue grows as existing customers add more case types and volume.</p>
-    </div>
-
-    <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:16px;color:var(--ink);">Revenue by scenario</h3>
-    <div class="rev-scenario-grid fade-up">
-      <div class="rev-scenario">
-        <div class="rev-tier">Small Firm</div>
-        <div class="rev-amount">£10k</div>
-        <div class="rev-detail">1 case type<br>2,000 completions/yr @ £5</div>
-      </div>
-      <div class="rev-scenario">
-        <div class="rev-tier">Medium Firm</div>
-        <div class="rev-amount">£40k</div>
-        <div class="rev-detail">3 case types<br>10,000 completions/yr @ £4</div>
-      </div>
-      <div class="rev-scenario">
-        <div class="rev-tier">Large Firm</div>
-        <div class="rev-amount">£150k</div>
-        <div class="rev-detail">8 case types<br>50,000 completions/yr @ £3</div>
-      </div>
-      <div class="rev-scenario highlight">
-        <div class="rev-tier">Enterprise</div>
-        <div class="rev-amount">£450k+</div>
-        <div class="rev-detail">15+ case types<br>150,000 completions/yr</div>
-      </div>
-    </div>
-
-    <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;margin:40px 0 16px;color:var(--ink);">3-year forecast</h3>
-    <table class="fin-table fade-up">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Customers</th>
-          <th>Revenue</th>
-          <th>Costs</th>
-          <th>Profit / (Loss)</th>
-          <th>Cumulative</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Year 1</td>
-          <td>3</td>
-          <td>£45,000</td>
-          <td>£217,000</td>
-          <td class="neg">(£172,000)</td>
-          <td class="neg">(£172,000)</td>
-        </tr>
-        <tr>
-          <td>Year 2</td>
-          <td>8</td>
-          <td>£256,000</td>
-          <td>£368,500</td>
-          <td class="neg">(£112,500)</td>
-          <td class="neg">(£284,500)</td>
-        </tr>
-        <tr>
-          <td>Year 3</td>
-          <td>18</td>
-          <td>£756,000</td>
-          <td>£488,000</td>
-          <td class="pos">£268,000</td>
-          <td class="neg">(£16,500)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;margin:40px 0 16px;color:var(--ink);">Cost breakdown</h3>
-    <table class="fin-table fade-up">
-      <thead>
-        <tr><th>Category</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Founder Salary (Dan)</td><td>£75,000</td><td>£80,000</td><td>£85,000</td></tr>
-        <tr><td>Senior Developer (from Mo. 4–6)</td><td>£52,500</td><td>£90,000</td><td>£90,000</td></tr>
-        <tr><td>Sales (from Mo. 4–6)</td><td>£22,500</td><td>£45,000</td><td>£50,000</td></tr>
-        <tr><td>Customer Success / Ops</td><td>—</td><td>£22,500</td><td>£45,000</td></tr>
-        <tr><td>Junior / Mid Developer</td><td>—</td><td>—</td><td>£25,000</td></tr>
-        <tr><td>Employer National Insurance</td><td>£18,000</td><td>£28,000</td><td>£35,000</td></tr>
-        <tr><td>Ben Revenue Share</td><td>£5,000</td><td>£15,000</td><td>£30,000</td></tr>
-        <tr><td>Cloud Infrastructure</td><td>£12,000</td><td>£25,000</td><td>£45,000</td></tr>
-        <tr><td>Legal / Insurance / Compliance</td><td>£5,000</td><td>£8,000</td><td>£12,000</td></tr>
-        <tr><td>Security Certifications</td><td>£4,000</td><td>£15,000</td><td>£6,000</td></tr>
-        <tr><td>Marketing &amp; Sales</td><td>£8,000</td><td>£15,000</td><td>£25,000</td></tr>
-        <tr><td>Misc / Contingency</td><td>£15,000</td><td>£25,000</td><td>£40,000</td></tr>
-        <tr class="subtotal"><td>Total Costs</td><td>£217,000</td><td>£368,500</td><td>£488,000</td></tr>
-      </tbody>
-    </table>
-
-    <h3 style="font-family:var(--serif);font-size:20px;font-weight:600;margin:40px 0 16px;color:var(--ink);">Grant funding — £450–550k sought</h3>
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:32px;" class="fade-up">
-      <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;">Non-dilutive grant funding is the preferred approach. Total cash requirement across Years 1–2 is approximately £285k beyond revenue. Grant funding of £450–550k provides the runway to reach profitability and a contingency buffer for growth investment — while preserving full equity for future institutional rounds at a higher valuation.</p>
-      <table class="data-table" style="margin:0;">
-        <thead><tr><th>Category</th><th>Amount</th><th>Purpose</th></tr></thead>
+    <div class="section-label">07 · Competitive Landscape</div>
+    <h2>Competitive Landscape</h2>
+    <div class="sb">
+      <h3>Current Alternatives &amp; Competitors</h3>
+      <p><strong>Adjacent Legal Tech Solutions:</strong></p>
+      <p>Several legal tech platforms touch on client intake, but none offer a purpose-built, low-code journey platform with the depth of workflow customisation that Instructd provides:</p>
+      <table class="data-table">
+        <thead><tr><th>Competitor</th><th>What They Do</th><th>Why Instructd Is Different</th></tr></thead>
         <tbody>
-          <tr><td>Team (salaries + NI, Yrs 1–2)</td><td>£330–400k</td><td>Founder salary + senior developer + sales hire + customer success</td></tr>
-          <tr><td>Infrastructure &amp; Operations</td><td>£45–60k</td><td>Cloud hosting, legal, insurance, compliance certifications</td></tr>
-          <tr><td>Growth &amp; Market Development</td><td>£30–50k</td><td>Marketing, events, case studies</td></tr>
-          <tr><td>Contingency</td><td>£45–50k</td><td>Buffer for unexpected costs, opportunities, or slower ramp-up</td></tr>
+          <tr><td>Clio Grow</td><td>CRM and intake forms for law firms (150k+ global users)</td><td>Generic intake forms, not complex multi-step journeys. No white-labelling or custom domains</td></tr>
+          <tr><td>inCase Express</td><td>Digital onboarding with e-signatures and AML checks (UK)</td><td>Per-case pricing at £20–30 (vs Instructd's £3). Simple forms, not complex workflow logic</td></tr>
+          <tr><td>ClientBridge</td><td>Automation platform for prospect-to-client conversion (UK, 50+ firms)</td><td>Focused on data transfer between tools, not building custom intake workflows</td></tr>
+          <tr><td>Osprey Approach</td><td>Practice management with built-in enquiry management (UK SME)</td><td>Intake is a feature of their CMS, not a dedicated platform. Limited to their ecosystem</td></tr>
+          <tr><td>Minerva</td><td>Quote management and onboarding for conveyancers (UK)</td><td>Niche focus on conveyancing. Not suitable for complex, multi-step regulated intake</td></tr>
+          <tr><td>Intapp Intake</td><td>Enterprise conflict checking and intake (global, large firms)</td><td>Focused on conflicts and risk, not client-facing data capture journeys</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Non-Legal Alternatives:</strong></p>
+      <table class="data-table">
+        <thead><tr><th>Approach</th><th>Examples</th><th>Limitations in Legal Context</th></tr></thead>
+        <tbody>
+          <tr><td>Manual intake</td><td>Paper forms, emails, call centres</td><td>Error-prone, hard to audit, low conversion, office hours only</td></tr>
+          <tr><td>Legacy tooling</td><td>SharePoint, Adobe PDF Forms</td><td>Poor UX, no versioning, not fit for modern onboarding</td></tr>
+          <tr><td>No-Code Form Builders</td><td>Typeform, Jotform, Cognito, Fillout</td><td>Too basic, no custom domains, no compliance control, B2C-focused</td></tr>
+          <tr><td>Workflow Platforms</td><td>Nintex, Pipefy</td><td>Generic tools; lack onboarding logic, legal integrations</td></tr>
+          <tr><td>In-house dev teams</td><td>Custom web apps, internal portals</td><td>High cost (£250k+), slow delivery (6–18 months), no agility for change</td></tr>
+          <tr><td>Consultancies &amp; agencies</td><td>Legal IT firms, software outsourcers</td><td>Expensive, time-consuming, vendor lock-in</td></tr>
+          <tr><td>AI Agent Solutions</td><td>Emerging AI-powered intake systems (Chatbots / Voice agents)</td><td>Unpredictable outputs, lack of data validation, compliance concerns, no quality gates</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Why Instructd Is Different</h3>
+      <p>The primary differentiator is perspective. Most legal tech tools are built for the law firm — they focus on internal workflows, case management, and operational efficiency. Instructd is built for the <strong>client experience first</strong>. The end-user — the person making a claim or seeking legal help — gets a modern, consumer-grade onboarding experience comparable to applying for car insurance or a personal loan. The law firm benefits as a consequence: better data, lower costs, fewer errors.</p>
+      <p>This client-first approach is what separates Instructd from every adjacent competitor. Clio Grow, Osprey, and inCase Express all focus on the firm's internal process. Instructd focuses on what the client sees, feels, and experiences — because that's what drives completion rates, first impressions, and ultimately case conversion.</p>
+      <table class="data-table">
+        <thead><tr><th>Differentiator</th><th>Instructd</th><th>Adjacent Competitors</th></tr></thead>
+        <tbody>
+          <tr><td>Primary focus</td><td class="yes">End-user client experience</td><td>Internal firm workflows</td></tr>
+          <tr><td>Journey complexity</td><td class="yes">Complex multi-step workflows with branching logic</td><td>Simple forms or rigid templates</td></tr>
+          <tr><td>White-labelling</td><td class="yes">Fully branded, custom domains, no third-party branding</td><td>Limited or no white-labelling</td></tr>
+          <tr><td>Pricing model</td><td class="yes">Pay-per-completion (£3), aligned to value</td><td>Per-seat, per-case (£20–30), or annual license</td></tr>
+          <tr><td>Time to market</td><td class="yes">Weeks, not months</td><td>Months for custom dev, weeks for limited SaaS</td></tr>
+          <tr><td>CMS integration depth</td><td class="yes">Deep webhook-based integration with any CMS</td><td>Typically locked to their own ecosystem</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     13 · NOTES
-════════════════════════════════════════ -->
+<!-- 08 · MARKET SIZING -->
+<section id="market" class="dark-section">
+  <div class="container">
+    <div class="section-label">08 · Market Sizing</div>
+    <h2>Market Sizing</h2>
+    <div class="sb">
+      <h3>Total Addressable Market (TAM)</h3>
+      <p>The UK legal services market is valued at £52bn (2024) with approximately 9,000 law firms. However, Instructd's consumption model means the TAM is best expressed in terms of total client intake volume across the sector rather than number of firms.</p>
+      <p>UK law firms collectively handle millions of new client enquiries annually. Even conservative estimates suggest the total addressable volume of digital-eligible intake journeys across the UK legal sector exceeds 10 million per year. At an average of £3.50 per completion, this represents a TAM of approximately £35M for the UK legal sector alone.</p>
+
+      <h3>Serviceable Addressable Market (SAM)</h3>
+      <p>Instructd's ideal customer profile targets medium to large firms (100–1,000+ staff) with high-volume, process-driven case types. There are approximately 1,000–1,500 firms in this segment. These firms handle the majority of volume-based legal work (personal injury, employment, conveyancing, clinical negligence) where digital intake delivers the greatest ROI.</p>
+      <p>Estimated SAM: 1,200 firms × average 15,000 eligible completions/year × £3.50 = £63M annually.</p>
+
+      <div class="market-trio fade-up">
+        <div class="market-card tam">
+          <div class="market-acronym">TAM</div>
+          <div class="market-value">£35M</div>
+          <div class="market-desc">UK legal sector digital-eligible intake journeys. 10M+ completions/yr at avg. £3.50.</div>
+        </div>
+        <div class="market-card sam">
+          <div class="market-acronym">SAM</div>
+          <div class="market-value">£63M</div>
+          <div class="market-desc">1,200 mid-to-large firms × 15,000 avg. eligible completions × £3.50 annually.</div>
+        </div>
+        <div class="market-card som">
+          <div class="market-acronym">SOM · Year 3</div>
+          <div class="market-value">£756k</div>
+          <div class="market-desc">18 customers × avg. 12,000 completions — less than 2% SAM penetration.</div>
+        </div>
+      </div>
+
+      <h3>Serviceable Obtainable Market (SOM)</h3>
+      <p>In the first 3 years, targeting 18 customers with an average of 12,000 completions represents less than 2% penetration of the SAM. This conservative target reflects the relationship-driven sales cycle in the legal sector and the founders' capacity for high-touch customer acquisition.</p>
+      <p>3-year SOM: £756k annually (Year 3 revenue target).</p>
+
+      <h3>Expansion Markets</h3>
+      <p>Beyond UK legal, the same platform and consumption model applies to:</p>
+      <ul>
+        <li><strong>Global legal markets</strong> (US, Canada, EU) — significantly larger addressable markets</li>
+        <li><strong>Adjacent regulated industries</strong> (insurance, financial services, healthcare) — similar intake complexity and compliance requirements</li>
+        <li><strong>Client portal revenue</strong> — an entirely separate revenue stream layered on top of the intake business</li>
+      </ul>
+      <p>These expansion markets are not included in the projections above but represent significant upside beyond Year 3.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · STRATEGIC ADVANTAGES -->
+<section id="advantages">
+  <div class="container">
+    <div class="section-label">09 · Strategic Advantages</div>
+    <h2>Strategic Advantages</h2>
+    <div class="sb">
+      <h3>Data Moat &amp; Intellectual Property</h3>
+      <p>Instructd's platform generates two categories of valuable intellectual property that compound over time:</p>
+      <p><strong>Proprietary Technology:</strong></p>
+      <ul>
+        <li><strong>Journey Schema DSL</strong> — A domain-specific language for defining complex, multi-step onboarding workflows with branching logic, validation rules, and integration points. This is a genuine technical innovation purpose-built for regulated intake workflows.</li>
+        <li><strong>Plugin Architecture</strong> — An extensible framework allowing custom Typescript-based integrations, creating an ecosystem around the platform.</li>
+        <li><strong>Secure Multi-Tenant Architecture</strong> — A defence-in-depth infrastructure approach with strict tenant isolation, private network endpoints, and automated security testing that blocks deployment if isolation controls fail. Clients authenticate via their own Entra (Azure AD) tenant, retaining full control of their identity security policies.</li>
+      </ul>
+      <p><strong>Data Assets:</strong></p>
+      <p>Every journey completion generates structured, validated data. As the platform scales, this data will flow into a dedicated data lake (see Product Roadmap, Phase 4) to power the machine learning optimisation features. Over time, this creates an increasingly valuable dataset and a significant competitive barrier. No new entrant can replicate years of accumulated intake data across multiple firms and case types.</p>
+
+      <h3>Market Dynamics &amp; Customer Retention</h3>
+      <p>Law firms are characteristically resistant to change. While this creates a longer initial sales cycle, it produces exceptionally strong customer retention once a firm is onboarded:</p>
+      <ul>
+        <li><strong>High switching costs:</strong> Once a firm's intake workflows are built on Instructd, migrating to an alternative would require rebuilding every journey, retraining staff, and re-establishing integrations — a cost and disruption that firms will avoid</li>
+        <li><strong>Deep operational embedding:</strong> As firms add more case types and the client portal, Instructd becomes deeply integrated into daily operations</li>
+        <li><strong>Long-tail recurring revenue:</strong> Each customer relationship, once established, generates reliable consumption revenue with minimal ongoing sales effort, and grows organically as firms expand usage</li>
+      </ul>
+      <p>Additionally, every law firm has different business processes and will not change them to fit a platform. This is precisely why Instructd's highly configurable, low-code approach works — the platform adapts to the firm's processes rather than requiring the firm to adapt. This level of flexibility is extremely difficult for generic tools to replicate and validates the premium, high-value commercial model.</p>
+
+      <h3>Risks &amp; Mitigations</h3>
+      <table class="data-table">
+        <thead><tr><th>Risk</th><th>Impact</th><th>Likelihood</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>Single-sector dependency (legal)</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>Platform is sector-agnostic by design; legal is the beachhead market, not the only market</td></tr>
+          <tr><td>Long enterprise sales cycles</td><td><span class="risk-med">Medium</span></td><td><span class="risk-high">High</span></td><td>Ben's existing relationships shorten cycles; consumption pricing reduces adoption risk for buyers</td></tr>
+          <tr><td>Key person risk (Dan — technical)</td><td><span class="risk-high">High</span></td><td><span class="risk-low">Low</span></td><td>Hiring senior developer in Year 1; clean codebase with comprehensive tests and documentation</td></tr>
+          <tr><td>Competitor entry</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>First-mover advantage, data moat, deep legal sector expertise, and existing customer relationships</td></tr>
+          <tr><td>Low initial journey volumes</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>Volume commitments in contracts; multiple case types per customer to increase volume per account</td></tr>
+          <tr><td>AI disruption to form-based intake</td><td><span class="risk-med">Medium</span></td><td><span class="risk-med">Medium</span></td><td>AI strategy positions Instructd as the platform for AI-powered intake, not competing with it — see Phase 4 roadmap</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · VISION -->
+<section id="vision" class="off-section">
+  <div class="container">
+    <div class="section-label">10 · Long-Term Vision</div>
+    <h2>Long-Term Vision</h2>
+    <div class="sb">
+      <p>Instructd's ambition extends beyond being a legal intake tool. The long-term vision is to become the platform that powers structured data capture and client engagement for any regulated industry where onboarding is complex, compliance is critical, and client experience matters.</p>
+      <div class="vision-blocks fade-up">
+        <div class="vision-block">
+          <div class="vision-period">Years 1–3</div>
+          <div class="vision-heading">Establish</div>
+          <div class="vision-text">Establish Instructd as the standard digital intake platform for UK law firms, with a proven consumption model and strong customer retention.</div>
+        </div>
+        <div class="vision-block">
+          <div class="vision-period">Years 3–5</div>
+          <div class="vision-heading">Expand</div>
+          <div class="vision-text">Expand into adjacent regulated sectors (insurance, financial services, healthcare) and international legal markets. Launch the client portal as a standalone product. Build the AI and ML capabilities into a genuine differentiator.</div>
+        </div>
+        <div class="vision-block">
+          <div class="vision-period">Years 5+</div>
+          <div class="vision-heading">Platform</div>
+          <div class="vision-text">Instructd becomes the data-driven platform for regulated onboarding at scale, with the data lake and ML capabilities providing insights and optimisation that no competitor can replicate without years of accumulated data.</div>
+        </div>
+      </div>
+      <p>The founders' intention is to build a high-growth, venture-scale business. The non-dilutive grant funding in the early stages preserves equity for future investment rounds if and when the business is ready to accelerate into new markets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-label">11 · Product Roadmap</div>
+    <h2>Product Roadmap</h2>
+    <div class="sb">
+      <p>Our roadmap is driven by real customer needs, validated through our first live customer engagement and ongoing conversations with prospective clients. Development priorities are informed by direct customer requirements and feedback, ensuring we build features that deliver immediate business value.</p>
+
+      <h3>Phase 1: Core Platform (Complete ✅)</h3>
+      <p>The Instructd platform is production-ready with its first customer going live in March 2026. The complete MVP includes:</p>
+      <ul>
+        <li>Visual flow editor with complex branching logic and conditional workflows</li>
+        <li>Multi-environment support (dev, test, staging, live) with full version history and rollback</li>
+        <li>Secure multi-tenant hosting with strict data isolation and custom domain support</li>
+        <li>Complete white-labelling and custom branding (no Instructd branding visible to end-users)</li>
+        <li>Comprehensive form and question configuration with complex validation rules</li>
+        <li>Journey versioning and publishing with undo/redo functionality</li>
+        <li>Webhook system with proxy and authentication (OAuth, Basic Auth, shared keys)</li>
+        <li>Built-in plugins including address lookup and CMS integrations (e.g. Sharedo)</li>
+        <li>Admin dashboard for client management with full operational control</li>
+        <li>User roles and access management with granular permission control across environments</li>
+      </ul>
+
+      <div class="roadmap-phases fade-up">
+        <div class="phase done">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Phase 1 — Complete ✓</div>
+          <div class="phase-name">Core Platform</div>
+        </div>
+        <div class="phase active">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Phase 2 — Months 1–9</div>
+          <div class="phase-name">Growth &amp; Optimisation</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Phase 3 — Months 9–18</div>
+          <div class="phase-name">Client Portal</div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="phase-label">Phase 4 — Months 15–24</div>
+          <div class="phase-name">AI, ML &amp; Ecosystem</div>
+        </div>
+      </div>
+
+      <h3>Phase 2: Growth &amp; Optimisation (Months 1–9)</h3>
+      <table class="data-table">
+        <thead><tr><th>Feature</th><th>Description</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Analytics dashboard</td><td>Completion rates, drop-offs, user behaviour insights, and journey performance metrics</td><td>Planned</td></tr>
+          <tr><td>A/B split testing for journeys</td><td>Experimentation tools to optimise conversion and completion rates across journey variants</td><td>Planned</td></tr>
+          <tr><td>Consumption billing integration</td><td>Automated tracking and billing of journey completions for the consumption pricing model</td><td>Planned</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Phase 3: Client Portal (Months 9–18)</h3>
+      <table class="data-table">
+        <thead><tr><th>Feature</th><th>Description</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>End-of-journey portal sign-up</td><td>Seamless transition from completed journey to client portal account creation</td><td>Planned</td></tr>
+          <tr><td>Case status tracking &amp; notifications</td><td>Real-time case updates via email, SMS, and in-app notifications</td><td>Planned</td></tr>
+          <tr><td>Two-way secure messaging</td><td>Structured, compliant communication between client and firm</td><td>Planned</td></tr>
+          <tr><td>Document upload &amp; request management</td><td>Secure document exchange with deadline tracking and automated reminders</td><td>Planned</td></tr>
+          <tr><td>White-labelled portal deployment</td><td>Fully branded client portal with custom domains, consistent with the firm's intake journeys</td><td>Planned</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Phase 4: AI, Machine Learning &amp; Ecosystem (Months 15–24)</h3>
+      <table class="data-table">
+        <thead><tr><th>Feature</th><th>Description</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>AI chatbot on journey schema</td><td>Conversational intake interface layered on top of existing journey validation and branching logic</td><td>Planned</td></tr>
+          <tr><td>Generative AI content creation</td><td>AI-assisted generation of journey content (intro pages, explanatory text, legal disclaimers)</td><td>Planned</td></tr>
+          <tr><td>ML journey optimisation</td><td>Data-driven recommendations for journey improvements based on completion and drop-off patterns</td><td>Planned</td></tr>
+          <tr><td>AI agent integration hub</td><td>Quality gate and validation layer for third-party AI agent interactions in legal workflows</td><td>Planned</td></tr>
+          <tr><td>Plugin marketplace</td><td>Enable clients and partners to build and submit custom Typescript-based plugins</td><td>Planned</td></tr>
+        </tbody>
+      </table>
+
+      <h3>AI &amp; Machine Learning Strategy</h3>
+      <p>Instructd's journey schema and the structured data it captures create a powerful foundation for AI and machine learning capabilities. Rather than treating AI as a bolt-on feature, we are building it into the platform at three distinct levels: enhancing the end-user experience, accelerating journey creation for our clients, and using data intelligence to continuously improve outcomes.</p>
+
+      <h4>1. Client-Facing AI Chatbot</h4>
+      <p>An AI chatbot that sits on top of the existing journey schema, providing an alternative interface for end-users who prefer conversational interaction over traditional form-filling. The chatbot uses the journey's validation rules, branching logic, and field definitions as its context, ensuring it collects exactly the same structured data as the form-based journey while providing a more natural experience. This maintains all of Instructd's data quality and compliance benefits while offering firms a modern, accessible intake channel.</p>
+
+      <h4>2. Generative AI for Journey Creation</h4>
+      <p>AI-assisted content generation within the journey builder, allowing our clients' teams to rapidly create professional HTML content for their onboarding journeys. This includes generating introduction pages, explanatory content between steps, confirmation pages, and legal disclaimers — all tailored to the firm's tone of voice and branding. This dramatically reduces the time and skill required to build polished, client-facing journeys, making the platform accessible to non-technical staff.</p>
+
+      <h4>3. Machine Learning for Journey Optimisation</h4>
+      <p>Instructd captures large volumes of structured end-user onboarding data across all customers' journeys. Over time, this data lake becomes a significant strategic asset. By applying machine learning to cross-reference completion rates, drop-off points, and data quality across journeys, we can automatically identify patterns in high-performing journeys and generate actionable recommendations for improvement. For example: suggesting question reordering, identifying fields that cause drop-offs, or recommending content changes that improve completion rates. This positions Instructd as an intelligent platform that gets smarter with every journey completion.</p>
+
+      <h4>4. AI Agent Integration &amp; Quality Gate</h4>
+      <p>As AI agents become more prevalent in legal workflows, Instructd is positioned to serve as the validation and quality control layer between AI systems and case management systems. AI agents lack built-in validation, quality gates, and compliance controls — Instructd provides these. By supporting hybrid workflows where AI technologies are layered on top of Instructd's structured journey framework, firms can adopt AI confidently without risk of data pollution or compliance failures. This transforms AI agents from a competitive threat into a complementary technology that enhances Instructd's value proposition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · FINANCIALS -->
+<section id="financials" class="off-section">
+  <div class="container">
+    <div class="section-label">12 · Financial Projections</div>
+    <h2>Financial Projections</h2>
+    <div class="sb">
+      <h3>Revenue Forecast</h3>
+      <p>Revenue is projected using the consumption-based model (per successful journey completion) with conservative assumptions about customer acquisition and journey volumes.</p>
+      <table class="fin-table">
+        <thead><tr><th>Year</th><th>Customers</th><th>Revenue Model</th><th>Total Revenue</th></tr></thead>
+        <tbody>
+          <tr><td>Year 1</td><td>3</td><td style="text-align:left;">1 flat-rate pilot (£5k) + 2 consumption customers</td><td>£45,000</td></tr>
+          <tr><td>Year 2</td><td>8</td><td style="text-align:left;">All consumption, avg 8,000 completions at £4.00</td><td>£256,000</td></tr>
+          <tr><td>Year 3</td><td>18</td><td style="text-align:left;">All consumption, avg 12,000 completions at £3.50</td><td>£756,000</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Year 1 Assumptions:</strong></p>
+      <ul>
+        <li>First customer (live March 2026) on pilot contract at £5k flat rate for Year 1, transitioning to consumption model at renewal</li>
+        <li>2 additional customers onboarded mid-year through Ben's network, starting with 1–2 case types each</li>
+        <li>New customers on consumption model at ~4,000 completions each at £5 per completion (low volume tier) = £20k each</li>
+        <li>Conservative completion volumes reflecting ramp-up period as firms transition from manual to digital intake</li>
+      </ul>
+      <p><strong>Year 2–3 Growth Drivers:</strong></p>
+      <ul>
+        <li>Existing customers expanding to additional case types (organic volume growth within accounts)</li>
+        <li>New customer acquisition through case studies, referrals, and Ben's network</li>
+        <li>Volume growth reduces average price per completion through tiered pricing, but increases total revenue</li>
+        <li>Client portal launch in Year 2 creates additional revenue streams</li>
+      </ul>
+
+      <h3>Headcount &amp; Hiring Plan</h3>
+      <table class="fin-table">
+        <thead><tr><th>Role</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Founder (Dan)</td><td>Full-time</td><td>Full-time</td><td>Full-time</td><td style="text-align:left;">£75k salary. 50% engineering, 50% product &amp; operations</td></tr>
+          <tr><td>Ben (Commercial)</td><td>Fractional</td><td>Fractional</td><td>Fractional/FT</td><td style="text-align:left;">Equity compensation plus revenue share on deals closed</td></tr>
+          <tr><td>Senior Developer</td><td>Hired Mo 4–6</td><td>Full-time</td><td>Full-time</td><td style="text-align:left;">£85–90k. Core platform development and AI features</td></tr>
+          <tr><td>Sales</td><td>Hired Mo 4–6</td><td>Full-time</td><td>Full-time</td><td style="text-align:left;">£45k. Dedicated outbound sales and pipeline building</td></tr>
+          <tr><td>Customer Success / Ops</td><td>—</td><td>Hired Mo 6</td><td>Full-time</td><td style="text-align:left;">£35–45k. Client onboarding, support, journey building</td></tr>
+          <tr><td>Junior/Mid Developer</td><td>—</td><td>—</td><td>Hired Mo 6</td><td style="text-align:left;">£45–55k. Additional engineering capacity</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Engineering Team Efficiency:</strong> The development team is deliberately lean. The explosion in AI code generation tools means that Dan at 50% engineering capacity plus one senior developer now delivers output equivalent to a team of 5+ developers three years ago. This keeps headcount and burn rate low while maintaining rapid development velocity across the platform, client portal, and AI features.</p>
+
+      <h3>Cost Forecast</h3>
+      <table class="fin-table">
+        <thead><tr><th>Category</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr></thead>
+        <tbody>
+          <tr><td>Founder Salary (Dan)</td><td>£75,000</td><td>£80,000</td><td>£85,000</td></tr>
+          <tr><td>Senior Developer (from Mo. 4–6)</td><td>£52,500</td><td>£90,000</td><td>£90,000</td></tr>
+          <tr><td>Sales (from Mo. 4–6)</td><td>£22,500</td><td>£45,000</td><td>£50,000</td></tr>
+          <tr><td>Customer Success / Ops</td><td>—</td><td>£22,500</td><td>£45,000</td></tr>
+          <tr><td>Junior / Mid Developer</td><td>—</td><td>—</td><td>£25,000</td></tr>
+          <tr><td>Employer National Insurance</td><td>£18,000</td><td>£28,000</td><td>£35,000</td></tr>
+          <tr><td>Ben Revenue Share</td><td>£5,000</td><td>£15,000</td><td>£30,000</td></tr>
+          <tr><td>Cloud Infrastructure</td><td>£12,000</td><td>£25,000</td><td>£45,000</td></tr>
+          <tr><td>Legal / Insurance / Compliance</td><td>£5,000</td><td>£8,000</td><td>£12,000</td></tr>
+          <tr><td>Security Certifications</td><td>£4,000</td><td>£15,000</td><td>£6,000</td></tr>
+          <tr><td>Marketing &amp; Sales</td><td>£8,000</td><td>£15,000</td><td>£25,000</td></tr>
+          <tr><td>Misc / Contingency</td><td>£15,000</td><td>£25,000</td><td>£40,000</td></tr>
+          <tr class="subtotal"><td>Total Costs</td><td>£217,000</td><td>£368,500</td><td>£488,000</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Profit Forecast</h3>
+      <table class="fin-table">
+        <thead><tr><th>Year</th><th>Revenue</th><th>Costs</th><th>Profit / (Loss)</th><th>Cumulative</th></tr></thead>
+        <tbody>
+          <tr><td>Year 1</td><td>£45,000</td><td>£217,000</td><td class="neg">(£172,000)</td><td class="neg">(£172,000)</td></tr>
+          <tr><td>Year 2</td><td>£256,000</td><td>£368,500</td><td class="neg">(£112,500)</td><td class="neg">(£284,500)</td></tr>
+          <tr><td>Year 3</td><td>£756,000</td><td>£488,000</td><td class="pos">£268,000</td><td class="neg">(£16,500)</td></tr>
+        </tbody>
+      </table>
+      <p>The business reaches profitability in Year 3. The Year 1–2 losses are funded by grant funding, with the business becoming self-sustaining by Year 3. Total cash requirement across the first two years is approximately £285k beyond revenue. Grant funding provides the runway to reach profitability and a contingency buffer for growth investment.</p>
+
+      <h3>Funding Strategy</h3>
+      <p><strong>Grant Funding (Primary Strategy):</strong></p>
+      <p>Instructd is seeking £450–550k in non-dilutive grant funding to cover the gap between costs and revenue during Years 1–2 and provide a contingency buffer for growth investment. Grant funding is the preferred approach because:</p>
+      <ul>
+        <li><strong>Non-dilutive:</strong> No equity given away, preserving founder ownership for future fundraising if needed</li>
+        <li><strong>Aligned with grant objectives:</strong> Instructd creates UK tech jobs, drives innovation in a key UK sector (legal services, £52bn market), and improves productivity in an industry that employs ~370,000 people</li>
+        <li><strong>Job creation:</strong> Grant funding directly enables 3–4 new hires in Year 1–2 (senior developer, sales, customer success), with further hiring in Year 3 funded by revenue</li>
+        <li><strong>Innovation credentials:</strong> The platform introduces novel AI and machine learning capabilities to a sector that has been slow to adopt modern technology</li>
+      </ul>
+
+      <p><strong>Use of Funds:</strong></p>
+      <table class="data-table">
+        <thead><tr><th>Category</th><th>Amount</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Team (salaries + NI, Year 1–2)</td><td>£330–400k</td><td>Founder salary + senior developer + sales hire + customer success</td></tr>
+          <tr><td>Infrastructure &amp; Operations</td><td>£45–60k</td><td>Cloud hosting, legal, insurance, compliance certifications</td></tr>
+          <tr><td>Growth &amp; Market Development</td><td>£30–50k</td><td>Marketing, events, case studies</td></tr>
+          <tr><td>Contingency</td><td>£45–50k</td><td>Buffer for unexpected costs, opportunities, or slower ramp-up</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Revenue Sustainability:</strong></p>
+      <p>By Year 3, the consumption-based revenue model generates sufficient income to cover all operating costs and fund continued growth organically. Grant funding bridges the gap during the critical first two years of customer acquisition and platform development, after which the business is self-sustaining.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · NOTES -->
 <section id="notes">
   <div class="container">
-    <div class="section-intro fade-up">
-      <div class="section-label">13 · Notes &amp; Outstanding Items</div>
-      <h2>Items requiring<br><em>further work.</em></h2>
-      <p>Tracked openly for transparency. These items are identified — not hidden — as part of the ongoing development of this document before external sharing.</p>
+    <div class="section-label">13 · Notes &amp; Outstanding Items</div>
+    <h2>Notes &amp; Outstanding Items</h2>
+    <div class="sb">
+      <p>Items that require further research, evidence, or approval before this plan is finalised:</p>
     </div>
-
     <div class="note-list fade-up">
       <div class="note-item">
         <div class="note-num">01</div>
@@ -1914,7 +1447,7 @@ h2 em {
       </div>
       <div class="note-item">
         <div class="note-num">02</div>
-        <div class="note-text"><strong>Contact centre cost per case (£3.08) —</strong> The current calculation assumes 5 cases per hour for a £30k call handler. This is illustrative and needs validation with concrete data from a live customer environment. The actual figure will vary significantly by case type complexity.</div>
+        <div class="note-text"><strong>Contact centre cost per case (£3.08) —</strong> The current calculation assumes 5 cases per hour for a £30k call handler. This is illustrative and needs validation with concrete data from a live customer environment once available. The actual figure will vary significantly by case type complexity.</div>
       </div>
       <div class="note-item">
         <div class="note-num">03</div>
@@ -1944,22 +1477,17 @@ h2 em {
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
 <footer class="doc-footer">
   <div class="doc-footer-logo">instructd<span>.</span></div>
   <div class="doc-footer-conf">Strictly Confidential &nbsp;·&nbsp; Instructd Ltd &nbsp;·&nbsp; instructd.co.uk &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Not for distribution without prior written consent</div>
 </footer>
 
 <script>
-// Nav scroll state
 const nav = document.getElementById('site-nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-// Fade-up on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1970,6 +1498,13 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.data-table, .fin-table').forEach(t => {
+  const wrap = document.createElement('div');
+  wrap.className = 'table-scroll';
+  t.parentNode.insertBefore(wrap, t);
+  wrap.appendChild(t);
+});
 </script>
 </body>
 </html>
