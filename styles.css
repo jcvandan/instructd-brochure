@@ -370,6 +370,50 @@ nav {
     color: var(--color-text-muted);
 }
 
+/* What is Instructd & Pillars Section */
+.what-section {
+    padding: 6rem 2rem;
+    background: var(--color-bg);
+}
+
+.what-section p {
+    margin-bottom: 8px;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 2rem auto 0;
+}
+
+.pillar-card {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    border: 1px solid rgba(26, 43, 74, 0.06);
+}
+
+.pillar-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.pillar-card ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    line-height: 1.8;
+}
+
+.pillar-card li {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
 /* Pain Points Section */
 .pain-section {
     padding: 6rem 2rem;
@@ -954,6 +998,10 @@ footer {
     .diff-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
     }
 
     .how-grid::before {
