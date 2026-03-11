@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.5"
-     inkscape:cx="8"
-     inkscape:cy="669"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="2995.3043"
+     inkscape:cy="476.58997"
      inkscape:window-width="3840"
      inkscape:window-height="2054"
      inkscape:window-x="1789"
@@ -64,17 +64,19 @@
        height="300.02374"
        x="-0.032417398"
        y="-0.011693042" />
-    <text
-       xml:space="preserve"
-       style="font-weight:900;font-size:317.5px;font-family:Fraunces;-inkscape-font-specification:'Fraunces Heavy';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:1.26337"
-       x="87.452644"
-       y="261.12482"
-       id="text1"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         style="font-size:317.5px;fill:#ffffff;fill-opacity:1;stroke-width:1.26337"
-         x="87.452644"
-         y="261.12482">I</tspan></text>
+    <g
+       id="text1"
+       style="font-weight:900;font-size:317.5px;font-family:Fraunces;-inkscape-font-specification:'Fraunces Heavy';fill:#ffffff;stroke-width:1.26337"
+       aria-label="i.">
+      <path
+         style="font-weight:bold;font-family:'DM Sans';-inkscape-font-specification:'DM Sans Bold'"
+         d="m 110.47113,266.36328 v -157.48 h 42.8625 v 157.48 z m 21.59,-177.482499 q -11.7475,0 -19.3675,-6.6675 -7.3025,-6.985 -7.3025,-17.4625 0,-10.4775 7.3025,-17.4625 7.62,-6.985 19.3675,-6.985 11.7475,0 19.05,6.985 7.3025,6.985 7.3025,17.4625 0,10.16 -7.3025,17.145 -7.3025,6.985 -19.05,6.985 z"
+         id="path2" />
+      <path
+         style="font-weight:bold;font-family:'DM Sans';-inkscape-font-specification:'DM Sans Bold';fill:#4f7df3"
+         d="m 208.57855,267.95078 q -11.7475,0 -19.05,-6.985 -7.3025,-7.3025 -7.3025,-17.4625 0,-10.4775 7.3025,-17.4625 7.3025,-7.3025 19.05,-7.3025 11.43,0 18.7325,7.3025 7.3025,6.985 7.3025,17.4625 0,10.16 -7.3025,17.4625 -7.3025,6.985 -18.7325,6.985 z"
+         id="path3" />
+    </g>
     <text
        xml:space="preserve"
        style="font-weight:900;font-size:105.833px;font-family:Fraunces;-inkscape-font-specification:'Fraunces Heavy';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:1.26337"
