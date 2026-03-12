@@ -377,10 +377,6 @@ nav {
     background: var(--color-bg);
 }
 
-.what-section p {
-    margin-bottom: 8px;
-}
-
 .pillars-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -464,7 +460,7 @@ nav {
     font-size: 1.1rem;
     color: var(--color-text-muted);
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 .pain-grid {
