@@ -62,7 +62,7 @@ nav {
 .logo {
     font-family: var(--font-body);
     font-size: 1.65rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-primary);
     text-decoration: none;
     display: flex;
@@ -233,7 +233,7 @@ nav {
 .hero h1 {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.15;
     color: var(--color-primary);
     margin-bottom: 1.5rem;
@@ -362,7 +362,7 @@ nav {
 .stat-number {
     font-family: var(--font-display);
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-accent);
 }
 
@@ -455,7 +455,7 @@ nav {
 .section-header h2 {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-primary);
     margin-bottom: 1rem;
 }
@@ -606,7 +606,7 @@ nav {
 .stat-value {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-accent);
     line-height: 1;
     margin-bottom: 0.5rem;
@@ -717,7 +717,7 @@ nav {
     margin: 0 auto 1.5rem;
     font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-accent);
     box-shadow: var(--shadow-soft);
 }
@@ -752,7 +752,7 @@ nav {
 .diff-content h2 {
     font-family: var(--font-display);
     font-size: clamp(1.75rem, 3vw, 2.25rem);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-primary);
     margin-bottom: 1.5rem;
 }
@@ -890,7 +890,7 @@ nav {
 .cta-section h2 {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-white);
     margin-bottom: 1rem;
 }
@@ -935,7 +935,7 @@ footer {
 .footer-logo {
     font-family: var(--font-body);
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-primary);
     text-decoration: none;
     letter-spacing: -0.3px;
