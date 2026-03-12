@@ -60,18 +60,16 @@ nav {
 }
 
 .logo {
-    font-family: var(--font-body);
-    font-size: 1.65rem;
-    font-weight: 600;
-    color: var(--color-primary);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0;
-    letter-spacing: -0.3px;
 }
 
-.logo span { color: var(--color-accent); }
+.logo img {
+    height: 1.75rem;
+    width: auto;
+    display: block;
+}
 
 .logo-icon {
     width: 36px;
