@@ -1,0 +1,24 @@
+---
+layout: home
+title: Blog
+---
+<div class="post-main" style="max-width: 50rem; margin: 0 auto; padding: 6.5rem 1.5rem 3rem">
+  <h1 class="post-title" style="margin-bottom: 0.5rem">Instructd blog</h1>
+  <p class="post-deck" style="margin-bottom: 2rem">
+    Notes on client intake, contact centres, case management, and digital onboarding for UK law firms — from the team behind
+    <a href="https://instructd.co.uk" style="color: var(--color-accent, #4f7df3)">instructd.co.uk</a>.
+  </p>
+  <ul class="blog-list" style="list-style: none; margin: 0; padding: 0">
+    {% assign posts = site.posts | sort: "date" | reverse %}
+    {% for post in posts %}
+      <li style="border-bottom: 1px solid rgba(26, 43, 74, 0.08); padding: 1.1rem 0">
+        <a href="{{ post.url | relative_url }}" style="font-weight: 600; color: var(--color-primary, #1a2b4a); text-decoration: none; font-size: 1.05rem"
+          >{{ post.title }}</a
+        >
+        <div style="font-size: 0.9rem; color: var(--color-text-muted, #6b7280); margin-top: 0.35rem">
+          {{ post.date | date: "%-d %B %Y" }}{% if post.description %} — {{ post.description }}{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

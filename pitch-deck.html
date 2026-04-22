@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructd — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #111318;
+  --ink-2: #1c1f28;
+  --blue: #3d5af1;
+  --blue-pale: #e8ecfd;
+  --off: #f8f8f6;
+  --border: #e8e9ef;
+  --muted: #666d85;
+  --label: #9298b0;
+  --white: #fff;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --max: 900px;
+  --r: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.nav-logo {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--blue); }
+.nav-hint { color: var(--label); font-size: 12px; }
+@media (max-width: 600px) { .nav-hint { display: none; } }
+
+/* —— each slide: full-viewport “slide” in a vertical deck —— */
+.slide {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 28px 3.5rem;
+  position: relative;
+}
+.slide-inner {
+  max-width: var(--max);
+  width: 100%;
+  margin: 0 auto;
+}
+.slide-num {
+  position: absolute;
+  top: 4.5rem;
+  right: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--label);
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .slide { padding: 4.5rem 20px 2.5rem; }
+  .slide-num { right: 20px; top: 4rem; }
+}
+
+.slide-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.slide--dark { background: var(--ink); color: var(--white); }
+.slide--dark .slide-label { color: #a8b8ff; }
+.slide--dark .nav-hint { color: rgba(255,255,255,0.4); }
+.slide--off { background: var(--off); }
+.slide--dark .kicker,
+.slide--dark h2 { color: var(--white); }
+.slide--dark p, .slide--dark .slide-lead { color: rgba(255,255,255,0.7); }
+.slide--dark .bullet li { color: rgba(255,255,255,0.68); }
+.slide--dark .bullet li::before { color: #a8b8ff; }
+
+h1.deck-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+.slide-lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 36rem;
+  line-height: 1.65;
+}
+.slide--dark .slide-lead { color: rgba(255,255,255,0.55); }
+
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+}
+
+p { margin-bottom: 1rem; color: var(--muted); font-size: 1rem; line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+
+.bullet {
+  list-style: none;
+  margin: 1.25rem 0 0;
+}
+.bullet li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.65rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.bullet li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.85;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem 1.35rem;
+}
+.slide--off .card { background: var(--white); }
+.slide--dark .card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+.card h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--label);
+  margin-bottom: 0.5rem;
+}
+.slide--dark .card h3 { color: rgba(255,255,255,0.45); }
+.card p { font-size: 0.95rem; margin: 0; }
+.slide--dark .card p { color: rgba(255,255,255,0.7); }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 1.75rem;
+}
+@media (max-width: 700px) { .stat-row { grid-template-columns: 1fr; } }
+
+.stat-box {
+  border-radius: var(--r);
+  padding: 1.5rem 1.25rem;
+  text-align: left;
+}
+.stat-box.tam { background: var(--ink); }
+.stat-box.sam { background: var(--ink-2); }
+.stat-box.som { background: var(--blue); }
+.stat-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+}
+.stat-value {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+.stat-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+
+table.compact {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 1.25rem;
+}
+table.compact th, table.compact td {
+  text-align: left;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.slide--dark table.compact th,
+.slide--dark table.compact td { border-color: rgba(255,255,255,0.1); }
+table.compact th { color: var(--label); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.slide--dark table.compact th { color: rgba(255,255,255,0.45); }
+table.compact td { color: var(--muted); }
+.slide--dark table.compact td { color: rgba(255,255,255,0.7); }
+table.compact tr:last-child th, table.compact tr:last-child td { border-bottom: none; }
+
+.hr-note {
+  font-size: 0.8rem;
+  color: var(--label);
+  margin-top: 1.25rem;
+  line-height: 1.5;
+}
+.slide--dark .hr-note { color: rgba(255,255,255,0.4); }
+
+.founders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 700px) { .founders { grid-template-columns: 1fr; } }
+
+.founder {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--white);
+}
+.slide--off .founder { background: var(--white); }
+.avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--ink));
+  color: var(--white);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+.founder h3 { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; font-family: var(--serif); }
+.founder .role { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 0.5rem; }
+.founder p { font-size: 0.88rem; margin: 0; }
+
+.road {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 900px) { .road { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .road { grid-template-columns: 1fr; } }
+.road-block {
+  padding: 1rem 0.85rem;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+.slide--off .road-block { background: var(--white); }
+.road-block.done { border-color: rgba(61,90,241,0.35); background: var(--blue-pale); }
+.road-block h4 { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.35rem; }
+.road-block p { font-size: 0.82rem; margin: 0; color: var(--muted); line-height: 1.45; }
+
+footer.deck-foot {
+  padding: 2rem 28px 3rem;
+  text-align: center;
+  background: var(--ink);
+  color: rgba(255,255,255,0.35);
+  font-size: 0.8rem;
+}
+footer.deck-foot .logo { font-weight: 700; color: var(--white); margin-bottom: 0.5rem; display: block; }
+footer.deck-foot .logo span { color: var(--blue); }
+
+.cover-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 28px 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.cover-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(61,90,241,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,90,241,0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.cover-hero::after {
+  content: '';
+  position: absolute;
+  width: 60vw; height: 60vw;
+  max-width: 640px; max-height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61,90,241,0.2) 0%, transparent 60%);
+  right: -15%; top: -20%;
+  pointer-events: none;
+}
+.cover-hero .slide-inner { position: relative; z-index: 1; }
+.pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #a8b8ff;
+  background: rgba(61,90,241,0.2);
+  border: 1px solid rgba(61,90,241,0.35);
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+h1.hero-line {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.45);
+  max-width: 32rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">instructd<span>.</span></a>
+  <span class="nav-hint">Scroll — each section is one slide</span>
+</nav>
+
+<!-- Slide 1 · Cover -->
+<section class="cover-hero" id="s1" aria-label="Title slide">
+  <div class="slide-inner">
+    <span class="pill">Pitch · March 2026</span>
+    <h1 class="hero-line">Low-code client intake for UK law firms</h1>
+    <p class="hero-sub">Instructd gives firms total control over onboarding and data-capture journeys — without permanent dev teams or six-month build cycles. White-label, CMS-integrated, built for B2C legal volume.</p>
+  </div>
+  <span class="slide-num" style="position:absolute; top:4.5rem; right:28px; color:rgba(255,255,255,0.3)">01</span>
+</section>
+
+<!-- Slide 2 · Problem -->
+<section class="slide slide--off" id="s2">
+  <span class="slide-num">02</span>
+  <div class="slide-inner">
+    <p class="slide-label">The problem</p>
+    <h2>Insurance takes minutes online. Many law firms still open files on a phone call.</h2>
+    <p class="slide-lead">B2C legal intake is still contact-centre and script driven: handlers transcribe into legacy case management, errors cascade to fee earners, and capacity scales only with more headcount.</p>
+    <ul class="bullet">
+      <li>Staffing: large-volume firms run big contact centre teams; growth means linear hiring and churn.</li>
+      <li>Data quality: manual capture wastes billable time fixing mistakes and chasing incomplete information.</li>
+      <li>Client expectation: people expect 24/7, self-serve, guided journeys like every other industry.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 3 · Why now -->
+<section class="slide" id="s3">
+  <span class="slide-num">03</span>
+  <div class="slide-inner">
+    <p class="slide-label">Why now</p>
+    <h2>Efficiency, fees, and competition are squeezing the old model</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Market</h3>
+        <p>Competition for consumer legal work is higher; clients compare you to digital-native experiences. Fee pressure in parts of the market makes unit cost in intake more visible.</p>
+      </div>
+      <div class="card">
+        <h3>Tech</h3>
+        <p>Case management and integration maturity mean structured intake can finally land in the file — if the journey layer is built for legal complexity, not a generic form.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 4 · Solution -->
+<section class="slide slide--dark" id="s4">
+  <span class="slide-num" style="color:rgba(255,255,255,0.3)">04</span>
+  <div class="slide-inner">
+    <p class="slide-label">Solution</p>
+    <h2>Instructd</h2>
+    <p class="slide-lead" style="color:rgba(255,255,255,0.6)">A low-code platform for client onboarding: business teams own the journey, IT keeps guardrails, and completed journeys push structured data into the CMS.</p>
+    <ul class="bullet">
+      <li>Visual editor — complex branching, validation, and publishing in days, not multi-quarter project cycles.</li>
+      <li>White-label — your domain, your brand; the client does not see a third-party app logo.</li>
+      <li>Integrations — webhooks, plugins (identity, sign, address, etc.), and deep hooks into platforms such as Sharedo in the UK ecosystem.</li>
+      <li>Safe deployment — dev / test / live, version history, rollback; Entra (Azure AD) for firm-controlled identity and MFA.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 5 · ICP & use cases -->
+<section class="slide slide--off" id="s5">
+  <span class="slide-num">05</span>
+  <div class="slide-inner">
+    <p class="slide-label">Who it’s for</p>
+    <h2>Medium to large UK firms, B2C volume work</h2>
+    <p>Ideal customers run multiple concurrent intake workflows, have innovation or legal ops capacity, and want to grow file intake without scaling contact-centre FTE in lockstep.</p>
+    <p style="margin-top:1rem"><strong style="color:var(--ink)">Strong fit</strong> — high-volume, process-first matter types: RTA, employment triage, personal injury, group litigation, campaign-driven sign-up.</p>
+  </div>
+</section>
+
+<!-- Slide 6 · Market -->
+<section class="slide slide--dark" id="s6">
+  <span class="slide-num" style="color:rgba(255,255,255,0.3)">06</span>
+  <div class="slide-inner">
+    <p class="slide-label">Market</p>
+    <h2>Large digital-eligible intake TAM; conservative near-term SOM</h2>
+    <div class="stat-row">
+      <div class="stat-box tam">
+        <div class="stat-label">TAM (UK, illustrative)</div>
+        <div class="stat-value">~£35M</div>
+        <div class="stat-note">Digital-eligible B2C-style intake volume × blended completion pricing — sector-scale opportunity.</div>
+      </div>
+      <div class="stat-box sam">
+        <div class="stat-label">SAM</div>
+        <div class="stat-value">~£63M</div>
+        <div class="stat-note">Mid-to-large firm segment with high process-driven case types.</div>
+      </div>
+      <div class="stat-box som">
+        <div class="stat-label">SOM · Y3 target</div>
+        <div class="stat-value">£756k</div>
+        <div class="stat-note">Small SAM penetration: relationship-driven sales, phased rollout — room to grow.</div>
+      </div>
+    </div>
+    <p class="hr-note">Forward-looking internal estimates; not verified by third-party market report on this page.</p>
+  </div>
+</section>
+
+<!-- Slide 7 · Business model -->
+<section class="slide" id="s7">
+  <span class="slide-num">07</span>
+  <div class="slide-inner">
+    <p class="slide-label">Revenue</p>
+    <h2>Consumption: pay for clients onboarded</h2>
+    <p class="slide-lead">Aligned incentives: revenue scales with the value the firm realises; simple ROI — compare per-completion cost to contact-centre, outsourced call, or KYC line items.</p>
+    <table class="compact">
+      <thead>
+        <tr><th>Volume / year (illustrative)</th><th>Per completion</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Up to 5,000</td><td>£5</td><td>Smaller or early programmes</td></tr>
+        <tr><td>5,001–25,000</td><td>£4</td><td>Mid-size, multiple workflows</td></tr>
+        <tr><td>25,001–100,000</td><td>£3</td><td>High volume</td></tr>
+        <tr><td>100,000+</td><td>Custom</td><td>Enterprise</td></tr>
+      </tbody>
+    </table>
+    <p class="hr-note">Platform, hosting, and professional services for journey setup are positioned as included in the customer acquisition phase in the business plan; confirm commercial terms in contract.</p>
+  </div>
+</section>
+
+<!-- Slide 8 · Differentiation -->
+<section class="slide slide--off" id="s8">
+  <span class="slide-num">08</span>
+  <div class="slide-inner">
+    <p class="slide-label">Differentiation</p>
+    <h2>Client experience first, not just “another firm-facing tool”</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>vs generic CRM / forms</h3>
+        <p>Complex legal branching, UK-native positioning, white-label, and CMS depth — not a simple lead form.</p>
+      </div>
+      <div class="card">
+        <h3>vs custom dev</h3>
+        <p>Weeks to live journeys; change without a permanent agency. Governance via environments and versioning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 9 · Traction & GTM -->
+<section class="slide slide--dark" id="s9">
+  <span class="slide-num" style="color:rgba(255,255,255,0.3)">09</span>
+  <div class="slide-inner">
+    <p class="slide-label">Traction & go-to-market</p>
+    <h2>Founder networks, first live use, ecosystem paths</h2>
+    <ul class="bullet">
+      <li>First UK firm live for pilot / intake workflow — production proof and reference path.</li>
+      <li>Legal-sector CTO and advisor network for warm access to decision-makers (innovation, IT, commercial leads).</li>
+      <li>Strategic interest from consultancies, international channel partners, and UK CMS ecosystem (e.g. Sharedo partnership narrative as customers prove value).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 10 · Roadmap -->
+<section class="slide" id="s10">
+  <span class="slide-num">10</span>
+  <div class="slide-inner">
+    <p class="slide-label">Product roadmap</p>
+    <h2>Core → growth → portal → AI &amp; data</h2>
+    <div class="road">
+      <div class="road-block done">
+        <h4>Core · live</h4>
+        <p>Flow editor, multi-env, white-label, webhooks, plugins, admin &amp; roles</p>
+      </div>
+      <div class="road-block">
+        <h4>Growth</h4>
+        <p>Analytics, A/B tests, consumption billing integration</p>
+      </div>
+      <div class="road-block">
+        <h4>Portal</h4>
+        <p>Status, messaging, documents, post-intake account</p>
+      </div>
+      <div class="road-block">
+        <h4>AI &amp; ML</h4>
+        <p>Conversational UI on same schema, content assist, ML optimisation, agent quality gates</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 11 · Team -->
+<section class="slide slide--off" id="s11">
+  <span class="slide-num">11</span>
+  <div class="slide-inner">
+    <p class="slide-label">Team</p>
+    <h2>Technical founder + legal-sector commercial founder</h2>
+    <div class="founders">
+      <div class="founder">
+        <div class="avatar">D</div>
+        <div>
+          <h3>Dan Ormisher</h3>
+          <p class="role">Technical founder</p>
+          <p>~15 years engineering leadership; built the Instructd platform. Deep product &amp; security execution.</p>
+        </div>
+      </div>
+      <div class="founder">
+        <div class="avatar">B</div>
+        <div>
+          <h3>Ben Sears</h3>
+          <p class="role">Commercial founder</p>
+          <p>Network and credibility across UK law firms; GTM, relationships, and sector navigation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 12 · Financing (investor — round size discussed in conversation) -->
+<section class="slide slide--dark" id="s12">
+  <span class="slide-num" style="color:rgba(255,255,255,0.3)">12</span>
+  <div class="slide-inner">
+    <p class="slide-label">Financing &amp; milestones</p>
+    <h2>Capital to accelerate product and go-to-market</h2>
+    <p class="slide-lead" style="color:rgba(255,255,255,0.65)">We are open to an <strong style="color:rgba(255,255,255,0.9);font-weight:600">equity</strong> round aligned with investors who understand B2B legal and regulated tech. <strong style="color:rgba(255,255,255,0.9);font-weight:600">Round size, structure, and valuation</strong> are not fixed on this deck — we prefer to be direct in first conversations and will share specifics when we talk.</p>
+    <ul class="bullet" style="margin-top:1rem">
+      <li><strong style="color:rgba(255,255,255,0.88);font-weight:600">Use of funds (indicative):</strong> deepen the platform (analytics, portal roadmap, AI safely bound to intake), scale GTM (sales, customer success, founder-led proof points), and strengthen security and ops as customer count grows.</li>
+      <li><strong style="color:rgba(255,255,255,0.88);font-weight:600">Milestones:</strong> grow recurring consumption revenue from UK B2C legal; expand case types and references; prepare optional international and adjacent-sector plays on the same core platform.</li>
+      <li><strong style="color:rgba(255,255,255,0.88);font-weight:600">Why it compounds:</strong> vision is to be the default structured intake and client-engagement layer for UK B2C legal, then global legal and adjacent markets — with data and volume as the long-term moat for ML-assisted optimisation, not a one-off form tool.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="deck-foot" id="end">
+  <span class="logo">instructd<span>.</span></span>
+  <div>Confidential — for discussion with authorised recipients only. March 2026.</div>
+</footer>
+
+<script>
+(function() {
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function() {
+    if (!nav) return;
+    nav.style.boxShadow = window.scrollY > 24 ? '0 2px 16px rgba(0,0,0,0.06)' : 'none';
+  });
+})();
+</script>
+</body>
+</html>
