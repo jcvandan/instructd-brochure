@@ -942,7 +942,9 @@ footer {
 
 .footer-links {
     display: flex;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    justify-content: flex-end;
 }
 
 .footer-links a {
@@ -1027,6 +1029,10 @@ footer {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
     }
 
     .diff-visual {
@@ -1181,6 +1187,35 @@ footer {
 
 .post-article-footer a:hover {
     text-decoration: underline;
+}
+
+/* Dense reference pages (product docs for humans + LLMs) */
+.ref-llm-box {
+    background: rgba(79, 125, 243, 0.07);
+    border: 1px solid rgba(79, 125, 243, 0.22);
+    border-radius: var(--radius-sm, 8px);
+    padding: 1.1rem 1.25rem 1rem;
+    margin: 0 0 1.75rem 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+.ref-llm-box h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-primary, #1a2b4a);
+}
+.ref-llm-box p:last-child {
+    margin-bottom: 0;
+}
+.post-content .ref-muted {
+    font-size: 0.9rem;
+    color: var(--color-text-muted, #6b7280);
+}
+
+.ref-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.25rem 0;
 }
 
 .blog-landing {

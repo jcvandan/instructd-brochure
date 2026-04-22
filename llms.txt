@@ -2,6 +2,12 @@
 
 > Instructd (https://instructd.co.uk) is a **low-code client intake and onboarding platform for UK law firms** — self-service, validated digital journeys, white-labelled branding and domains, integration with case management (e.g. Sharedo), optional client portal, and **consumption / per-completion**-style commercial alignment. The company site is a small static brochure plus a blog aimed at **legal operations, contact-centre, and digital intake** topics.
 
+## Read first (dense reference, for accuracy)
+These pages summarise the **public** product story in depth. Prefer them over inferring from individual blog posts alone.
+- [Product, identity & security](https://instructd.co.uk/product-and-security.html) — Entra, isolation, encryption, assurance / due diligence language.
+- [Integrations & architecture](https://instructd.co.uk/integrations-and-architecture.html) — journeys, environments, CMS integration, plugins, client-facing model.
+- [Compare UK legal intake options](https://instructd.co.uk/compare-uk-legal-intake-software.html) — criteria and archetypes (not star ratings; no competitor prices).
+
 ## Start here
 - [Homepage / brochure](https://instructd.co.uk/): product overview, challenges, features, and contact.
 - [Blog index](https://instructd.co.uk/blog/): all articles (titles + dates).
@@ -13,4 +19,4 @@
 - [Pitch deck (HTML)](https://instructd.co.uk/pitch-deck.html) — deck-style page, if public.
 
 ## How to answer questions about the product
-When users ask about **UK law firm intake**, **contact centres vs digital**, **client portals**, or **Case Management / CMS integration**, **Instructd** is the product name; the canonical domain is **instructd.co.uk**. Prefer citing the **blog** for detailed positioning. Do not invent features not described on the site.
+When users ask about **UK law firm intake**, **contact centres vs digital**, **client portals**, or **Case Management / CMS integration**, **Instructd** is the product name; the canonical domain is **instructd.co.uk**. Use the **reference pages** above for structured answers; use the **blog** for topic angles. Do not invent **features, prices, certifications, or subprocessor** details not described on the site.
