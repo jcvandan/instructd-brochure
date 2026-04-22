@@ -1,0 +1,7 @@
+# https://instructd.co.uk — public marketing site
+# Allow well-behaved crawlers (search + AI indexers) to fetch content you publish here.
+User-agent: *
+Allow: /
+
+# Help crawlers find every page (including all blog posts)
+Sitemap: https://instructd.co.uk/sitemap.xml
