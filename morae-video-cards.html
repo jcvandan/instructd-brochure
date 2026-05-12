@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--
+  Morae demo video transition cards.
+
+  Each card below renders at exactly 1920 x 1080 CSS pixels.
+
+  RECOMMENDED CAPTURE METHOD (pixel-perfect 1920x1080 PNG, any monitor):
+
+  1. Open this file in Chrome.
+  2. Open DevTools (F12) -> click the "Toggle device toolbar" icon (or Ctrl+Shift+M).
+  3. From the device dropdown at the top, choose "Responsive" and set the
+     dimensions to 1920 x 1080.
+  4. Set zoom to "Fit to window" (or 50%) so you can see the cards.
+  5. For each card: scroll it into view, then click the 3-dot menu at the
+     top-right of the DevTools toolbar -> "Capture screenshot".
+     (Or use "Capture node screenshot" with the .card element selected.)
+
+  ALTERNATIVE (if you have a 1920x1080 monitor and don't want to use DevTools):
+
+  1. Open this file at 100% browser zoom.
+  2. Press F11 for fullscreen.
+  3. Use Snipping Tool (Win+Shift+S) to grab each card.
+
+  The bottom-of-page "Internal tool" banner is hidden in print so if you'd
+  rather print-to-PDF and screenshot from there, that works too.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Morae video - transition cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #1a2b4a;
+        --accent: #4f7df3;
+        --warm: #f8a557;
+        --bg: #fdfcfa;
+        --muted: rgba(26, 43, 74, 0.55);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        font-family: 'DM Sans', system-ui, sans-serif;
+        background: #e6e7ea;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .banner {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 24px 32px;
+        background: #1a2b4a;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .banner strong { color: #a8b8ff; }
+      .banner code {
+        font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 0.92em;
+      }
+
+      .card {
+        width: 1920px;
+        height: 1080px;
+        margin: 24px auto;
+        background: var(--bg);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Subtle dot grid */
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(79, 125, 243, 0.15) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(79, 125, 243, 0.15) 1px, transparent 1px);
+        background-size: 64px 64px;
+        pointer-events: none;
+      }
+
+      /* Corner accent — a soft blue radial top right */
+      .card::after {
+        content: '';
+        position: absolute;
+        top: -240px;
+        right: -240px;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(79, 125, 243, 0.18) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      /* Brand mark - top left */
+      .mark {
+        position: absolute;
+        top: 64px;
+        left: 80px;
+        font-weight: 700;
+        font-size: 36px;
+        color: var(--ink);
+        letter-spacing: -0.5px;
+        z-index: 2;
+      }
+      .mark span { color: var(--accent); }
+
+      /* Pillar tag - bottom right (small, optional aesthetic anchor) */
+      .pillar-tag {
+        position: absolute;
+        bottom: 64px;
+        right: 80px;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(26, 43, 74, 0.35);
+        z-index: 2;
+      }
+
+      /* Center content */
+      .card-center {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 120px;
+      }
+
+      .step-num {
+        display: block;
+        font-size: 96px;
+        font-weight: 400;
+        color: var(--accent);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        margin-bottom: 24px;
+      }
+
+      .step-title {
+        font-size: 280px;
+        font-weight: 600;
+        line-height: 0.95;
+        letter-spacing: -0.045em;
+        color: var(--ink);
+        margin-bottom: 56px;
+        white-space: nowrap;
+      }
+
+      .step-sub {
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* Slight per-card variation so each one has its own "feel" */
+      .card--handler::after {
+        background: radial-gradient(circle, rgba(248, 165, 87, 0.18) 0%, transparent 70%);
+      }
+      .card--change::after {
+        background: radial-gradient(circle, rgba(79, 125, 243, 0.16) 0%, transparent 70%);
+        top: auto;
+        bottom: -240px;
+        right: -240px;
+      }
+      .card--client .step-num { color: var(--accent); }
+      .card--handler .step-num { color: var(--warm); }
+      .card--change .step-num { color: var(--accent); }
+
+      @media print {
+        body { background: #fff; }
+        .banner { display: none; }
+        .card { margin: 0; page-break-after: always; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="banner">
+      <strong>Morae video transition cards</strong> -
+      three 1920 x 1080 cards designed to sit between each demo segment.
+      Open this in Chrome, hit <code>F12</code> -> device toolbar
+      (<code>Ctrl+Shift+M</code>), set the viewport to <code>1920 x 1080</code>, then
+      capture each card via DevTools -> three-dot menu -> <em>"Capture screenshot"</em>
+      (or <em>"Capture node screenshot"</em> with the card element selected for pixel-perfect
+      output). Full instructions in the HTML comment at the top of this file.
+    </div>
+
+    <!-- ============================================================
+         CARD 1 · CLIENT
+         ============================================================ -->
+    <section class="card card--client" aria-label="Transition card 1: Client">
+      <div class="mark">instructd<span>.</span></div>
+      <div class="card-center">
+        <span class="step-num">01</span>
+        <h1 class="step-title">Client</h1>
+        <p class="step-sub">Self-serve, on the firm's domain</p>
+      </div>
+      <div class="pillar-tag">Pillar 01</div>
+    </section>
+
+    <!-- ============================================================
+         CARD 2 · HANDLER
+         ============================================================ -->
+    <section class="card card--handler" aria-label="Transition card 2: Handler">
+      <div class="mark">instructd<span>.</span></div>
+      <div class="card-center">
+        <span class="step-num">02</span>
+        <h1 class="step-title">Handler</h1>
+        <p class="step-sub">Assisted intake, over the phone</p>
+      </div>
+      <div class="pillar-tag">Pillar 02</div>
+    </section>
+
+    <!-- ============================================================
+         CARD 3 · CHANGE CONTROL
+         ============================================================ -->
+    <section class="card card--change" aria-label="Transition card 3: Change control">
+      <div class="mark">instructd<span>.</span></div>
+      <div class="card-center">
+        <span class="step-num">03</span>
+        <h1 class="step-title">Change control</h1>
+        <p class="step-sub">Owned and shipped by the firm</p>
+      </div>
+      <div class="pillar-tag">Behind the scenes</div>
+    </section>
+
+  </body>
+</html>
