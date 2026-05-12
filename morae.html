@@ -1198,7 +1198,14 @@
         color: rgba(255, 255, 255, 0.7);
         font-size: 1.05rem;
         max-width: 38rem;
-        margin: 0 auto 2rem;
+        margin: 0 auto 1.25rem;
+      }
+      .next-cta .signoff-foot {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
       }
       .next-asks {
         display: grid;
@@ -1260,6 +1267,25 @@
         max-width: 38rem;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      /* Minimal sign-off */
+      .signoff-section {
+        text-align: center;
+        padding-top: 3.5rem;
+        padding-bottom: 5rem;
+      }
+      .signoff-line {
+        font-size: 1.05rem;
+        color: var(--color-text-muted);
+        margin: 0 0 0.5rem;
+      }
+      .signoff-name {
+        font-size: 1rem;
+        color: var(--color-primary);
+        font-weight: 500;
+        font-style: italic;
+        margin: 0;
       }
     </style>
   </head>
@@ -1481,7 +1507,7 @@
     <!-- ============================================================
          2 · DEMO VIDEO
          ============================================================
-         VIDEO SCRIPT (~115 seconds, 5 beats, ~145 words).
+         VIDEO SCRIPT (~115 seconds, 5 beats, ~165 words).
          Record screen + voiceover. Drop the unlisted YouTube ID into
          the data-youtube-id attribute on the .video-frame below to
          swap the placeholder for the real embed.
@@ -1491,7 +1517,7 @@
             Insurance and banking went online a decade ago. Legal didn't.
             Instructd is the platform changing that - in three places."
 
-         2. PILLAR 1 - CLIENT SELF-SERVE (35s) - screen-record a real
+         2. PILLAR 1 - CLIENT SELF-SERVE (30s) - screen-record a real
             intake on the demo tenant from a client's perspective
             (phone-friendly view):
             "First, the client side. A guided journey on the firm's own
@@ -1500,40 +1526,45 @@
             phone queue, no transcription errors. Most clients who'd
             otherwise sit on a call complete this themselves."
 
-         3. PILLAR 2 - HANDLER INTAKE UI (35s) - desktop view: the same
+         3. PILLAR 2 - HANDLER INTAKE UI (30s) - desktop view: the same
             journey schema rendered as a focused capture UI for a call
             handler. Show them typing answers as if on a call:
             "Second, for the calls that do still come in. The same
             structured journey, but as a focused intake UI for a call
             handler. The handler reads the prompts, captures the answers,
             and the data lands in the case management system in exactly
-            the same shape. No CMS training needed. New handlers go live
-            in days, not weeks."
+            the same shape. No CMS training needed."
 
-         4. PILLAR 3 - CLIENT PORTAL (25s) - portal mockup or in-dev
-            screen: client logging in, seeing case status and updates:
-            "And third, after intake. A client-facing portal where the
-            same person can track their case, get updates, and message
-            the firm. One identity, one experience, from first enquiry
-            through to file open and beyond. In build now, on the same
-            platform."
+         4. ENTERPRISE CHANGE CONTROL (30s) - admin UI: open the visual
+            editor on a live journey, edit one question (change the
+            label, or add an option), save, publish to dev, then promote
+            dev -> test -> live. Briefly hover over the version history /
+            audit log on the way through.
+            "Now the part that matters to IT. The firm's own team owns
+            the platform. Edit a question in the visual editor. Publish
+            to dev. Promote through test to live - the same dev / test /
+            live discipline enterprise IT already runs on for any other
+            production system. Version history, audit log, and rollback
+            on every change. No agency, no developers, no surprises."
 
-         5. CLOSER (10s) - closing card:
-            "Three places, one platform, one schema. Self-serve where it
-            works, assisted where it doesn't, portal once the file's
-            open. For the firm: lower headcount, faster onboarding,
-            better client experience, and a platform their team owns."
+         5. CLOSER (15s) - closing card; mention the third pillar in the
+            voiceover so it isn't lost:
+            "Client self-serve where it works. Assisted handler intake
+            where it doesn't. And a post-intake client portal in build now,
+            on the same platform. Three ways in, one schema, and a
+            platform the firm actually owns."
 
          Tooling: OBS Studio (Windows) for capture; DaVinci Resolve or
          Clipchamp for light edit; USB condenser mic. Host as unlisted
-         YouTube. Do not spend video time on the admin / flow editor -
-         that's a separate technical demo for IT buyers later.
+         YouTube. Keep the admin beat short and outcome-focused - don't
+         get drawn into the full flow editor; that's a separate technical
+         demo for IT buyers later.
          ============================================================ -->
     <section id="video" class="morae-section morae-section--alt">
       <div class="morae-section-inner morae-section-inner--narrow">
         <span class="morae-eyebrow">Demo</span>
         <h2>See it in 90 seconds</h2>
-        <p class="morae-lead">A walk-through of the three places Instructd shows up: client self-serve, the call-handler intake UI, and the client portal.</p>
+        <p class="morae-lead">A walk-through of the two live pillars - client self-serve and the call-handler intake UI - plus a quick look at how the firm's own team ships changes safely. The third pillar (a post-intake client portal) is in build and isn't in the demo yet.</p>
 
         <div class="video-frame" data-youtube-id="REPLACE_ME">
           <!--
@@ -1555,19 +1586,19 @@
 
         <div class="video-beats">
           <div class="video-beat">
-            <div class="b-time">0:10 – 0:45</div>
+            <div class="b-time">0:10 – 0:40</div>
             <h4>Pillar 1 · Client self-serve</h4>
             <p>The client fills in their own intake on the firm's branded domain - identity check, matter details, signed authority. Five minutes, any device, any time of day.</p>
           </div>
           <div class="video-beat">
-            <div class="b-time">0:45 – 1:20</div>
+            <div class="b-time">0:40 – 1:10</div>
             <h4>Pillar 2 · Handler intake UI</h4>
             <p>The same journey rendered as a focused capture UI for staff on calls. No CMS training needed. New handlers productive in days, data in the same shape.</p>
           </div>
           <div class="video-beat">
-            <div class="b-time">1:20 – 1:45</div>
-            <h4>Pillar 3 · Client portal</h4>
-            <p>Once the file is open, the same client logs back in to track status, receive updates, and message the firm. In build, on the same platform.</p>
+            <div class="b-time">1:10 – 1:40</div>
+            <h4>How firms ship changes safely</h4>
+            <p>Edit a question in the visual editor. Publish to dev, promote through test to live. Version history, audit log, rollback on every change - the dev/test/live discipline enterprise IT already runs on.</p>
           </div>
         </div>
       </div>
@@ -1813,40 +1844,12 @@
     </section>
 
     <!-- ============================================================
-         5 · NEXT STEPS
+         SIGN-OFF
          ============================================================ -->
-    <section id="next" class="morae-section">
+    <section class="morae-section signoff-section">
       <div class="morae-section-inner morae-section-inner--narrow">
-        <div class="next-cta">
-          <span class="morae-eyebrow" style="color: #a8b8ff;">Next steps</span>
-          <h2>If this lands, here's what we'd ask for</h2>
-          <p>Three concrete asks. The natural sequence is feedback from Carla on what to sharpen, then a live walk-through with Shahzad, then a working session on commercials with whoever Morae wants in the room. None of them are commitments - just the shortest path to a working partnership.</p>
-
-          <div class="next-asks">
-            <div class="ask-card">
-              <div class="ask-num">01</div>
-              <h4>Carla's feedback</h4>
-              <p>Anything that doesn't land, anything you'd tell differently, anything to tighten before this reaches Shahzad. We'll rework it.</p>
-            </div>
-            <div class="ask-card">
-              <div class="ask-num">02</div>
-              <h4>30 minutes with Shahzad</h4>
-              <p>Ben and Dan walk through this content live, answer his questions, and get a read on whether there's real appetite at the top.</p>
-            </div>
-            <div class="ask-card">
-              <div class="ask-num">03</div>
-              <h4>Commercials, together</h4>
-              <p>An hour to land on a shape - rev-share %, term, exclusivity - that both Morae and Instructd are happy to sign off.</p>
-            </div>
-          </div>
-
-          <div class="next-actions">
-            <a href="mailto:dan@instructd.co.uk?subject=Morae%20%2B%20Instructd%20partnership" class="btn btn-cta">Email Dan</a>
-            <a href="mailto:ben@instructd.co.uk?subject=Morae%20%2B%20Instructd%20partnership" class="btn btn-secondary">Email Ben</a>
-          </div>
-        </div>
-
-        <p class="confidential">Confidential - prepared for Carla at Morae Global. Please don't forward outside the organisation. For any technical follow-up (security pack, ISO control alignment, infrastructure walkthrough), contact <a href="mailto:dan@instructd.co.uk" style="color: var(--color-accent);">dan@instructd.co.uk</a>.</p>
+        <p class="signoff-line">Thanks for taking the time to read this.</p>
+        <p class="signoff-name">- Dan &amp; Ben</p>
       </div>
     </section>
 
