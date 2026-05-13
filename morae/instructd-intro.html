@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+  Instructd brand intro frame for the Morae demo video opener (0:00-0:08).
+
+  Two capture targets at 1920 x 1080:
+    1. .canvas--brand-only  - frames 0:00-0:05, wordmark + tagline only
+    2. .canvas--with-dots   - frames 0:05-0:08, three pillar dots added
+
+  In your editor, cross-fade between PNG 1 and PNG 2 over ~0.6s starting
+  at the 0:05 mark to produce the dot-reveal effect described in the
+  script comment in morae/index.html.
+
+  CAPTURE METHOD (pixel-perfect 1920x1080 PNG):
+    1. Open this file in Chrome.
+    2. F12 -> toggle device toolbar (Ctrl+Shift+M) -> set 1920 x 1080.
+    3. Right-click each .canvas section -> Inspect.
+    4. In DevTools, three-dot menu on the highlighted node ->
+       "Capture node screenshot".
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Instructd intro frames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #1a2b4a;
+        --accent: #4f7df3;
+        --warm: #f8a557;
+        --bg: #fdfcfa;
+        --muted: rgba(26, 43, 74, 0.55);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        font-family: 'DM Sans', system-ui, sans-serif;
+        background: #e6e7ea;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .banner {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 24px 32px;
+        background: #1a2b4a;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .banner strong { color: #a8b8ff; }
+      .banner code {
+        font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 0.92em;
+      }
+
+      .canvas {
+        width: 1920px;
+        height: 1080px;
+        margin: 24px auto;
+        background: var(--bg);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Subtle dot grid - same texture as morae-video-cards.html */
+      .canvas::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(79, 125, 243, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(79, 125, 243, 0.045) 1px, transparent 1px);
+        background-size: 64px 64px;
+        pointer-events: none;
+      }
+
+      /* Soft accent radial top-right */
+      .canvas::after {
+        content: '';
+        position: absolute;
+        top: -240px;
+        right: -240px;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(79, 125, 243, 0.18) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .brand-stack {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 120px;
+      }
+
+      .wordmark {
+        font-size: 260px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.045em;
+        color: var(--ink);
+        margin-bottom: 56px;
+      }
+      .wordmark span {
+        color: var(--accent);
+      }
+
+      .tagline {
+        font-size: 38px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        margin-bottom: 80px;
+      }
+
+      .pillar-dots {
+        display: flex;
+        justify-content: center;
+        gap: 36px;
+      }
+      .dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: block;
+      }
+      .dot--client  { background: var(--accent); }
+      .dot--handler { background: var(--warm); }
+      .dot--change  { background: var(--accent); }
+
+      /* The brand-only canvas hides the dots so the spacing of the
+         stack is consistent visually if you ever want to compare side
+         by side; the with-dots canvas shows them. */
+      .canvas--brand-only .pillar-dots { visibility: hidden; }
+
+      @media print {
+        body { background: #fff; }
+        .banner { display: none; }
+        .canvas { margin: 0; page-break-after: always; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="banner">
+      <strong>Instructd intro frames</strong> - two 1920 x 1080 capture
+      targets for the demo video opener. Cross-fade between them in the
+      editor for the dot reveal at <code>0:05</code>. Capture each via
+      DevTools - right-click the canvas - <em>"Capture node screenshot"</em>.
+    </div>
+
+    <!-- ============================================================
+         CANVAS 1 · BRAND ONLY (frames 0:00 - 0:05)
+         ============================================================ -->
+    <section class="canvas canvas--brand-only" aria-label="Instructd intro - brand only">
+      <div class="brand-stack">
+        <div class="wordmark">instructd<span>.</span></div>
+        <p class="tagline">Client intake, productised for UK law firms.</p>
+        <div class="pillar-dots" aria-hidden="true">
+          <span class="dot dot--client"></span>
+          <span class="dot dot--handler"></span>
+          <span class="dot dot--change"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CANVAS 2 · WITH PILLAR DOTS (frames 0:05 - 0:08)
+         ============================================================ -->
+    <section class="canvas canvas--with-dots" aria-label="Instructd intro - with pillar dots">
+      <div class="brand-stack">
+        <div class="wordmark">instructd<span>.</span></div>
+        <p class="tagline">Client intake, productised for UK law firms.</p>
+        <div class="pillar-dots">
+          <span class="dot dot--client"></span>
+          <span class="dot dot--handler"></span>
+          <span class="dot dot--change"></span>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>

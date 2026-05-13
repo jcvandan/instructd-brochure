@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--
+  Acme Solicitors - demo client brand assets for the Morae video.
+
+  Three capture targets below:
+    1. .canvas--wordmark  (1920x1080) - hero / full-frame wordmark
+    2. .canvas--header    (1920x240)  - header lockup, upload as Theme.LogoUrl
+    3. .canvas--favicon   (256x256)   - favicon monogram, resize to 32x32
+
+  CAPTURE METHOD (pixel-perfect PNG, any monitor):
+    1. Open this file in Chrome.
+    2. F12 -> toggle device toolbar (Ctrl+Shift+M) -> set 1920 wide.
+    3. Right-click each .canvas section -> Inspect.
+    4. In DevTools, right-click the highlighted node -> "Capture node screenshot".
+
+  HEX CODES for the admin theme editor:
+    Primary:   #1f3d2e   (deep forest green)
+    Secondary: #c9a961   (muted gold)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Acme Solicitors - demo brand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #1f3d2e;
+        --gold: #c9a961;
+        --paper: #ffffff;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        font-family: 'DM Sans', system-ui, sans-serif;
+        background: #e6e7ea;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .banner {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 20px 32px;
+        background: #1a2b4a;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .banner strong { color: #a8b8ff; }
+      .banner code {
+        font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 0.92em;
+      }
+      .banner .swatch {
+        display: inline-block;
+        width: 12px; height: 12px;
+        border-radius: 3px;
+        vertical-align: middle;
+        margin-right: 6px;
+        margin-left: 8px;
+      }
+
+      .canvas {
+        margin: 24px auto;
+        background: var(--paper);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .canvas--wordmark { width: 1920px; height: 1080px; }
+      .canvas--header   { width: 1920px; height: 240px;  }
+      .canvas--favicon  { width: 256px;  height: 256px;  }
+
+      /* --- Wordmark (hero) --- */
+      .wordmark {
+        text-align: center;
+        font-family: 'DM Serif Display', serif;
+        color: var(--ink);
+      }
+      .wordmark .name {
+        font-size: 220px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .wordmark .rule {
+        width: 320px;
+        height: 4px;
+        background: var(--gold);
+        margin: 36px auto 28px;
+      }
+      .wordmark .tag {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 26px;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        color: var(--ink);
+        opacity: 0.75;
+      }
+
+      /* --- Header lockup (in-app) --- */
+      .header-lockup {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: 'DM Serif Display', serif;
+        color: var(--ink);
+      }
+      .header-lockup .mark {
+        font-size: 64px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .header-lockup .bar {
+        width: 3px;
+        height: 44px;
+        background: var(--gold);
+      }
+      .header-lockup .tag {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      /* --- Favicon monogram --- */
+      .favicon {
+        font-family: 'DM Serif Display', serif;
+        font-size: 200px;
+        color: var(--paper);
+        background: var(--ink);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+
+      @media print {
+        body { background: #fff; }
+        .banner { display: none; }
+        .canvas { margin: 0; page-break-after: always; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="banner">
+      <strong>Acme Solicitors</strong> demo brand - three capture targets below.
+      Use Chrome DevTools (<code>F12</code>) -> right-click each canvas -> <em>"Capture node screenshot"</em> for pixel-perfect PNGs.
+      Theme hexes:
+      <span class="swatch" style="background:#1f3d2e"></span><code>#1f3d2e</code> primary,
+      <span class="swatch" style="background:#c9a961"></span><code>#c9a961</code> secondary.
+    </div>
+
+    <!-- 1. WORDMARK · 1920 x 1080 -->
+    <section class="canvas canvas--wordmark" aria-label="Acme Solicitors wordmark">
+      <div class="wordmark">
+        <div class="name">Acme Solicitors</div>
+        <div class="rule"></div>
+        <div class="tag">London &middot; Established 1987</div>
+      </div>
+    </section>
+
+    <!-- 2. HEADER LOCKUP · 1920 x 240 -->
+    <section class="canvas canvas--header" aria-label="Acme Solicitors header lockup">
+      <div class="header-lockup">
+        <div class="mark">Acme Solicitors</div>
+        <div class="bar"></div>
+        <div class="tag">Solicitors</div>
+      </div>
+    </section>
+
+    <!-- 3. FAVICON · 256 x 256 -->
+    <section class="canvas canvas--favicon" aria-label="Acme Solicitors favicon monogram">
+      <div class="favicon">A</div>
+    </section>
+
+  </body>
+</html>
