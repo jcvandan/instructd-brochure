@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+  iPad-frame wrapper (landscape) for screen-recording the demo.
+
+  WHY THIS EXISTS
+  Same idea as intake-phone-frame.html, but for showing the journey
+  on a tablet-class viewport - useful for the handler intake UI or
+  the change-control admin UI where a desktop-ish breakpoint reads
+  better than a 460px phone viewport. The iPad is pinned to the
+  right side of the 1920x1080 canvas so the left ~720px stays clear
+  for a side-panel label overlay (drop one of the white-bg label
+  PNGs from morae/video-cards.html cards 4-6 on top in Clipchamp).
+
+  HOW TO USE
+    1. Serve this from the SAME ORIGIN as the journey URL you want to
+       iframe - SameSite=Strict cookies won't survive cross-origin
+       (see the equivalent note on intake-phone-frame.html).
+    2. Append the journey URL as a query parameter:
+       http://localhost:5173/intake-ipad-frame.html?url=/journey/xyz
+    3. Press F11 for fullscreen Chrome.
+    4. Start Clipchamp screen recording -> "Entire screen".
+    5. Walk through your demo journey inside the iPad.
+
+  TUNING THE iPad SIZE
+  Change --ipad-w / --ipad-h / --right-margin at the top of :root to
+  adjust the device dimensions and how far it sits from the right
+  edge. The frame thickness, camera dot, and screen all scale with
+  these values.
+
+  LAYOUT MATH
+    Canvas:     1920 x 1080
+    iPad outer: 1160 x 780, positioned right:40px, vertically centred
+                -> spans x=720-1880, y=150-930
+    Label area: x=0-720 (free for label overlay; label content
+                actually sits at x=140-660 with a 60px gap to iPad)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intake demo - iPad frame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ipad-w: 1160px;
+        --ipad-h: 780px;
+        --bezel-side: 24px;
+        --bezel-top: 28px;
+        --bezel-bottom: 28px;
+        --right-margin: 40px;
+        --ipad-frame: #1a1a1a;
+        --ipad-detail: #2e2e2e;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        font-family: 'DM Sans', system-ui, sans-serif;
+        overflow: hidden;
+      }
+
+      /* ------------------------------------------------------------
+         iPad frame - pinned right, vertically centred
+         ------------------------------------------------------------ */
+      .ipad {
+        position: absolute;
+        right: var(--right-margin);
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--ipad-w);
+        height: var(--ipad-h);
+        background: var(--ipad-frame);
+        border-radius: 28px;
+        padding:
+          var(--bezel-top)
+          var(--bezel-side)
+          var(--bezel-bottom);
+        box-shadow:
+          0 32px 80px rgba(0, 0, 0, 0.18),
+          0 8px 16px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Camera dot - centred at top of top bezel */
+      .ipad::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 8px;
+        background: var(--ipad-detail);
+        border-radius: 50%;
+      }
+
+      /* ------------------------------------------------------------
+         Screen + iframe
+         ------------------------------------------------------------ */
+      .ipad-screen {
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      /* ------------------------------------------------------------
+         Helper banner + placeholder (hidden once ?url= is provided)
+         ------------------------------------------------------------ */
+      .no-url-help {
+        position: fixed;
+        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1a2b4a;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 720px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+      .no-url-help strong { color: #a8b8ff; }
+      .no-url-help code {
+        font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 0.92em;
+      }
+      .has-url .no-url-help { display: none; }
+
+      .placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        height: 100%;
+        padding: 32px;
+        text-align: center;
+        color: rgba(26, 43, 74, 0.55);
+      }
+      .placeholder .mark {
+        font-weight: 700;
+        font-size: 22px;
+        color: #1a2b4a;
+        letter-spacing: -0.4px;
+      }
+      .placeholder .mark span { color: #4f7df3; }
+      .placeholder p { font-size: 14px; line-height: 1.5; }
+      .has-url .placeholder { display: none; }
+    </style>
+  </head>
+  <body>
+
+    <div class="no-url-help">
+      <strong>No demo URL set.</strong> Append
+      <code>?url=/journey/your-demo-journey</code> to this page's URL
+      to load your demo tenant inside the iPad frame. Must be served
+      from the same origin as the journey for cookies to flow.
+      Press <code>F11</code> to fullscreen before recording.
+    </div>
+
+    <div class="ipad">
+      <div class="ipad-screen">
+        <div class="placeholder">
+          <div class="mark">instructd<span>.</span></div>
+          <p>Your demo journey will load here.<br/>Add a <code>?url=</code> query param to this page.</p>
+        </div>
+        <iframe id="demo-iframe" title="Intake demo" style="display:none"></iframe>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const url = params.get('url');
+        if (url) {
+          const iframe = document.getElementById('demo-iframe');
+          iframe.src = url;
+          iframe.style.display = 'block';
+          document.body.classList.add('has-url');
+        }
+      })();
+    </script>
+
+  </body>
+</html>

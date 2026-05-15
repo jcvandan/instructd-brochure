@@ -140,6 +140,86 @@
         padding: 0 120px;
       }
 
+      .card-icon {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 36px;
+      }
+      .card-icon svg {
+        width: 160px;
+        height: 160px;
+        stroke-width: 1.5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .card--client  .card-icon svg { stroke: var(--accent); }
+      .card--handler .card-icon svg { stroke: var(--warm); }
+      .card--change  .card-icon svg { stroke: var(--accent); }
+      .card--portal  .card-icon svg { stroke: var(--warm); }
+
+      /* ------------------------------------------------------------
+         "Coming soon" pill - replaces the step-num on the portal card.
+         Warm/orange theme so the live pillars (which use blue) read
+         as "now" and the portal reads as "next".
+         ------------------------------------------------------------ */
+      .coming-pill {
+        display: inline-block;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--warm);
+        background: rgba(248, 165, 87, 0.10);
+        border: 1.5px solid rgba(248, 165, 87, 0.42);
+        padding: 14px 36px;
+        border-radius: 999px;
+        margin-bottom: 36px;
+        line-height: 1;
+      }
+
+      /* ------------------------------------------------------------
+         Side-panel label variant
+         White bg, content pinned to the left half of the 1920x1080
+         frame, designed to be dropped on top of a phone recording
+         (where the phone sits centred) without ever overlapping the
+         phone area (x ~720-1200).
+         ------------------------------------------------------------ */
+      .card--label {
+        background: #ffffff;
+        justify-content: flex-start;
+        padding-left: 140px;
+      }
+      .card--label::before,
+      .card--label::after {
+        display: none;
+      }
+      .label-stack {
+        width: 520px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .label-stack .card-icon { margin-bottom: 32px; }
+      .label-stack .card-icon svg {
+        width: 140px;
+        height: 140px;
+      }
+      .label-stack .step-num {
+        font-size: 56px;
+        margin-bottom: 16px;
+      }
+      .label-stack .step-title {
+        font-size: 110px;
+        line-height: 1.0;
+        margin-bottom: 32px;
+        white-space: normal;
+      }
+      .label-stack .step-sub {
+        font-size: 20px;
+        letter-spacing: 0.24em;
+      }
+
       .step-num {
         display: block;
         font-size: 96px;
@@ -178,6 +258,9 @@
         bottom: -240px;
         right: -240px;
       }
+      .card--portal::after {
+        background: radial-gradient(circle, rgba(248, 165, 87, 0.20) 0%, transparent 70%);
+      }
       .card--client .step-num { color: var(--accent); }
       .card--handler .step-num { color: var(--warm); }
       .card--change .step-num { color: var(--accent); }
@@ -192,13 +275,14 @@
   <body>
 
     <div class="banner">
-      <strong>Morae video transition cards</strong> -
-      three 1920 x 1080 cards designed to sit between each demo segment.
-      Open this in Chrome, hit <code>F12</code> -> device toolbar
-      (<code>Ctrl+Shift+M</code>), set the viewport to <code>1920 x 1080</code>, then
-      capture each card via DevTools -> three-dot menu -> <em>"Capture screenshot"</em>
-      (or <em>"Capture node screenshot"</em> with the card element selected for pixel-perfect
-      output). Full instructions in the HTML comment at the top of this file.
+      <strong>Morae video transition cards</strong> - seven 1920 x 1080 capture targets.
+      Cards 1-3 are the live-pillar full-frame transitions (cream bg) for splicing between
+      demo segments. Card 4 is the <em>"Coming soon"</em> portal card (cream bg, warm
+      accent) for the future 120s version where the pillar-3 VO runs over a static image
+      instead of a demo. Cards 5-7 are <em>side-panel labels</em> (white bg, content pinned
+      left) designed to drop on top of the phone recording at 100% scale - they sit beside
+      the phone without overlapping. Capture each via DevTools -> three-dot menu ->
+      <em>"Capture node screenshot"</em>.
     </div>
 
     <!-- ============================================================
@@ -207,6 +291,12 @@
     <section class="card card--client" aria-label="Transition card 1: Client">
       <div class="mark">instructd<span>.</span></div>
       <div class="card-center">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 22v-2a8 8 0 0 1 16 0v2"/>
+          </svg>
+        </div>
         <span class="step-num">01</span>
         <h1 class="step-title">Client</h1>
         <p class="step-sub">Self-serve, on the firm's domain</p>
@@ -220,6 +310,13 @@
     <section class="card card--handler" aria-label="Transition card 2: Handler">
       <div class="mark">instructd<span>.</span></div>
       <div class="card-center">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1v-6Z"/>
+            <path d="M21 14h-3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2a1 1 0 0 0 1-1v-6Z"/>
+            <path d="M21 14v-2a9 9 0 0 0-18 0v2"/>
+          </svg>
+        </div>
         <span class="step-num">02</span>
         <h1 class="step-title">Handler</h1>
         <p class="step-sub">Assisted intake, over the phone</p>
@@ -233,11 +330,113 @@
     <section class="card card--change" aria-label="Transition card 3: Change control">
       <div class="mark">instructd<span>.</span></div>
       <div class="card-center">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="6" cy="4" r="3"/>
+            <circle cx="6" cy="20" r="3"/>
+            <circle cx="18" cy="14" r="3"/>
+            <path d="M6 7v10"/>
+            <path d="M18 11V8a3 3 0 0 0-3-3H9"/>
+          </svg>
+        </div>
         <span class="step-num">03</span>
         <h1 class="step-title">Change control</h1>
         <p class="step-sub">Owned and shipped by the firm</p>
       </div>
       <div class="pillar-tag">Behind the scenes</div>
+    </section>
+
+    <!-- ============================================================
+         CARD 4 · CLIENT PORTAL (coming soon · full-frame transition)
+         ============================================================
+         Use this card under the future 120s pillar-03 VO beat in
+         place of an actual portal demo. Same vocabulary as cards 1-3
+         (icon · identifier · title · subtitle · pillar tag) but the
+         identifier slot is a "Coming soon" pill instead of a step
+         number, and the whole card leans on the warm/orange accent
+         so it reads as "next" rather than "now". -->
+    <section class="card card--portal" aria-label="Coming soon: Client portal">
+      <div class="mark">instructd<span>.</span></div>
+      <div class="card-center">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="9" rx="1"/>
+            <rect x="14" y="3" width="7" height="5" rx="1"/>
+            <rect x="14" y="12" width="7" height="9" rx="1"/>
+            <rect x="3" y="16" width="7" height="5" rx="1"/>
+          </svg>
+        </div>
+        <span class="coming-pill">Coming soon</span>
+        <h1 class="step-title">Client portal</h1>
+        <p class="step-sub">Status, updates, documents - same identity</p>
+      </div>
+      <div class="pillar-tag">Pillar 03</div>
+    </section>
+
+    <!--
+      ============================================================
+      SIDE-PANEL LABELS · 5, 6, 7
+      ============================================================
+      Same icon + title vocabulary as cards 1-3, but laid out as a
+      compact left-aligned panel on a pure white background. Designed
+      to be dropped on top of the phone recording in Clipchamp at
+      100% scale - they sit in the left margin (x ~140-660) and never
+      overlap the phone area (x ~720-1200).
+    -->
+
+    <!-- ============================================================
+         LABEL 5 · CLIENT (white-bg side-panel)
+         ============================================================ -->
+    <section class="card card--client card--label" aria-label="Side-panel label: Client">
+      <div class="label-stack">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 22v-2a8 8 0 0 1 16 0v2"/>
+          </svg>
+        </div>
+        <span class="step-num">01</span>
+        <h1 class="step-title">Client</h1>
+        <p class="step-sub">Self-serve, on the firm's domain</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         LABEL 6 · HANDLER (white-bg side-panel)
+         ============================================================ -->
+    <section class="card card--handler card--label" aria-label="Side-panel label: Handler">
+      <div class="label-stack">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1v-6Z"/>
+            <path d="M21 14h-3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2a1 1 0 0 0 1-1v-6Z"/>
+            <path d="M21 14v-2a9 9 0 0 0-18 0v2"/>
+          </svg>
+        </div>
+        <span class="step-num">02</span>
+        <h1 class="step-title">Handler</h1>
+        <p class="step-sub">Assisted intake, over the phone</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         LABEL 7 · CHANGE CONTROL (white-bg side-panel)
+         ============================================================ -->
+    <section class="card card--change card--label" aria-label="Side-panel label: Change control">
+      <div class="label-stack">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="6" cy="4" r="3"/>
+            <circle cx="6" cy="20" r="3"/>
+            <circle cx="18" cy="14" r="3"/>
+            <path d="M6 7v10"/>
+            <path d="M18 11V8a3 3 0 0 0-3-3H9"/>
+          </svg>
+        </div>
+        <span class="step-num">03</span>
+        <h1 class="step-title">Change control</h1>
+        <p class="step-sub">Owned and shipped by the firm</p>
+      </div>
     </section>
 
   </body>

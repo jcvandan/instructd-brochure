@@ -32,6 +32,7 @@
       <div class="nav-container">
         <a href="/" class="logo"><img src="/img/logo.svg" alt="instructd." /></a>
         <div class="nav-links">
+          <a href="/#demo">Demo</a>
           <a href="/#what">What We Do</a>
           <a href="/#problem">Challenges</a>
           <a href="/#solution">Our Platform</a>
@@ -58,63 +59,44 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-card">
-            <div class="flow-preview">
-              <div class="flow-step">
-                <div class="flow-icon blue">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                </div>
-                <div class="flow-text">
-                  <h4>Online intake</h4>
-                  <p>Guided journey, anytime, any device</p>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-icon orange">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 11l3 3L22 4" />
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                  </svg>
-                </div>
-                <div class="flow-text">
-                  <h4>Validated data</h4>
-                  <p>Structured information, no rekeying</p>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-icon navy">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <ellipse cx="12" cy="5" rx="9" ry="3" />
-                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                  </svg>
-                </div>
-                <div class="flow-text">
-                  <h4>Into your system</h4>
-                  <p>Straight into your case management system</p>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-icon blue">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                </div>
-                <div class="flow-text">
-                  <h4>Client portal</h4>
-                  <p>Track progress and message your firm</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="#demo" class="hero-video-poster" aria-label="Watch the Instructd product demo">
+            <img class="hero-video-thumb"
+                 src="https://i.ytimg.com/vi/MSFu6ajJ5Bo/maxresdefault.jpg"
+                 alt=""
+                 loading="eager"
+                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/MSFu6ajJ5Bo/hqdefault.jpg';" />
+            <span class="hero-video-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+            <span class="hero-video-pill">Watch 90-second demo</span>
+          </a>
           <div class="floating-stat top-right">
             <div class="stat-number">24/7</div>
             <div class="stat-label">Clients can start anytime</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section">
+      <div class="demo-container">
+        <div class="demo-header">
+          <span class="demo-eyebrow">90-second demo</span>
+          <h2>See Instructd in action</h2>
+          <p>A walk-through of where Instructd shows up across a firm - client self-serve intake, the call-handler UI, and the admin tooling that ties them together. Same schema, same data, every time.</p>
+        </div>
+        <div class="video-frame" data-youtube-id="MSFu6ajJ5Bo" data-state="facade">
+          <button type="button" class="video-poster" aria-label="Play the Instructd product demo">
+            <img class="video-poster-thumb"
+                 src="https://i.ytimg.com/vi/MSFu6ajJ5Bo/maxresdefault.jpg"
+                 alt=""
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/MSFu6ajJ5Bo/hqdefault.jpg';" />
+            <span class="video-play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+          </button>
         </div>
       </div>
     </section>
@@ -540,8 +522,64 @@
     </footer>
 
     <script>
+      // YouTube facade: keeps the initial page load light by only
+      // loading the YouTube player iframe (and its ~500kb of JS)
+      // when someone actually clicks play.
+      function buildDemoIframe(youtubeId, autoplay) {
+        const iframe = document.createElement("iframe");
+        iframe.src =
+          "https://www.youtube-nocookie.com/embed/" +
+          youtubeId +
+          "?rel=0&modestbranding=1&playsinline=1" +
+          (autoplay ? "&autoplay=1" : "");
+        iframe.title = "Instructd product demo";
+        iframe.loading = "lazy";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.setAttribute("allowfullscreen", "");
+        return iframe;
+      }
+
+      function activateDemoFrame(frame, autoplay) {
+        if (!frame || frame.dataset.state === "live") return;
+        const youtubeId = frame.dataset.youtubeId;
+        if (!youtubeId) return;
+        frame.innerHTML = "";
+        frame.appendChild(buildDemoIframe(youtubeId, autoplay));
+        frame.dataset.state = "live";
+      }
+
+      document
+        .querySelectorAll(".video-frame .video-poster")
+        .forEach((poster) => {
+          poster.addEventListener("click", function () {
+            activateDemoFrame(poster.closest(".video-frame"), true);
+          });
+        });
+
+      const heroPoster = document.querySelector(".hero-video-poster");
+      if (heroPoster) {
+        heroPoster.addEventListener("click", function (e) {
+          e.preventDefault();
+          const demoSection = document.querySelector("#demo");
+          const frame = document.querySelector("#demo .video-frame");
+          if (demoSection) {
+            demoSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          // Wait for the smooth-scroll to finish before kicking the
+          // player off, otherwise autoplay can be blocked or the
+          // viewer hears audio before the video is in view.
+          setTimeout(function () {
+            activateDemoFrame(frame, true);
+          }, 700);
+        });
+      }
+
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
+          // The hero video poster has its own click handler above
+          // that combines scroll + autoplay. Let that one win.
+          if (anchor.classList.contains("hero-video-poster")) return;
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {

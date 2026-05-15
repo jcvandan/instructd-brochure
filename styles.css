@@ -260,16 +260,24 @@ nav {
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-.hero-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    padding: 2rem;
+/* Hero video poster - replaces the old flow-preview card and gives
+   the hero a single, focused visual CTA pointing at the demo. */
+.hero-video-poster {
+    display: block;
     position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    background: var(--color-primary);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-.hero-card::before {
+.hero-video-poster::before {
     content: '';
     position: absolute;
     top: 0;
@@ -277,58 +285,70 @@ nav {
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, var(--color-accent), var(--color-warm));
+    z-index: 3;
 }
 
-.flow-preview {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.hero-video-poster:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
 
-.flow-step {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: var(--color-bg-alt);
-    border-radius: var(--radius-sm);
-    transition: var(--transition);
+.hero-video-thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.88);
+    transition: filter 0.3s ease;
 }
 
-.flow-step:hover {
-    transform: translateX(4px);
-    background: var(--color-white);
-    box-shadow: var(--shadow-soft);
+.hero-video-poster:hover .hero-video-thumb {
+    filter: brightness(1);
 }
 
-.flow-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-sm);
+.hero-video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: rgba(26, 43, 74, 0.92);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+    transition: var(--transition);
+    z-index: 2;
 }
 
-.flow-icon.blue { background: rgba(79, 125, 243, 0.1); color: var(--color-accent); }
-.flow-icon.orange { background: rgba(248, 165, 87, 0.15); color: var(--color-warm); }
-.flow-icon.navy { background: rgba(26, 43, 74, 0.1); color: var(--color-primary); }
-
-.flow-icon svg {
-    width: 20px;
-    height: 20px;
+.hero-video-poster:hover .hero-video-play {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--color-accent);
 }
 
-.flow-text h4 {
-    font-size: 0.9rem;
+.hero-video-play svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 4px;
+}
+
+.hero-video-pill {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    padding: 0.45rem 0.9rem;
+    background: rgba(253, 252, 250, 0.95);
+    border-radius: 100px;
+    font-size: 0.78rem;
     font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--color-primary);
-}
-
-.flow-text p {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
+    z-index: 2;
+    backdrop-filter: blur(8px);
 }
 
 .floating-stat {
@@ -338,6 +358,7 @@ nav {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-hover);
     animation: float 4s ease-in-out infinite;
+    z-index: 4;
 }
 
 .floating-stat.top-right {
@@ -367,6 +388,138 @@ nav {
 .stat-label {
     font-size: 0.75rem;
     color: var(--color-text-muted);
+}
+
+/* Demo Section - the second screen, anchored on the YouTube embed.
+   Uses a YouTube facade pattern (poster + play button) so the
+   ~500kb of YouTube player JS only loads on click. */
+.demo-section {
+    padding: 6rem 2rem;
+    background: var(--color-bg-alt);
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(79, 125, 243, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.demo-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.demo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.demo-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.85rem;
+}
+
+.demo-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.demo-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-primary);
+    box-shadow: var(--shadow-hover);
+}
+
+.video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+}
+
+.video-poster-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+    transition: filter 0.3s ease;
+}
+
+.video-poster:hover .video-poster-thumb,
+.video-poster:focus-visible .video-poster-thumb {
+    filter: brightness(1);
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    background: rgba(26, 43, 74, 0.92);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    transition: var(--transition);
+}
+
+.video-poster:hover .video-play-btn,
+.video-poster:focus-visible .video-play-btn {
+    transform: translate(-50%, -50%) scale(1.06);
+    background: var(--color-accent);
+}
+
+.video-play-btn svg {
+    width: 44px;
+    height: 44px;
+    margin-left: 5px;
 }
 
 /* What is Instructd & Pillars Section */
@@ -1023,6 +1176,35 @@ footer {
 
     .floating-stat {
         display: none;
+    }
+
+    .demo-section {
+        padding: 4rem 1.25rem;
+    }
+
+    .video-play-btn {
+        width: 80px;
+        height: 80px;
+    }
+
+    .video-play-btn svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .hero-video-play {
+        width: 72px;
+        height: 72px;
+    }
+
+    .hero-video-play svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .hero-video-pill {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.75rem;
     }
 
     .footer-container {

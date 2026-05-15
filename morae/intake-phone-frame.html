@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+  Phone-frame wrapper for screen-recording the client intake demo.
+
+  WHY THIS EXISTS
+  Chrome DevTools mobile emulation has a "Show device frame" option that
+  draws an iPhone bezel around the viewport, but the responsive-mode
+  toolbar at the top of the viewport can't be hidden, which spoils a
+  clean screen recording. This page renders a CSS phone frame with the
+  journey site inside an iframe, on a pure-white background. Open it in
+  Chrome, hit F11 for fullscreen, and you're left with just the phone
+  on a clean white canvas - nothing else.
+
+  HOW TO USE
+    1. Append your demo tenant URL as a query parameter:
+       file:///.../morae/intake-phone-frame.html?url=https://acme.demo.instructd.co.uk
+       (or if served, https://instructd.co.uk/morae/intake-phone-frame.html?url=...)
+    2. Press F11 to fullscreen Chrome.
+    3. Start Clipchamp screen recording -> "Entire screen".
+    4. Walk through your demo journey inside the phone.
+    5. Stop recording. Drop into Clipchamp timeline.
+
+  TUNING THE PHONE SIZE
+  The default is roughly classic iPhone Plus proportions, ~480x960. If
+  you want a bigger or smaller phone, change --phone-w and --phone-h at
+  the top of the :root block below. The frame, padding, and home button
+  all scale with these two values.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intake demo - phone frame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --phone-w: 480px;
+        --phone-h: 960px;
+        --bezel-side: 18px;
+        --bezel-top: 72px;
+        --bezel-bottom: 90px;
+        --phone-frame: #1a1a1a;
+        --phone-detail: #2e2e2e;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        font-family: 'DM Sans', system-ui, sans-serif;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ------------------------------------------------------------
+         Phone frame
+         ------------------------------------------------------------ */
+      .phone {
+        width: var(--phone-w);
+        height: var(--phone-h);
+        background: var(--phone-frame);
+        border-radius: 56px;
+        padding:
+          var(--bezel-top)
+          var(--bezel-side)
+          var(--bezel-bottom);
+        position: relative;
+        box-shadow:
+          0 32px 80px rgba(0, 0, 0, 0.18),
+          0 8px 16px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Speaker grille at the top */
+      .phone::before {
+        content: '';
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 64px;
+        height: 6px;
+        background: var(--phone-detail);
+        border-radius: 3px;
+      }
+
+      /* Selfie camera dot, just right of the speaker */
+      .phone::after {
+        content: '';
+        position: absolute;
+        top: 30px;
+        left: calc(50% + 56px);
+        width: 10px;
+        height: 10px;
+        background: var(--phone-detail);
+        border-radius: 50%;
+      }
+
+      /* Home button at the bottom */
+      .home-btn {
+        position: absolute;
+        bottom: 26px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 42px;
+        height: 42px;
+        border: 2px solid var(--phone-detail);
+        border-radius: 50%;
+      }
+
+      /* ------------------------------------------------------------
+         Screen + iframe
+         ------------------------------------------------------------ */
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      /* ------------------------------------------------------------
+         Helper banner (only shows when no ?url= is set)
+         ------------------------------------------------------------ */
+      .no-url-help {
+        position: fixed;
+        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1a2b4a;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 720px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+      .no-url-help strong { color: #a8b8ff; }
+      .no-url-help code {
+        font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-size: 0.92em;
+      }
+      .has-url .no-url-help { display: none; }
+
+      .placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        height: 100%;
+        padding: 32px;
+        text-align: center;
+        color: rgba(26, 43, 74, 0.55);
+      }
+      .placeholder .mark {
+        font-weight: 700;
+        font-size: 22px;
+        color: #1a2b4a;
+        letter-spacing: -0.4px;
+      }
+      .placeholder .mark span { color: #4f7df3; }
+      .placeholder p { font-size: 14px; line-height: 1.5; }
+      .has-url .placeholder { display: none; }
+    </style>
+  </head>
+  <body>
+
+    <div class="no-url-help">
+      <strong>No demo URL set.</strong> Append
+      <code>?url=https://your-demo-journey-url</code> to this page's URL
+      to load your demo tenant inside the phone frame, then press
+      <code>F11</code> to fullscreen Chrome before recording.
+    </div>
+
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="placeholder">
+          <div class="mark">instructd<span>.</span></div>
+          <p>Your demo journey will load here.<br/>Add a <code>?url=</code> query param to this page.</p>
+        </div>
+        <iframe id="demo-iframe" title="Intake demo" style="display:none"></iframe>
+      </div>
+      <div class="home-btn"></div>
+    </div>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const url = params.get('url');
+        if (url) {
+          const iframe = document.getElementById('demo-iframe');
+          iframe.src = url;
+          iframe.style.display = 'block';
+          document.body.classList.add('has-url');
+        }
+      })();
+    </script>
+
+  </body>
+</html>

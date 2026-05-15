@@ -807,41 +807,6 @@
         position: relative;
       }
 
-      .video-beats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      @media (max-width: 800px) { .video-beats { grid-template-columns: 1fr; } }
-      .video-beat {
-        background: var(--color-white);
-        border: 1px solid rgba(26, 43, 74, 0.08);
-        border-radius: var(--radius-md);
-        padding: 1.25rem 1.35rem;
-      }
-      .video-beat .b-time {
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--color-warm);
-        margin-bottom: 0.4rem;
-        font-variant-numeric: tabular-nums;
-      }
-      .video-beat h4 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--color-primary);
-        margin-bottom: 0.35rem;
-      }
-      .video-beat p {
-        font-size: 0.88rem;
-        color: var(--color-text-muted);
-        line-height: 1.55;
-        margin: 0;
-      }
-
       /* -- Security & scaling -- */
       .sec-grid {
         display: grid;
@@ -1302,7 +1267,7 @@
         </p>
         <div class="morae-toc">
           <a href="#deck">Pitch deck</a>
-          <a href="#video">90-second demo</a>
+          <a href="#video">Two-minute demo</a>
           <a href="#security">Security &amp; scaling</a>
           <a href="#commercials">Commercials</a>
           <a href="#next">Next steps</a>
@@ -1381,7 +1346,6 @@
                 <p>The same forms as a focused capture UI for staff handling calls. No CMS training. New handlers productive in days, data in the same shape.</p>
               </div>
               <div class="pillar">
-                <span class="pillar-status pillar-status--build">In build</span>
                 <h4>Client portal</h4>
                 <p>Once the file is open, the same client tracks status, gets updates, and exchanges documents. One identity, end to end.</p>
               </div>
@@ -1444,15 +1408,11 @@
           <article class="deck-slide" data-slide="8" aria-label="Slide 8: Roadmap">
             <span class="slide-num">08</span>
             <span class="slide-label">Product roadmap</span>
-            <h3>Two pillars live, a third in build, then growth and AI</h3>
+            <h3>Three pillars on one foundation, then growth, then AI</h3>
             <div class="slide-roadmap">
               <div class="roadmap-block is-done">
-                <h5>Pillars 1 &amp; 2 · live</h5>
-                <p>Client self-serve journeys and call-handler intake UI on the same schema. White-label, multi-env, CMS integrations, admin &amp; roles.</p>
-              </div>
-              <div class="roadmap-block is-build">
-                <h5>Pillar 3 · in build</h5>
-                <p>Client portal - case status, messaging, documents, post-intake account on the same platform.</p>
+                <h5>Foundation</h5>
+                <p>Three pillars on the same schema - client self-serve, call-handler intake, and the post-intake client portal. White-label, multi-env, CMS integrations, admin &amp; roles.</p>
               </div>
               <div class="roadmap-block">
                 <h5>Growth</h5>
@@ -1507,11 +1467,35 @@
     <!-- ============================================================
          2 · DEMO VIDEO
          ============================================================
-         90-SECOND DEMO SCRIPT
-         Voiceover ~190 words at ~135 wpm. Recorded over screen capture,
-         3 transition cards from /morae/video-cards.html spliced between
-         the demo beats. Drop the unlisted YouTube ID into the
-         data-youtube-id attribute on the .video-frame below.
+         90-SECOND DEMO SCRIPT (designed to extend to 120s later)
+         Voiceover ~190 words at ~150 wpm (~76s of speech). Recorded
+         over screen capture, 3 transition cards from
+         /morae/video-cards.html spliced between the demo beats. Drop
+         the unlisted YouTube ID into the data-youtube-id attribute on
+         the .video-frame below.
+
+         PACING
+         150 wpm is the target average. Vary it by beat for energy:
+           - Hook:        ~160 wpm  (punchier, grabs attention)
+           - Pillars:     ~150 wpm  (steady, confident, clear)
+           - Change ctrl: ~145 wpm  (slightly slower, lands the IT trust point)
+           - Closer:      ~135 wpm  (slower so the punchline lands)
+         The 14s left over (76s VO + 6s of card holds = 82s, vs 90s
+         target) is visual breathing room within beats - hold the
+         closing brand frame slightly longer, leave a half-second
+         between major UI cuts inside each pillar. Don't backfill it
+         with words; the video should feel paced, not packed.
+
+         REUSABILITY NOTE
+         This script is intentionally written so it does not need
+         re-recording when the client portal pillar ships. The hook
+         already says "three places" and the closer says "three ways
+         in" - both anticipate the third pillar. Today's video shows
+         pillars 1 and 2 plus a behind-the-scenes change-control beat.
+         When the portal lands, splice in the pillar-3 beat marked
+         below (~24s of new VO + visuals); none of the other VO needs
+         to change. The page text around the embed is the only thing
+         that has to update with the new runtime.
 
          ------------------------------------------------------------
          00:00 - 00:08  BEAT 1 · HOOK
@@ -1547,15 +1531,16 @@
                   1. Branded journey home
                   2. Identity check
                   3. A matter-detail question (typed answer)
-                  4. Signing authority
+                  4. Signature / sign-off step
                   5. Thank-you / "we'll be in touch"
                 Small DM Sans navy caption top-right names each step
-                ("Identity", "Matter", "Authority", "Done") on cut.
+                ("Identity", "Matter", "Sign-off", "Done") on cut.
          VO:    "First, the client. A guided journey on the firm's own
-                 branded domain. Identity check, matter details, signed
-                 authority. Five minutes, any device, any time of day.
-                 No phone queue, no transcription errors. Most clients
-                 who'd otherwise sit on a call complete this themselves."
+                 branded domain. Identity details, accident information,
+                 all configurable by the firm. Five minutes, any device,
+                 any time of day. No phone queue, no transcription errors.
+                 Clients who would otherwise sit in a call centre queue,
+                 complete this themselves."
 
          ------------------------------------------------------------
          00:32 - 00:34  [CARD 02 · HANDLER] - 2s
@@ -1578,6 +1563,26 @@
                  productive in days."
 
          ------------------------------------------------------------
+         [FUTURE 120s VERSION ONLY]
+         00:56 - 00:58  [CARD 03 · PORTAL] - 2s
+         00:58 - 01:20  BEAT · PILLAR 3 - CLIENT PORTAL
+         ------------------------------------------------------------
+         When the post-intake client portal ships, splice a new ~24s
+         pillar beat in here. To keep the rest of the VO unchanged:
+           - The hook's "Instructd changes that - in three places" and
+             the closer's "Three ways in" already anticipate this beat.
+           - Pillar 3 becomes Card 03, the existing Change Control beat
+             demotes to a non-numbered "Behind the scenes" card. Re-cut
+             transition card 03 in /morae/video-cards.html accordingly
+             (rename the third card "Behind the scenes - change control").
+           - Re-time the change-control + closer cues by +24s. No VO
+             re-record needed for any other beat.
+         Suggested VO for the new beat (record separately, drop in):
+           "Third, once the file's open - the client portal. The same
+            identity, the same schema, now post-intake. Status, updates,
+            documents - all in one place, all on the same platform."
+
+         ------------------------------------------------------------
          00:56 - 00:58  [CARD 03 · CHANGE CONTROL] - 2s
          ------------------------------------------------------------
 
@@ -1594,21 +1599,21 @@
                   5. Briefly flash version history / audit log.
          VO:    "And the part that matters to IT. The firm owns the
                  platform. Edit a question in the visual editor.
-                 Publish to dev. Promote through test to live - the
-                 same dev, test, live discipline enterprise IT already
+                 Publish a new version. Promote through staging to production - the
+                 same deployment discipline enterprise IT already
                  runs on. Version history, audit log, rollback on every
                  change. No agency, no developers, no surprises."
 
          ------------------------------------------------------------
          01:20 - 01:30  BEAT 5 · CLOSER
          ------------------------------------------------------------
-         SHOT:  Closing card - instructd. logo on cream with the three
-                pillar words ("Client . Handler . Change control")
-                underneath, or a triptych of the three transition cards
-                side-by-side. Hold for the full beat.
+         SHOT:  Closing brand card - re-use the intro frame from
+                /morae/instructd-intro.html with all three pillar dots
+                visible (blue / orange / blue). This deliberately echoes
+                the opener so the 90 seconds has a visual frame.
+                Hold for the full beat.
          VO:    "Three ways in, one schema, and a platform the firm
-                 actually owns. Client portal in build now - all on the
-                 same foundation."
+                 actually owns."
 
          ------------------------------------------------------------
          PRODUCTION NOTES
@@ -1634,44 +1639,18 @@
     <section id="video" class="morae-section morae-section--alt">
       <div class="morae-section-inner morae-section-inner--narrow">
         <span class="morae-eyebrow">Demo</span>
-        <h2>See it in 90 seconds</h2>
-        <p class="morae-lead">A walk-through of the two live pillars - client self-serve and the call-handler intake UI - plus a quick look at how the firm's own team ships changes safely. The third pillar (a post-intake client portal) is in build and isn't in the demo yet.</p>
+        <h2>See Instructd in action</h2>
+        <p class="morae-lead">A walk-through of where Instructd shows up across a firm - client self-serve, call-handler intake, and the admin tooling that ties them together. Same schema, same data, every time.</p>
 
-        <div class="video-frame" data-youtube-id="REPLACE_ME">
-          <!--
-            To embed: uncomment the iframe below and replace YOUTUBE_ID with the unlisted YouTube video ID.
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/YOUTUBE_ID?rel=0&modestbranding=1"
-              title="Instructd 90-second demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          -->
-          <div class="video-placeholder" role="img" aria-label="Video placeholder">
-            <div class="video-play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-            </div>
-            <h3>90-second product demo</h3>
-            <p>Recording in progress - final video will be embedded here as an unlisted YouTube link.</p>
-          </div>
+        <div class="video-frame" data-youtube-id="MSFu6ajJ5Bo">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/MSFu6ajJ5Bo?rel=0&modestbranding=1"
+            title="Instructd product demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
         </div>
 
-        <div class="video-beats">
-          <div class="video-beat">
-            <div class="b-time">0:10 – 0:40</div>
-            <h4>Pillar 1 · Client self-serve</h4>
-            <p>The client fills in their own intake on the firm's branded domain - identity check, matter details, signed authority. Five minutes, any device, any time of day.</p>
-          </div>
-          <div class="video-beat">
-            <div class="b-time">0:40 – 1:10</div>
-            <h4>Pillar 2 · Handler intake UI</h4>
-            <p>The same journey rendered as a focused capture UI for staff on calls. No CMS training needed. New handlers productive in days, data in the same shape.</p>
-          </div>
-          <div class="video-beat">
-            <div class="b-time">1:10 – 1:40</div>
-            <h4>How firms ship changes safely</h4>
-            <p>Edit a question in the visual editor. Publish to dev, promote through test to live. Version history, audit log, rollback on every change - the dev/test/live discipline enterprise IT already runs on.</p>
-          </div>
-        </div>
       </div>
     </section>
 
